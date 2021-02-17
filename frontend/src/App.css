@@ -1,1 +1,55 @@
 @import "~antd/dist/antd.css";
+
+.headerContainer{
+    height: 30vh;
+    background-color: #2d5362;
+}
+.custom-shape-divider-bottom-1613568772 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1613568772{
+    position: relative;
+    display: block;
+    width: calc(131% + 1.3px);
+    height: 217px;
+}
+
+.custom-shape-divider-bottom-1613568772 .shape-fill {
+    fill: #2d5362;
+}
+.curved-div svg {
+    display: block;
+  }
+.ant-menu{
+ background-color: rgba(255, 255, 255, 0);
+ font-size: 17px;
+ border-bottom: none;
+ color: #E4BA4E;
+ 
+}
+.ant-menu-horizontal>.ant-menu-item-selected a {
+    color: #E4BA4E;
+  }
+  
+  .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-selected {
+    border-bottom: 2px solid #E4BA4E;
+  }
+  
+  .ant-menu-horizontal>.ant-menu-item a:hover {
+    color: #fff;
+  }
+  
+  .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-active:hover {
+    border-bottom: 2px solid #fff;
+  }
+.footer{
+    background-color: #2d5362;
+    color: #fff;  
+}
