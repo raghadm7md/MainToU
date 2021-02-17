@@ -3,6 +3,7 @@ import "./App.css";
 import Profile from "./Profile";
 import Register from "./Register"
 import Login from './Login'
+import Add_appointment from './Add_appointment'
 
 class App extends React.Component {
   constructor(props) {
@@ -31,18 +32,15 @@ class App extends React.Component {
       ],
     };
   }
-  addAppointment = () => {
-
-  };
-
+ 
   render() {
     return (
       <div className="App">
         <Profile info={this.state.appointment}></Profile>
-        <button onClick={this.addAppointment}>add appointment</button>
         <div className="RegisterForm">
         <Register/>
         <Login/>
+        <Add_appointment/>
         </div>
       </div>
     );

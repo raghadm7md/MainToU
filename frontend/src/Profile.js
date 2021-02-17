@@ -16,6 +16,10 @@ export default class profile extends Component {
     this.setState({ appointment: appointment });
   };
 
+  addAppointment = () => {
+
+};
+
   render() {
     console.log(this.props.info);
     console.log(this.state.appointment);
@@ -39,6 +43,7 @@ export default class profile extends Component {
         </Card>
       );
     });
+
     return (
       <div>
         <h1>hi from profile</h1>
@@ -47,6 +52,7 @@ export default class profile extends Component {
               {appointment}
           </Row>
         </div>
+        <button onClick={this.addAppointment}>add appointment</button>
       </div>
     );
   }
