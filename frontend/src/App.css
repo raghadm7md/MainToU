@@ -1,1 +1,5 @@
 @import "~antd/dist/antd.css";
+.RegisterForm {
+    margin: auto;
+    width: 500px;
+}
