@@ -17,7 +17,7 @@ const appointment = new mongoose.Schema({
     time :{type : String, required :true}
     
 });
-const Appointment = mongoose.model('appointment', appointment);
+const Appointment = mongoose.model('Appointment', appointment);
 
 
 const client = new mongoose.Schema({
@@ -37,12 +37,12 @@ const client = new mongoose.Schema({
 const Client = mongoose.model('client', client);
 
 
-const teachMan = new mongoose.Schema({
+const techMan = new mongoose.Schema({
     app_id:  [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: appointment,
-            required: true
+            ref: "Appointment",
+            // required: true
         }
     ], 
 
@@ -51,21 +51,21 @@ const teachMan = new mongoose.Schema({
     email: {type : String, required: true},
     phoneNumber: {type : Number , required: true}
 });
-const TeachMan = mongoose.model('teachMan', teachMan);
+const TechMan = mongoose.model('techMan', techMan);
 
 const maintenanceCompany = new mongoose.Schema({
     app_id:  [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: appointment,
-            required: true
+            ref: "Appointment",
+            // required: true
         }
     ],   
-    teachMan: [
+    techMan: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: teachMan,
-            required: true
+            ref: "techMan",
+            // required: true
         }
     ],
     companyName:  { type: String, required: true },
@@ -79,4 +79,4 @@ const MaintenanceCompany = mongoose.model('maintenanceCompany', maintenanceCompa
 
 
 
-module.exports = Appointment  , Admin, Client , MaintenanceCompany,TeachMan;
+module.exports = {Appointment  , Admin, Client , MaintenanceCompany,TechMan}
