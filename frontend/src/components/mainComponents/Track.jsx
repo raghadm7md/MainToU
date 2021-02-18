@@ -12,10 +12,6 @@ export default class Track extends Component {
             current: 0,
         };
 
-    // class Demo extends React.Component {
-    //     state = {
-    //       current: 0,
-    //     };
 
   onChange = current => {
     console.log('onChange:', current);
@@ -43,4 +39,4 @@ export default class Track extends Component {
           </>
         );
     }
-}
+}}
