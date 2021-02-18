@@ -1,5 +1,90 @@
 @import "~antd/dist/antd.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Raleway:wght@300&display=swap');
+*{
+  font-family: 'Montserrat', sans-serif;
+  }
+/* home styling */
+.container {
+  padding: 64px;
+  margin-top: 40px;
+}
+h1, p {
+  color: #2d5362;
+}
+.firstBlock {
+  font-size: 1.5em;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.Goalsrow{
+  background-color: #faf1dc;
+  height: 500px;
+  display: inline-block;
+  position: relative;
+}
+.goalsContent{
+  padding-left: 100px;
+  width: 90%;
+}
+.teamContent{
+  width: 150%;
+}
+.curved-divWhyus svg {
+  display: block;
+}
+.goalsSvg svg {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.column-66 {
+  float: left;
+  width: 56%;
+  padding: 20px;
+}
+.column-44 {
+  float: right;
+  width: 50%;
+  padding: 15px;
+}
+.column-33 {
+  float: left;
+  width: 33.33333%;
+  padding: 20px;
+}
+.large-font {
+  font-size: 48px;
+}
 
+.semi-large-font {
+  font-size: 32px;
+}
+
+.xlarge-font {
+  margin-top: 20px;
+  font-size: 64px;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .column-66, .column-33 {
+    width: 100%;
+    text-align: center;
+  }
+  img {
+    margin: auto;
+  }
+}
+/* end of home styling */
 .headerContainer{
     height: 30vh;
     background-color: #2d5362;
@@ -23,6 +108,19 @@
 
 .custom-shape-divider-bottom-1613568772 .shape-fill {
     fill: #2d5362;
+}
+.curved-div {
+  background: #2d5362;
+  color: #fff;
+  text-align: center;
+}
+.curved-div h1 {
+  font-size: 4rem;
+  color: #fff;
+}
+.curved-div p {
+  font-size: 1.4rem;
+  color: #fff;
 }
 .curved-div svg {
     display: block;
