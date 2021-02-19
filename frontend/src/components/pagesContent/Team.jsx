@@ -27,7 +27,7 @@ function Team() {
                 The team at MainToU shares the vision and values of our
                 community. We’re driven by the idea that the best work is born
                 from collaboration, craftsmanship, and passion. created with
-                passion, care, and love to be the first place to go once an
+                care, and love to be the first place to go once an
                 issue occurred, to help those who suffer from finding the best
                 technical man by Abeer Albawardi, Amani Alosaimi, Aseel Alqasem,
                 Raghad Abo Mansour and Hind Alzahrani at SEI-14.

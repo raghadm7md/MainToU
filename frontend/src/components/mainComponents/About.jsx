@@ -32,33 +32,6 @@ export default class About extends Component {
         <WhosUs />
         <OurFetures />
         <AboutTeam />
-
-        
-          {/* <Row>
-            <Col span={8}>
-              <Card
-                className="Card-Title"
-                title={
-                  <h3>
-                    <b>Meet The Team</b>
-                  </h3>
-                }
-                bordered={false}
-                style={{ height: "350px" }}
-              >
-                <ul className="Card-contatnt">
-                  <p>
-                    <li>Abeer Albawardi</li>
-                    <li>Assel Alqasem</li>
-                    <li>Amani Alosaimi</li>
-                    <li>Raghad Abu Mansour</li>
-                    <li>Hind Alzahrani</li>
-                  </p>
-                </ul>
-              </Card>
-            </Col>
-          </Row> */}
-
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path
               fill="#2d5362"

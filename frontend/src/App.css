@@ -37,7 +37,7 @@ h1, p,h2,h3 {
   width: 90%;
 }
 .teamContent{
-  width: 150%;
+  width: 150%; 
 }
 .curved-divWhyus svg {
   display: block;
@@ -218,4 +218,20 @@ img {
 
 .Admin h1 , h2{
   text-align: center;
+}
+/* our partners */
+.partners{
+  text-align: center;
+  align-items: center;
+  margin-top: 45px;
+  
+}
+.ant-carousel .slick-slide img{
+  display: inherit;
+}
+.ant-carousel .slick-dots li button{
+  background-color: #2d5362 ;
+}
+.ant-carousel .slick-dots li.slick-active button{
+  background-color: #2d5362 ;
 }
