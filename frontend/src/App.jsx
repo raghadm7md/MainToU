@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageHeader from "./components/mainComponents/PageHeader";
 import PageFooter from "./components/mainComponents/PageFooter";
 import CalendarPage from "./components/pagesContent/CalendarPage";
-// import About from "./components/pagesContent/About";
+import About from "./components/mainComponents/About";
 import Home from "./components/pagesContent/Home";
+// import Profile from "./components/mainComponents/Profile";
 
 function App() {
   return (
@@ -19,8 +20,11 @@ function App() {
             <CalendarPage />
           </Route>
           <Route path="/about">
-            {/* <About /> */}
+            <About />
           </Route>
+          {/* <Route path="/profile">
+            <Profile />
+          </Route> */}
         </Switch>
         <PageFooter />
       </Router>
