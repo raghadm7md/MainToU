@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageHeader from "./components/mainComponents/PageHeader";
 import PageFooter from "./components/mainComponents/PageFooter";
-// import CalendarPage from "./components/pagesContent/CalendarPage";
+import CalendarPage from "./components/pagesContent/CalendarPage";
 // import About from "./components/pagesContent/About";
 import Home from "./components/pagesContent/Home";
 
@@ -16,7 +16,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/calendar">
-            {/* <CalendarPage /> */}
+            <CalendarPage />
           </Route>
           <Route path="/about">
             {/* <About /> */}
