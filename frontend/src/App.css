@@ -211,3 +211,11 @@ img {
 .notes-month section {
   font-size: 28px;
 } 
+.Tech{
+   border-left: 1px solid #2d5362;
+   left: 200px;
+  }
+
+.Admin h1 , h2{
+  text-align: center;
+}
