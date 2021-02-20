@@ -5,7 +5,7 @@ import PageFooter from "./components/mainComponents/PageFooter";
 import CalendarPage from "./components/pagesContent/CalendarPage";
 import About from "./components/mainComponents/About";
 import Home from "./components/pagesContent/Home";
-// import Admin from "./components/Admin/Admin";
+import Register from "./components/mainComponents/Register"
 // import Profile from "./components/mainComponents/Profile";
 
 function App() {
@@ -23,6 +23,9 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
           {/* <Route path="/profile">
             <Profile />
           </Route> */}
@@ -32,4 +35,5 @@ function App() {
     </>
   );
 }
+
 export default App;
