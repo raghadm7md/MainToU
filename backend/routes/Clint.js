@@ -73,20 +73,29 @@ router.put('/clint/:appointmentId/', (req, res) => {
     }
   });
 });
+/**
+  Story.
+  find().
+  populate({
+    path: 'fans',
+    match: { age: { $gte: 21 } },
+    // Explicitly exclude `_id`, see http://bit.ly/2aEfTdB
+    select: 'name -_id'
+  }).
+  exec();
+ */
 // { name: 'john', age: { $gte: 18 } }
 //********** */ read up coming Appointment
-router.get("/NewAppointment", (req, res) => {
-  console.log("GET /user");
-  Appointment.find( {isComplate: false }, function (err, data) {
-    res.json(data);
-  });
-});
+router.get("/:clintId/NewAppointments", (req, res) => {
+  console.log("GET /clint/NewAppointments");
+  Client.findById(req.params.clintId).populate({ path:'app_id' , match:{isComplate:false}}).exec();
+})
 
 
 
 // read all booked Appointment
 router.get("/:clintId/appointments", (req, res) => {
-  console.log("GET /user");
+  console.log("GET /clintId/appointment");
   Client.findById(req.params.clintId, function (err, data) {
     res.json(data);
   });

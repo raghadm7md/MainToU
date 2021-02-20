@@ -24,8 +24,8 @@ const client = new mongoose.Schema({
     app_id:  [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: appointment,
-            required: true
+            ref: "Appointment",
+            // required: true
         }
     ],
     companyName:  { type: String, required: true },
