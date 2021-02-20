@@ -1,16 +1,5 @@
 import React, { useState } from "react";
 import { Form, Input, Modal, Button } from "antd";
-const style = {
-  height: 30,
-  width: 120,
-  lineHeight: "10px",
-  borderRadius: 4,
-  backgroundColor: "#006466",
-  color: "#fff",
-  textAlign: "center",
-  fontSize: 14,
-  padding: 0,
-};
 const layout = {
   labelCol: {
     span: 8,
@@ -47,11 +36,11 @@ const TechMenCollection = ({ visible, createNewTechMen, onCancel, projectVisible
         >
           <Form.Item
             name={"name"}
-            label="Tech man name"
+            label="Tech Man Name"
             rules={[
               {
                 required: true,
-                message: "Tech man name is required"
+                message: "Tech Man Name is Required!"
               },
             ]}
           >
@@ -60,11 +49,11 @@ const TechMenCollection = ({ visible, createNewTechMen, onCancel, projectVisible
         
           <Form.Item
             name={"email"}
-            label="Tech man email:"
+            label="Tech Man Email:"
             rules={[
               {
                 required : true,
-                message: "Tech man email is required"
+                message: "Tech Man Email is Required!"
               },
             ]}
           >
@@ -72,11 +61,11 @@ const TechMenCollection = ({ visible, createNewTechMen, onCancel, projectVisible
           </Form.Item>
           <Form.Item
             name={"phone"}
-            label="Tech man phone: "
+            label="Tech Man Phone: "
             rules={[
               {
                 required : true,
-                message: "Tech man phone number is required"  
+                message: "Tech Man Phone Number is Required!"  
               },
             ]}
           >
@@ -84,11 +73,11 @@ const TechMenCollection = ({ visible, createNewTechMen, onCancel, projectVisible
           </Form.Item>
           <Form.Item
             name={"jobID"}
-            label="Tech man job id: "
+            label="Tech Man Job ID: "
             rules={[
               {
                 required : true,
-                message: "Tech man job id is required"             
+                message: "Tech Man Job ID is Required!"             
                },
             ]}
           >
@@ -104,7 +93,7 @@ const TechMenCollection = ({ visible, createNewTechMen, onCancel, projectVisible
     return (
         <>
     
-            <Button style={style} onClick={() => setVisible(true)}>
+            <Button className="addBtn" onClick={() => setVisible(true)}>
               Add Tech Man
               </Button>
           <TechMenCollection

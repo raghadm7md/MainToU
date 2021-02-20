@@ -1,16 +1,5 @@
 import React, { useState } from "react";
 import { Form, Input, Modal, Button } from "antd";
-const style = {
-  height: 30,
-  width: 120,
-  lineHeight: "10px",
-  borderRadius: 4,
-  backgroundColor: "#006466",
-  color: "#fff",
-  textAlign: "center",
-  fontSize: 14,
-  padding: 0,
-};
 const layout = {
   labelCol: {
     span: 8,
@@ -101,7 +90,7 @@ const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible
     return (
         <>
        
-            <Button style={style} onClick={() => setVisible(true)}>
+            <Button className="addBtn" onClick={() => setVisible(true)}>
                 New Company
               </Button>
           <CompanyCollection

@@ -5,7 +5,7 @@ import PageFooter from "./components/mainComponents/PageFooter";
 import CalendarPage from "./components/pagesContent/CalendarPage";
 import About from "./components/mainComponents/About";
 import Home from "./components/pagesContent/Home";
-// import Admin from "./components/Admin/Admin";
+import Admin from "./components/Admin/Admin";
 // import Profile from "./components/mainComponents/Profile";
 
 function App() {
@@ -23,9 +23,9 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
-          {/* <Route path="/profile">
-            <Profile />
-          </Route> */}
+          <Route path="/profile">
+            <Admin />
+          </Route>
         </Switch>
         <PageFooter />
       </Router>

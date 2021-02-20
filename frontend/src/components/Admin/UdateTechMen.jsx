@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input,  Modal, Button } from "antd";
+import { Form, Input,  Modal, Button, Table, InputNumber, Popconfirm } from "antd";
 import { EditOutlined  } from "@ant-design/icons";
 const layout = {
   labelCol: {
