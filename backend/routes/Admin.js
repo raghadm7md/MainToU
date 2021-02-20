@@ -30,17 +30,6 @@ router.post("/TechMan", (req, res) => {
 });
 
 
-// add appointment to a techMan
-router.post('/TechMan/:TechManId/appointment', (req, res) => {
-  const newAppointment = new Appointment(req.body);
-  TechMan.findById(req.params.TechManId, (error, foundTechMan) => {
-    foundTechMan.app_id.push(newAppointment);
-    foundTechMan.save((err, savedTechMan) => {
-      res.json(newAppointment);
-    });
-  });
-});
-
 // add new company
 router.post("/company", (req, res) => {
   console.log("POST /company");
@@ -55,6 +44,7 @@ router.post("/company", (req, res) => {
   });
 });
 
+
 // views all companies
 router.get("/company", (req, res) => {
   console.log("GET /company");
@@ -62,6 +52,19 @@ router.get("/company", (req, res) => {
     res.json(data);
   });
 });
+
+// delete a company 
+router.delete('/company/:companyId', (req, res) => {
+  console.log('PARAMS:', req.params);
+  MaintenanceCompany.findOneAndDelete({ _id: req.params.companyId}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+
 
 // add appointment to a company
 // by Body
@@ -75,14 +78,14 @@ router.post('/company/:companyId/appointment', (req, res) => {
   });
 });
 // by params
-// router.post('/company/:companyId/:appointmentId', (req, res) => {
-//   MaintenanceCompany.findById(req.params.companyId, (error, foundCompany) => {
-//     foundCompany.app_id.push(req.params.appointmentId);
-//     foundCompany.save((err, savedTechMan) => {
-//       res.json(" added a appointment !!!!!! ");
-//     });
-//   });
-// });
+router.post('/company/:companyId/:appointmentId', (req, res) => {
+  MaintenanceCompany.findById(req.params.companyId, (error, foundCompany) => {
+    foundCompany.app_id.push(req.params.appointmentId);
+    foundCompany.save((err, savedTechMan) => {
+      res.json(" added a appointment !!!!!! ");
+    });
+  });
+});
 
 // add techMan to a company
 // by Body

@@ -13,7 +13,7 @@ router.get("/Testappointments", (req, res) => {
     res.json("SERVER IS WORKING from appointments.js");
   });
   
-
+// view all Appointment
   router.get("/appointments", (req, res) => {
     console.log("GET /user");
     Appointment.find({}, function (err, data) {
@@ -21,6 +21,8 @@ router.get("/Testappointments", (req, res) => {
     });
   });
 
+
+// add new Appointment
   router.post('/appointments',(req,res)=>{
     console.log("POST /appointments");
     console.log("BODY: ", req.body);
@@ -35,6 +37,7 @@ router.get("/Testappointments", (req, res) => {
   });
   });
 
+  // Edit Appointment
   router.put('/appointments/:id', (req, res) => {
 
     Appointment.findOneAndUpdate({ _id: req.params.id }, req.body, (err, result) => {
@@ -46,6 +49,7 @@ router.get("/Testappointments", (req, res) => {
     });
   });
 
+// delete Appointment
 router.delete('/appointments/:id', (req, res) => {
     console.log('PARAMS:', req.params);
     Appointment.findOneAndDelete({ _id: req.params.id}, (err, result) => {

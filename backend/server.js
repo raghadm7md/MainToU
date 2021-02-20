@@ -6,6 +6,9 @@ const bodyParser=require("body-parser");
 
 const Appointments = require('./routes/Appointment');
 const Admin = require('./routes/Admin');
+const Clint = require('./routes/Clint');
+const techMan = require('./routes/TechMan');
+
 
 const app = express();
 const models = require('./models/models')
@@ -24,9 +27,11 @@ app.use(bodyParser.urlencoded({extended:true}))
 /*** Routes ***/
 
 // Mount imported Routers
-// Mount imported Routers
 app.use(Appointments);
 app.use(Admin);
+app.use(Clint);
+app.use(techMan);
+
 
 const PORT = process.env.PORT || 5000;
 
