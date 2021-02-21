@@ -6,7 +6,6 @@ function UpComAppoints() {
     return (
         <div>
             <AppointsCard/>
-            kfkfkf
         </div>
     )
 }
