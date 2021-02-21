@@ -9,7 +9,7 @@
   margin-top: 40px;
   margin-bottom: 25px;
 }
-h1, p,h2,h3 {
+h1, p,h2,h3, h4 {
   color: #2d5362;
 }
 .firstBlock {
@@ -278,9 +278,69 @@ img {
 }
 .ant-menu-item:hover, .ant-menu-item-active, .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-submenu-active, .ant-menu-submenu-title:hover{
   color: #2d5362;
+  border-color:#2d5362;
   
 }
  .contact-title{
   color: white;
 }
+/* login */
+.loginBtn{
+  height: 40;
+  width: 90;
+  line-height: 40px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  text-align: "center";
+  font-size: 17px;
+  padding: 0;
+}
+.loginBtn:hover{
+  color:#fff;
+  background-color: transparent;
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus{
+  background-color: transparent;
+  border: none;
+}
+.regRow{
+  background-color: #fff;
+  height: 100vh;
+   width: 100%;
+   border-radius: 10px;
+} 
+.register-container > h1{
+  width: 60%;
+  margin: auto;
+  padding: -10px 50px 20px 5px;
+  margin-top: 6px;
+  margin-bottom: 20px;
+  align-items: center;
+  text-align: left;
+  color: #2d5362;
+}
+.ant-input , .ant-input-affix-wrapper{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1.5px solid #2d5362;
+}
+.regBtn{
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
 
+.ant-form-item-label > label::after{
+  content: none;
+}
+.ant-form-item-label > label{
+  padding-right: 20px;
+}
+.RegIco{
+  margin:50px;
+  padding: 20px;
+  font-size: 70px;
+  color: #2d5362;
+}

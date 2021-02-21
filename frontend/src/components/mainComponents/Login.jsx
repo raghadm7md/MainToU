@@ -2,19 +2,6 @@ import "../../App.css";
 import React, { useState } from "react";
 import { Form, Button, Modal, Input, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-// import { ReactComponent as LoginBg } from "../images/LoginBg.svg";
-
-const style = {
-  height: 40,
-  width: 90,
-  lineHeight: "40px",
-  borderRadius: 4,
-  backgroundColor: "#006466",
-  color: "#fff",
-  textAlign: "center",
-  fontSize: 16,
-  padding: 0,
-};
 const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
 
   const [form] = Form.useForm();
@@ -75,11 +62,7 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
         />
       </Form.Item>
       <Form.Item>
-        <Form.Item valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item><a className="login-form-forgot" href="/restorePassowrd">Forgot password</a></Form.Item>
-      <Form.Item>
-        <a href="./register">Register now!</a>
+        <a href="./register"><h4>Don't have an account! Register now!</h4></a>
       </Form.Item>
     </Form>
   </Modal>)
@@ -91,7 +74,7 @@ export default function Login(props) {
   return (
     <>
       <Button
-        style={style}
+        className="loginBtn"
         type="primary"
         onClick={() => setVisible(true)}
       >
