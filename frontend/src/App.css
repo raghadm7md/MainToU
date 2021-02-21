@@ -65,7 +65,7 @@ h1, p,h2,h3, h4 {
 }
 .large-font {
   font-size: 48px;
-  color: white;
+  /* color: white; */
 }
 
 .semi-large-font {
@@ -281,9 +281,9 @@ img {
   border-color:#2d5362;
   
 }
- .contact-title{
+ /* .contact-title{
   color: white;
-}
+} */
 /* login */
 .loginBtn{
   height: 40;
@@ -310,7 +310,7 @@ img {
    width: 100%;
    border-radius: 10px;
 } 
-.register-container > h1{
+.register-container h1{
   width: 60%;
   margin: auto;
   padding: -10px 50px 20px 5px;

@@ -48,7 +48,7 @@ class Register extends Component {
         <div className="row regRow">
         <Divider><UserOutlined className="RegIco"/></Divider>
         <div className='register-container'>
-          <h1 className="contact-title">Fill the information below to be one of our clients!</h1>
+          <h1 className="contact-title" >Fill the information below to be one of our clients!</h1>
           <Form
             {...layout}
             name="basic"
