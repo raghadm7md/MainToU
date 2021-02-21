@@ -2,7 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
-const {Admin ,TechMan, Appointment , MaintenanceCompany} = require("../models/models");
+const {
+  Admin,
+  TechMan,
+  Appointment,
+  MaintenanceCompany,
+} = require("../models/models");
 //******** Login Admin */
 // to can see the body from req instead of undefined
 router.use(express.json());
@@ -20,30 +25,26 @@ router.post("/TechMan", (req, res) => {
   console.log("POST /TechMan");
   console.log("BODY: ", req.body);
   TechMan.create(req.body, function (err, newTechMan) {
-    if (err){
+    if (err) {
       console.log(err);
-
     }
     console.log(newTechMan);
     res.json(newTechMan);
   });
 });
 
-
 // add new company
 router.post("/company", (req, res) => {
   console.log("POST /company");
   console.log("BODY: ", req.body);
   MaintenanceCompany.create(req.body, function (err, newCompany) {
-    if (err){
+    if (err) {
       console.log(err);
-
     }
     console.log(newCompany);
     res.json(newCompany);
   });
 });
-
 
 // views all companies
 router.get("/company", (req, res) => {
@@ -53,22 +54,24 @@ router.get("/company", (req, res) => {
   });
 });
 
-// delete a company 
-router.delete('/company/:companyId', (req, res) => {
-  console.log('PARAMS:', req.params);
-  MaintenanceCompany.findOneAndDelete({ _id: req.params.companyId}, (err, result) => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(result);
+// delete a company
+router.delete("/company/:companyId", (req, res) => {
+  console.log("PARAMS:", req.params);
+  MaintenanceCompany.findOneAndDelete(
+    { _id: req.params.companyId },
+    (err, result) => {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(result);
+      }
     }
-  });
+  );
 });
-
 
 // add appointment to a company
 // by Body
-router.post('/company/:companyId/appointment', (req, res) => {
+router.post("/company/:companyId/appointment", (req, res) => {
   const newAppointment = new Appointment(req.body);
   MaintenanceCompany.findById(req.params.companyId, (error, foundCompany) => {
     foundCompany.app_id.push(newAppointment);
@@ -78,7 +81,7 @@ router.post('/company/:companyId/appointment', (req, res) => {
   });
 });
 // by params
-router.post('/company/:companyId/:appointmentId', (req, res) => {
+router.post("/company/:companyId/:appointmentId", (req, res) => {
   MaintenanceCompany.findById(req.params.companyId, (error, foundCompany) => {
     foundCompany.app_id.push(req.params.appointmentId);
     foundCompany.save((err, savedTechMan) => {
@@ -89,7 +92,7 @@ router.post('/company/:companyId/:appointmentId', (req, res) => {
 
 // add techMan to a company
 // by Body
-router.post('/company/:companyId/techMan', (req, res) => {
+router.post("/company/:companyId/techMan", (req, res) => {
   const newTechMan = new TechMan(req.body);
   MaintenanceCompany.findById(req.params.companyId, (error, foundCompany) => {
     foundCompany.techMan.push(newTechMan);
@@ -100,7 +103,7 @@ router.post('/company/:companyId/techMan', (req, res) => {
 });
 
 // by params
-router.post('/company/:companyId/:techManId', (req, res) => {
+router.post("/company/:companyId/:techManId", (req, res) => {
   MaintenanceCompany.findById(req.params.companyId, (error, foundCompany) => {
     foundCompany.techMan.push(req.params.techManId);
     foundCompany.save((err, savedTechMan) => {
@@ -108,8 +111,5 @@ router.post('/company/:companyId/:techManId', (req, res) => {
     });
   });
 });
-
-
-
 
 module.exports = router;
