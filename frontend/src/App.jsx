@@ -11,6 +11,8 @@ import UpComAppoints from "./components/profile/UpComAppoints";
 import FinishedAppoints from "./components/profile/FinishedAppoints";
 import Trash from "./components/profile/Trash";
 import ProfileInfo from "./components/profile/ProfileInfo";
+import Register from "./components/mainComponents/Register"
+// import Profile from "./components/mainComponents/Profile";
 
 function App() {
   return (
@@ -45,6 +47,12 @@ function App() {
           <Route path="admin">
             <Admin/>
           </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          {/* <Route path="/profile">
+            <Profile />
+          </Route> */}
         </Switch>
         <PageFooter />
       </Router>

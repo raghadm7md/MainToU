@@ -65,6 +65,7 @@ h1, p,h2,h3 {
 }
 .large-font {
   font-size: 48px;
+  color: white;
 }
 
 .semi-large-font {
@@ -276,4 +277,7 @@ img {
 .ant-menu-item:hover, .ant-menu-item-active, .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-submenu-active, .ant-menu-submenu-title:hover{
   color: #2d5362;
   
+}
+ .contact-title{
+  color: white;
 }
