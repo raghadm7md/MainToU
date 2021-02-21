@@ -3,9 +3,27 @@ import { Menu, Layout } from 'antd';
 import { Link } from "react-router-dom";
 import { ClockCircleOutlined , DeleteOutlined  , CheckOutlined  ,UserOutlined } from '@ant-design/icons';
 import "../../App.css";
+import Profileinfo from './ProfileInfo'
 const { Sider } = Layout;
 
 export default class SideMinue extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showComponent: false,
+    };
+  }
+
+  show = () => {
+    this.setState({ showComponent: true });
+    console.log(this.state.showComponent);
+  };
+
+  hide = () => {
+    this.setState({ showComponent: false });
+    console.log(this.state.showComponent);
+  };
+
   handleClick = e => {
     console.log('click ', e);
   };
@@ -31,7 +49,7 @@ export default class SideMinue extends Component {
         mode="inline"
       >
     
-          <Menu.Item key="1" icon={<UserOutlined />}><Link to="profileinfo">User information</Link></Menu.Item>
+          <Menu.Item key="1" icon={<UserOutlined />} onClick={this.show}>User information </Menu.Item>
 
           <Menu.Item key="2" icon={<ClockCircleOutlined />}><Link to="upAppoints">Upcoming appointments</Link></Menu.Item>
           <Menu.Item key="3" icon={<CheckOutlined />}> <Link to="finishedAppoints">Completed appointments</Link> </Menu.Item>
@@ -42,5 +60,6 @@ export default class SideMinue extends Component {
       </Sider>
       </Layout>
     );
+    
   }
 }
