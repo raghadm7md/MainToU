@@ -6,7 +6,11 @@ import CalendarPage from "./components/pagesContent/CalendarPage";
 import About from "./components/mainComponents/About";
 import Home from "./components/pagesContent/Home";
 import Admin from "./components/Admin/Admin";
-// import Profile from "./components/mainComponents/Profile";
+import Profile from "./components/profile/Profile";
+import UpComAppoints from "./components/profile/UpComAppoints";
+import FinishedAppoints from "./components/profile/FinishedAppoints";
+import Trash from "./components/profile/Trash";
+import ProfileInfo from "./components/profile/ProfileInfo";
 
 function App() {
   return (
@@ -24,7 +28,22 @@ function App() {
             <About />
           </Route>
           <Route path="/profile">
-            <Admin />
+            <Profile/>
+          </Route>
+          <Route path="profileinfo">
+          <ProfileInfo/>
+          </Route>
+          <Route path="upAppoints">
+          <UpComAppoints/>
+          </Route>
+          <Route path="finishedAppoints">
+          <FinishedAppoints/>
+          </Route>
+          <Route path="trash">
+            <Trash/>
+          </Route>
+          <Route path="admin">
+            <Admin/>
           </Route>
         </Switch>
         <PageFooter />

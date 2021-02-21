@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Profile from "./Profile";
+import Profile from "../Profile";
 
 const {  Steps, Divider  } = antd;
 
@@ -11,14 +11,15 @@ export default class Track extends Component {
         this.state = {
             current: 0,
         };
-
+      }
 
   onChange = current => {
     console.log('onChange:', current);
     this.setState({ current });
   };
 
-    render() {
+    render()
+     {
         const { current } = this.state;
 
         return (
@@ -38,5 +39,5 @@ export default class Track extends Component {
             </Steps>
           </>
         );
-    }
-}}
+    };
+}
