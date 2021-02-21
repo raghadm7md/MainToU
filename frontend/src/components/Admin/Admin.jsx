@@ -13,8 +13,8 @@ export default class Admin extends Component {
                 
                 <Row>
                    <Col span={12}> <Company/> </Col>
-                   <Col span={12}> <TechMen/></Col>
-                 </Row>
+                   <Col span={12}> <TechMen/></Col> 
+                </Row>
             </div>
         )
     }

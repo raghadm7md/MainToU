@@ -257,6 +257,8 @@ img {
   text-align: center;
   font-size: 14px;
   padding: 0;
+  margin-left: 500px;
+  margin-bottom: 20px;
 }
 .addBtn:hover{
   color: #2d5362;
