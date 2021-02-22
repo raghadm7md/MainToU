@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect ,useState } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form, Typography , Space , Button} from 'antd';
 import Highlighter from 'react-highlight-words';
 import { EditOutlined , DeleteOutlined  , SearchOutlined} from "@ant-design/icons";
 import NewCompany from "./NewCompany";
+import { getAllmintsCompany , deleteCompany , editCompany } from "../API/API";
 
-const originData = [
-  {
-    key: "1",
-    Name: "TWAIK",
-    Email: "twaik@gmail.com",
-    Phone: "+96654546378",
-  },
-  {
-    key: "2",
-    Name: "Mosook",
-    Email: "mosook@gmail.com",
-    Phone: "+96654549978",
-  },
-];
+// const originData = [
+//   // {
+//   //   Name: "TWAIK",
+//   //   Email: "twaik@gmail.com",
+//   //   Phone: "+96654546378",
+//   // },
+//   // {
+//   //   Name: "Mosook",
+//   //   Email: "mosook@gmail.com",
+//   //   Phone: "+96654549978",
+//   // },
+// ];
 
 
 const EditableCell = ({
@@ -55,10 +54,12 @@ const EditableCell = ({
   );
 };
 
+
+
 const Company = () => {
+  
   let [searchText,setSearchText] = useState('');
   let [ searchedColumn,setSearchedColumn] = useState('');
-
 
   const getColumnSearchProps = dataIndex => ({
      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
@@ -139,22 +140,54 @@ const Company = () => {
   };
 
   const [form] = Form.useForm();
-  const [data, setData] = useState(originData);
-  const [editingKey, setEditingKey] = useState('');
-  const handleDelete = (key) => {
-    const dataSource = [...data];
-    setData( dataSource.filter((item) => item.key !== key))
-  };
-  const isEditing = (record) => record.key === editingKey;
+  const [data, setData] = useState("");
 
+//*******====================== */
+ useEffect(()=>{
+ getAllmintsCompany()
+  .then((response) => {
+    setData(response.data)
+  })
+  .catch((error) => {
+    console.log("API ERROR:", error);
+  });}
+  ,[]);
+   
+
+
+
+  // ****** delete company
+  const handleDelete = (key) => {
+    
+    const dataSource = [...data];
+    setData( dataSource.filter((item) => item._id !== key))
+    console.log("hiiii",key)
+
+    deleteCompany(key)
+    .then((response) => {
+      console.log("Deleted Succcfully !!!!!!!!",response)
+    })
+    .catch((error) => {
+      console.log("API ERROR:", error);
+    });
+
+  };
+
+  // ****** Edit company
+  const [editingKey, setEditingKey] = useState('');
+
+  const isEditing = (record) => record._id === editingKey;
   const edit = (record) => {
     form.setFieldsValue({
-      name: '',
-      age: '',
-      address: '',
+      companyName: '',
+      email: '',
+      phoneNumber: '',
+      description:'',
       ...record,
     });
-    setEditingKey(record.key);
+    setEditingKey(record._id);
+    console.log(record)
+    console.log(record._id)
   };
 
   const cancel = () => {
@@ -165,12 +198,23 @@ const Company = () => {
     try {
       const row = await form.validateFields();
       const newData = [...data];
-      const index = newData.findIndex((item) => key === item.key);
+      const index = newData.findIndex((item) => key === item._id);
 
       if (index > -1) {
         const item = newData[index];
         newData.splice(index, 1, { ...item, ...row });
-        setData(newData);
+        // setData(newData);
+        console.log("item",newData[index])
+        console.log("item",newData[index]._id)
+        editCompany(newData[index],newData[index]._id)
+        .then((response) => {
+          console.log("Updated Succcfully !!!!!!!!",response)
+  
+        })
+        .catch((error) => {
+          console.log("API ERROR:", error);
+        });
+    
         setEditingKey('');
       } else {
         newData.push(row);
@@ -185,21 +229,28 @@ const Company = () => {
   const columns = [
     {
       title: 'Name',
-      dataIndex: 'Name',
+      dataIndex: 'companyName',
       width: '25%',
       editable: true,
-      ...getColumnSearchProps('Name'),
+      ...getColumnSearchProps('companyName'),
     },
     {
       title: 'Email',
-      dataIndex: 'Email',
+      dataIndex: 'email',
       width: '15%',
       editable: true,
-      ...getColumnSearchProps('Email'),
+      ...getColumnSearchProps('email'),
     },
     {
       title: 'Phone',
-      dataIndex: 'Phone',
+      dataIndex: 'phoneNumber',
+      width: '40%',
+      editable: true,
+      ...getColumnSearchProps('FullName'),
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
       width: '40%',
       editable: true,
       ...getColumnSearchProps('FullName'),
@@ -214,7 +265,7 @@ const Company = () => {
           <span>
             <a
               href="javascript:;"
-              onClick={() => save(record.key)}
+              onClick={() => save(record._id)}
               style={{
                 marginRight: 8,
               }}
@@ -241,9 +292,9 @@ const Company = () => {
     width: '10%',
     render: (_, record) =>
       data.length >= 1 ? (
-        <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
+        <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record._id)}>
           <a><DeleteOutlined className="edit"/></a>
-        </Popconfirm>
+        </Popconfirm >
       ) : null,
   },
   ];
@@ -256,13 +307,15 @@ const Company = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'age' ? 'number' : 'text',
+        // inputType: col.dataIndex === 'age' ? 'number' : 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
+        
       }),
     };
   });
+
   return (
     // <div className="TMtable">
     <Form form={form} component={false}>
@@ -274,7 +327,7 @@ const Company = () => {
             cell: EditableCell,
           },
         }}
-        bordered
+        // bordered
         dataSource={data}
         columns={mergedColumns}
         className="TMtable"
@@ -287,5 +340,7 @@ const Company = () => {
     // </div>
   );
 };
+
+
 
 export default Company;

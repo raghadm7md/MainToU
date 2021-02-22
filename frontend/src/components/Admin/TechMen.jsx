@@ -7,7 +7,7 @@ import NewTechMen from "./NewTechMen";
 const originData = [
   {
     key: "1",
-    FullName: "John Brown",
+    FullName: "John Brown!!!!!!!!!!!",
     Email: "john@gmail.com",
     Phone: "+96654546378",
   },
@@ -18,7 +18,6 @@ const originData = [
     Phone: "+96654549978",
   },
 ];
-
 
 const EditableCell = ({
   editing,
@@ -145,6 +144,9 @@ const TechMen = () => {
     const dataSource = [...data];
     setData( dataSource.filter((item) => item.key !== key))
   };
+
+
+
   const isEditing = (record) => record.key === editingKey;
 
   const edit = (record) => {
@@ -171,6 +173,7 @@ const TechMen = () => {
         const item = newData[index];
         newData.splice(index, 1, { ...item, ...row });
         setData(newData);
+        console.log(newData)
         setEditingKey('');
       } else {
         newData.push(row);
