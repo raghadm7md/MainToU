@@ -19,7 +19,13 @@ class Register extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sucsses: false
+      sucsses: false , 
+      name: '',
+      email :'',
+      password: '',
+      phone : '',
+      address :''
+
     }
   }
   render() {
@@ -30,7 +36,20 @@ class Register extends Component {
     const tailLayout = {
       wrapperCol: { offset: 8, span: 16 },
     };
- 
+    const onFinish = async (values) => {
+      console.log(values)
+
+      await Operation.register(values)
+        .then((response) => {
+          console.log(values)
+          this.setState({ sucsses: true })
+        }).catch((err) => {
+          console.log("err")
+        })
+    };
+    const onFinishFailed = (errorInfo) => {
+      console.log('Failed:', errorInfo);
+    };
     return (
       <>
         <div class="curved-div">
@@ -60,14 +79,17 @@ class Register extends Component {
         <Divider><UserOutlined className="RegIco"/></Divider>
         <div className='register-container'>
           <h1 className="contact-title" >Fill the information below to be one of our clients!</h1>
+
           <Form
             {...layout}
             name="basic"
-          
+            onFinishFailed={onFinishFailed}
+            onFinish = {onFinish}
           >
             <Form.Item
-              label={<h4><b>Your Name: </b></h4>}
-              name="name"
+              label={<h4><b>Your Name :</b></h4>}
+              name="companyName"
+          
               rules={[{ required: true, message: 'Please input your name!' }]}
             >
               <Input />
@@ -97,14 +119,14 @@ class Register extends Component {
             </Form.Item>
             <Form.Item
               label={<h4><b>Your Phone number: </b></h4>}
-              name="phone"
+              name="phoneNumber"
               rules={[{ required: true, message: 'Please input your email!' }]}
             >
               <Input />
               </Form.Item>
             <Form.Item
-              label={<h4><b>Adress: </b></h4>}
-              name="phone"
+              label={<h4><b>Adress:</b></h4>}
+              name="address"
               rules={[{ required: true, message: 'Please input your email!' }]}
             >
               <Input />
