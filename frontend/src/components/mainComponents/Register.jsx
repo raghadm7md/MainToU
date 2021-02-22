@@ -1,8 +1,19 @@
-import React, { Component } from "react";
-import { Form, Input, Button, Divider } from 'antd';
+import React, { Component} from "react";
+import { Link } from "react-router-dom";
+import { Form, Input, Button, Divider, message } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import "../../App.css";
 import RegBG from "../../images/RegBg.svg";
+
+//Redirect the user if the registeration is success
+const key = 'updatable';
+const openMessage = () => {
+  message.loading({ content: 'Loading...', key});
+  setTimeout(() => {
+    message.success({ content: 'You are successfully registred!', key, duration: 2 });
+     }, 3000);
+};
+
 
 class Register extends Component {
   constructor(props) {
@@ -100,9 +111,11 @@ class Register extends Component {
             </Form.Item>
 
             <Form.Item {...tailLayout}>
-              <Button type="primary" htmlType="submit" className="regBtn">
-                Register
-        </Button>
+              <Button type="primary" htmlType="submit" className="regBtn" onClick={openMessage}>
+               <Link to="/"> 
+               Register
+               </Link>
+              </Button>
             </Form.Item>
           </Form>
         </div>
