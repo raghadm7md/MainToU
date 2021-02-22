@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Form, Input, Button, Divider } from 'antd';
 import "../../App.css";
+import {Operation} from '../API/API'
 import CalendarBG from "../../images/calendarBG.svg";
+import { NONAME } from "dns";
 
 const style = {
   height: 40,
@@ -17,7 +19,13 @@ class Register extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sucsses: false
+      sucsses: false , 
+      name: '',
+      email :'',
+      password: '',
+      phone : '',
+      address :''
+
     }
   }
   render() {
@@ -28,7 +36,20 @@ class Register extends Component {
     const tailLayout = {
       wrapperCol: { offset: 8, span: 16 },
     };
- 
+    const onFinish = async (values) => {
+      console.log(values)
+
+      await Operation.register(values)
+        .then((response) => {
+          console.log(values)
+          this.setState({ sucsses: true })
+        }).catch((err) => {
+          console.log("err")
+        })
+    };
+    const onFinishFailed = (errorInfo) => {
+      console.log('Failed:', errorInfo);
+    };
     return (
       <div   style={{
         background: `url(${CalendarBG})`,
@@ -44,14 +65,18 @@ class Register extends Component {
         </Divider>
         <div className='register-container'>
           <h1 className="contact-title">Be one of our clients!</h1>
+          <h4 className="contact-title">{this.state.sucsses ? this.state.sucsses : ""}</h4><br />
+
           <Form
             {...layout}
             name="basic"
-          
+            onFinishFailed={onFinishFailed}
+            onFinish = {onFinish}
           >
             <Form.Item
               label={<h4><b>Your Name :</b></h4>}
-              name="name"
+              name="companyName"
+          
               rules={[{ required: true, message: 'Please input your name!' }]}
             >
               <Input />
@@ -81,23 +106,24 @@ class Register extends Component {
             </Form.Item>
             <Form.Item
               label={<h4><b>Phone number:</b></h4>}
-              name="phone"
+              name="phoneNumber"
               rules={[{ required: true, message: 'Please input your email!' }]}
             >
               <Input />
               </Form.Item>
             <Form.Item
               label={<h4><b>Adress:</b></h4>}
-              name="phone"
+              name="address"
               rules={[{ required: true, message: 'Please input your email!' }]}
             >
               <Input />
             </Form.Item>
 
             <Form.Item {...tailLayout}>
-              <Button type="primary" htmlType="submit" style={style}>
+              <Button type="primary" htmlType="submit" style={style} 
+> 
                 Register
-        </Button>
+             </Button>
             </Form.Item>
           </Form>
         </div>

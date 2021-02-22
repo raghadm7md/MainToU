@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 // const cors = require('cors');
 const bodyParser=require("body-parser");
+const { Client1 } = require("./models/models");
 
 
 const Appointments = require('./routes/Appointment');
@@ -38,3 +39,16 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`SERVER ARE WORKING ON http://localhost:${PORT}`);
 });
+
+
+app.get('/some_path',checkAuthentication,function(req,res){
+  //do something only if user is authenticated
+});
+function checkAuthentication(req,res,next){
+  if(req.isAuthenticated()){
+      //req.isAuthenticated() will return true if user is logged in
+      next();
+  } else{
+      res.redirect("/login");
+  }
+}
