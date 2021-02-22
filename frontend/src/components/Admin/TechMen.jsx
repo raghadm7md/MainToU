@@ -144,6 +144,9 @@ const TechMen = () => {
     const dataSource = [...data];
     setData( dataSource.filter((item) => item.key !== key))
   };
+
+
+
   const isEditing = (record) => record.key === editingKey;
 
   const edit = (record) => {
@@ -170,6 +173,7 @@ const TechMen = () => {
         const item = newData[index];
         newData.splice(index, 1, { ...item, ...row });
         setData(newData);
+        console.log(newData)
         setEditingKey('');
       } else {
         newData.push(row);
@@ -265,7 +269,7 @@ const TechMen = () => {
     
     <Form form={form} component={false}>
       <h2 >Tech Men </h2>
-      {/* <NewTechMen rowClassName ='addBtn'/>
+      <NewTechMen rowClassName ='addBtn'/>
       <Table 
         components={{
           body: {
@@ -279,7 +283,7 @@ const TechMen = () => {
         pagination={{
           onChange: cancel,
         }}
-      /> */}
+      />
     </Form>
   );
 };

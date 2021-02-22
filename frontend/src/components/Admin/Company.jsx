@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect ,useState } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form, Typography , Space , Button} from 'antd';
 import Highlighter from 'react-highlight-words';
 import { EditOutlined , DeleteOutlined  , SearchOutlined} from "@ant-design/icons";
 import NewCompany from "./NewCompany";
-import { getAllmintsCompany , deleteCompany} from "../API/Api";
+import { getAllmintsCompany , deleteCompany , editCompany } from "../API/Api";
 
 // const originData = [
 //   // {
@@ -141,15 +141,20 @@ const Company = () => {
 
   const [form] = Form.useForm();
   const [data, setData] = useState("");
+
 //*******====================== */
-  getAllmintsCompany()
+ useEffect(()=>{
+ getAllmintsCompany()
   .then((response) => {
     setData(response.data)
   })
   .catch((error) => {
     console.log("API ERROR:", error);
-  });
-  const [editingKey, setEditingKey] = useState('');
+  });}
+  ,[]);
+   
+
+
 
   // ****** delete company
   const handleDelete = (key) => {
@@ -168,9 +173,10 @@ const Company = () => {
 
   };
 
-  const isEditing = (record) => record.key === editingKey;
+  // ****** Edit company
+  const [editingKey, setEditingKey] = useState('');
 
-
+  const isEditing = (record) => record._id === editingKey;
   const edit = (record) => {
     form.setFieldsValue({
       companyName: '',
@@ -179,9 +185,9 @@ const Company = () => {
       description:'',
       ...record,
     });
-    setEditingKey(record.key);
+    setEditingKey(record._id);
     console.log(record)
-    console.log(record.key)
+    console.log(record._id)
   };
 
   const cancel = () => {
@@ -192,12 +198,23 @@ const Company = () => {
     try {
       const row = await form.validateFields();
       const newData = [...data];
-      const index = newData.findIndex((item) => key === item.key);
+      const index = newData.findIndex((item) => key === item._id);
 
       if (index > -1) {
         const item = newData[index];
         newData.splice(index, 1, { ...item, ...row });
-        setData(newData);
+        // setData(newData);
+        console.log("item",newData[index])
+        console.log("item",newData[index]._id)
+        editCompany(newData[index],newData[index]._id)
+        .then((response) => {
+          console.log("Updated Succcfully !!!!!!!!",response)
+  
+        })
+        .catch((error) => {
+          console.log("API ERROR:", error);
+        });
+    
         setEditingKey('');
       } else {
         newData.push(row);
@@ -231,13 +248,13 @@ const Company = () => {
       editable: true,
       ...getColumnSearchProps('FullName'),
     },
-    // {
-    //   title: 'Description',
-    //   dataIndex: 'description',
-    //   width: '40%',
-    //   editable: true,
-    //   ...getColumnSearchProps('FullName'),
-    // },
+    {
+      title: 'Description',
+      dataIndex: 'description',
+      width: '40%',
+      editable: true,
+      ...getColumnSearchProps('FullName'),
+    },
     {
       title: 'Update',
       dataIndex: 'Update',
@@ -248,7 +265,7 @@ const Company = () => {
           <span>
             <a
               href="javascript:;"
-              onClick={() => save(record.key)}
+              onClick={() => save(record._id)}
               style={{
                 marginRight: 8,
               }}
@@ -309,7 +326,7 @@ const Company = () => {
             cell: EditableCell,
           },
         }}
-        bordered
+        // bordered
         dataSource={data}
         columns={mergedColumns}
         rowClassName="editable-row"
@@ -320,5 +337,7 @@ const Company = () => {
     </Form>
   );
 };
+
+
 
 export default Company;
