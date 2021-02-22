@@ -4,7 +4,7 @@ import { Form, Input, Button, Divider, message } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import "../../App.css";
 import RegBG from "../../images/RegBg.svg";
-
+import {API} from "../API/API"
 //Redirect the user if the registeration is success
 const key = 'updatable';
 const openMessage = () => {
@@ -39,7 +39,7 @@ class Register extends Component {
     const onFinish = async (values) => {
       console.log(values)
 
-      await Operation.register(values)
+      await API.register(values)
         .then((response) => {
           console.log(values)
           this.setState({ sucsses: true })
