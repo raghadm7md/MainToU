@@ -91,6 +91,7 @@ class Profile extends Component {
                     style={{
                       overflow: "auto",
                       height: "100vwh",
+                      width:300,
                       position: "absolute",
                       top: 0,
                       bottom: 0,
@@ -100,7 +101,7 @@ class Profile extends Component {
                   >
                     <Menu
                       onClick={this.handleClick}
-                      style={{ width: 400 }}
+                    //   style={{ width: 260}}
                       defaultSelectedKeys={["1"]}
                       mode="inline"
                     >
@@ -109,7 +110,7 @@ class Profile extends Component {
                         icon={<UserOutlined />}
                         onClick={this.show}
                       >
-                        User information{" "}
+                         Information{" "}
                       </Menu.Item>
 
                       <Menu.Item
@@ -117,14 +118,14 @@ class Profile extends Component {
                         icon={<ClockCircleOutlined />}
                         onClick={this.show}
                       >
-                        Upcoming appointments
+                        Upcoming 
                       </Menu.Item>
                       <Menu.Item
                         key="3"
                         icon={<CheckOutlined />}
                         onClick={this.show}
                       >
-                        Completed appointments
+                        Completed 
                       </Menu.Item>
 
                       <Menu.Item

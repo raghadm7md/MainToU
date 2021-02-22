@@ -30,7 +30,8 @@ function App() {
             <About />
           </Route>
           <Route path="/profile">
-            <Profile/>
+            {/* <Profile/> */}
+            <Admin/>
           </Route>
           <Route path="profileinfo">
           <ProfileInfo/>
@@ -50,9 +51,9 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          {/* <Route path="/profile">
+          <Route path="/profile">
             <Profile />
-          </Route> */}
+          </Route>
         </Switch>
         <PageFooter />
       </Router>

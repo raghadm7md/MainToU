@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { Steps, Divider, Row } from "antd";
 import Profile from "../Profile";
 
-const {  Steps, Divider  } = antd;
+// const {  Steps, Divider  } = antd;
 
 const { Step } = Steps;
 
@@ -24,19 +25,24 @@ export default class Track extends Component {
 
         return (
           <>
+          <Row>
+          <Divider><h2>Track your appointment status!</h2></Divider>
+          </Row>
+          <div className="track">
             <Steps current={current} onChange={this.onChange}>
               <Step title="Confirmed" description="This service is approved" />
               <Step title="In Progress" description="We trying to reach you" />
               <Step title="Compleated" description="Done , Rate our service" />
             </Steps>
+            </div>
     
-            <Divider />
+            {/* <Divider />
     
             <Steps current={current} onChange={this.onChange} direction="vertical">
               <Step title="Confirmed" description="This service is approved" />
               <Step title="In Progress" description="We trying to reach you" />
               <Step title="Compleated" description="Done , Rate our service" />
-            </Steps>
+            </Steps> */}
           </>
         );
     };

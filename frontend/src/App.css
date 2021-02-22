@@ -305,7 +305,7 @@ img {
   border: none;
 }
 .regRow{
-  background-color: #fff;
+  background-color: #fff ;
   height: 100vh;
    width: 100%;
    border-radius: 10px;
@@ -343,4 +343,14 @@ img {
   padding: 20px;
   font-size: 70px;
   color: #2d5362;
+}
+/* track */
+.track{
+  margin: 30px; 
+}
+.ant-layout, .ant-layout{
+  background-color: #fff;
+}
+.edit{
+  color:#2d5362;
 }

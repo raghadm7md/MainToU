@@ -207,7 +207,7 @@ const TechMen = () => {
     {
       title: 'Update',
       dataIndex: 'Update',
-      
+      width: '10%',
       render: (_, record) => {
         const editable = isEditing(record);
         return editable ? (
@@ -228,7 +228,7 @@ const TechMen = () => {
         
         ) : (
           <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
-            <EditOutlined/>
+            <EditOutlined className="edit"/>
           </Typography.Link>
           
 
@@ -241,7 +241,7 @@ const TechMen = () => {
     render: (_, record) =>
       data.length >= 1 ? (
         <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
-          <a><DeleteOutlined/></a>
+          <a><DeleteOutlined className="edit"/></a>
         </Popconfirm>
       ) : null,
   },
@@ -263,7 +263,7 @@ const TechMen = () => {
     };
   });
   return (
-    
+    <div className="Tech">
     <Form form={form} component={false}>
       <h2 >Tech Men </h2>
       <NewTechMen rowClassName ='addBtn'/>
@@ -276,12 +276,14 @@ const TechMen = () => {
         bordered
         dataSource={data}
         columns={mergedColumns}
+        className="TMtable"
         rowClassName="editable-row"
         pagination={{
           onChange: cancel,
         }}
       />
     </Form>
+     </div>
   );
 };
 

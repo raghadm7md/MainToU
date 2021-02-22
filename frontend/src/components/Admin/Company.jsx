@@ -228,7 +228,7 @@ const Company = () => {
         
         ) : (
           <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
-            <EditOutlined/>
+            <EditOutlined className="edit"/>
           </Typography.Link>
           
 
@@ -238,10 +238,11 @@ const Company = () => {
   {
     title: 'Delete',
     dataIndex: 'Delete',
+    width: '10%',
     render: (_, record) =>
       data.length >= 1 ? (
         <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
-          <a><DeleteOutlined/></a>
+          <a><DeleteOutlined className="edit"/></a>
         </Popconfirm>
       ) : null,
   },
@@ -263,7 +264,7 @@ const Company = () => {
     };
   });
   return (
-    
+    // <div className="TMtable">
     <Form form={form} component={false}>
       <h2>Maintenance Companies</h2>
       <NewCompany rowClassName ='addBtn'/>
@@ -276,12 +277,14 @@ const Company = () => {
         bordered
         dataSource={data}
         columns={mergedColumns}
+        className="TMtable"
         rowClassName="editable-row"
         pagination={{
           onChange: cancel,
         }}
       />
     </Form>
+    // </div>
   );
 };
 
