@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
-const originData = [];
+import { editCompany } from "../API/Api";
 
-for (let i = 0; i < 100; i++) {
-  originData.push({
-    key: i.toString(),
-    name: `Edrward ${i}`,
-    age: 32,
-    address: `London Park no. ${i}`,
-  });
-}
+// const originData = [];
+
+// for (let i = 0; i < 100; i++) {
+//   originData.push({
+//     key: i.toString(),
+//     name: `Edrward ${i}`,
+//     age: 32,
+//     address: `London Park no. ${i}`,
+//   });
+// }
 
 const EditableCell = ({
   editing,
@@ -21,7 +23,7 @@ const EditableCell = ({
   children,
   ...restProps
 }) => {
-  const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
+  // const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
   return (
     <td {...restProps}>
       {editing ? (
@@ -37,7 +39,7 @@ const EditableCell = ({
             },
           ]}
         >
-          {inputNode}
+          {/* {inputNode} */}
         </Form.Item>
       ) : (
         children
@@ -48,16 +50,17 @@ const EditableCell = ({
 
 const EditableTable = () => {
   const [form] = Form.useForm();
-  const [data, setData] = useState(originData);
+  const [data, setData] = useState(data);
   const [editingKey, setEditingKey] = useState('');
 
   const isEditing = (record) => record.key === editingKey;
 
   const edit = (record) => {
     form.setFieldsValue({
-      name: '',
-      age: '',
-      address: '',
+      companyName: '',
+      email: '',
+      phoneNumber: '',
+      description:'',
       ...record,
     });
     setEditingKey(record.key);
@@ -144,7 +147,7 @@ const EditableTable = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'age' ? 'number' : 'text',
+        // inputType: col.dataIndex === 'age' ? 'number' : 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
