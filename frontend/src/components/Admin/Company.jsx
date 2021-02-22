@@ -3,7 +3,7 @@ import { Table, Input, InputNumber, Popconfirm, Form, Typography , Space , Butto
 import Highlighter from 'react-highlight-words';
 import { EditOutlined , DeleteOutlined  , SearchOutlined} from "@ant-design/icons";
 import NewCompany from "./NewCompany";
-import { getAllmintsCompany } from "../API/Api";
+import { getAllmintsCompany , deleteCompany} from "../API/Api";
 
 // const originData = [
 //   // {
@@ -151,13 +151,25 @@ const Company = () => {
   });
   const [editingKey, setEditingKey] = useState('');
 
+  // ****** delete company
   const handleDelete = (key) => {
-
-    console.log("hiiii",key)
+    
     const dataSource = [...data];
-    setData( dataSource.filter((item) => item.key !== key))
+    setData( dataSource.filter((item) => item._id !== key))
+    console.log("hiiii",key)
+
+    deleteCompany(key)
+    .then((response) => {
+      console.log("Deleted Succcfully !!!!!!!!",response)
+    })
+    .catch((error) => {
+      console.log("API ERROR:", error);
+    });
+
   };
+
   const isEditing = (record) => record.key === editingKey;
+
 
   const edit = (record) => {
     form.setFieldsValue({
@@ -168,6 +180,8 @@ const Company = () => {
       ...record,
     });
     setEditingKey(record.key);
+    console.log(record)
+    console.log(record.key)
   };
 
   const cancel = () => {
@@ -217,13 +231,13 @@ const Company = () => {
       editable: true,
       ...getColumnSearchProps('FullName'),
     },
-    {
-      title: 'Description',
-      dataIndex: 'description',
-      width: '40%',
-      editable: true,
-      ...getColumnSearchProps('FullName'),
-    },
+    // {
+    //   title: 'Description',
+    //   dataIndex: 'description',
+    //   width: '40%',
+    //   editable: true,
+    //   ...getColumnSearchProps('FullName'),
+    // },
     {
       title: 'Update',
       dataIndex: 'Update',
@@ -260,9 +274,9 @@ const Company = () => {
     dataIndex: 'Delete',
     render: (_, record) =>
       data.length >= 1 ? (
-        <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
+        <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record._id)}>
           <a><DeleteOutlined/></a>
-        </Popconfirm>
+        </Popconfirm >
       ) : null,
   },
   ];

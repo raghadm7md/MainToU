@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, Modal, Button } from "antd";
-import { newMintsCompany } from "../API/Api";
+import { newMintsCompany  } from "../API/Api";
 
 const layout = {
   labelCol: {
@@ -11,22 +11,6 @@ const layout = {
   },
 };
 
-// const MintCompany={
-//   companyName:"",
-//   description:"",
-//   email:"",
-//   phoneNumber:"",
-// }
-// const addInfo=(MintCompany)=>{
-
-//   newMintsCompany(MintCompany)
-// .then((response) => {
-// })
-// .catch((error) => {
-//   console.log("API ERROR:", error);
-// });
-
-// }
 const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible }) => {
     const [form] = Form.useForm();
     return (
@@ -110,8 +94,7 @@ const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible
   export default function NewCompany () {
     const [visible, setVisible] = useState(false)
     const createNewCpmpany = async (values) => {
-        // await API.createProject(values).then((e) => { console.log("New Project Added ") })
-        // await props.status()
+       
         console.log(values)
         newMintsCompany(values)
         .then((response) => {

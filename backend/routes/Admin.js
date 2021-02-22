@@ -54,6 +54,22 @@ router.get("/company", (req, res) => {
   });
 });
 
+// Edit company 
+router.put('/company/:companyId',(req, res) => {
+    MaintenanceCompany.findByIdAndUpdate(req.params.companyId, req.body,
+      (err, updateCompany) => {
+        if (err) {
+          console.log('ERR: ', err);
+          res.json(err)
+        }
+        else {
+          console.log("Updated Company : ", updateCompany);
+          res.json(updateCompany)
+        }
+      });
+});
+
+
 // delete a company
 router.delete("/company/:companyId", (req, res) => {
   console.log("PARAMS:", req.params);

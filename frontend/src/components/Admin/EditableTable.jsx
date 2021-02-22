@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
+import { editCompany } from "../API/Api";
+
 // const originData = [];
 
 // for (let i = 0; i < 100; i++) {

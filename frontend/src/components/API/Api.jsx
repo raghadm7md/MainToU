@@ -11,4 +11,12 @@ const getAllmintsCompany = () => {
 const newMintsCompany=(info)=>{
   return axios.post(`${API_URL}/company`,info);
 }
-export { getAllmintsCompany , newMintsCompany };
+
+const deleteCompany=(info)=>{
+  return axios.delete(`${API_URL}/company/${info}`);
+}
+
+const editCompany=(info)=>{
+  return axios.put(`${API_URL}/company/${info}`)
+}
+export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany };
