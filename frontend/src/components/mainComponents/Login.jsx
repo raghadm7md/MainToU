@@ -62,7 +62,7 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
         />
       </Form.Item>
       <Form.Item>
-        <a href="./register"><h4>Don't have an account! Register now!</h4></a>
+        <a href="/register"><h4>Don't have an account! Register now!</h4></a>
       </Form.Item>
     </Form>
   </Modal>)

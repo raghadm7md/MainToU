@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Row, Col, Divider } from 'antd';
 import Company from './Company'
 import TechMen from './TechMen'
-import { getAllmintsCompany } from "../API/API";
+// import { getAllmintsCompany } from "../API/API";
 
 
 export default class Admin extends Component {

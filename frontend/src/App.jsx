@@ -50,7 +50,7 @@ function App() {
             <Admin/>
           </Route>
           <Route path="/register">
-            {/* <Register /> */}
+            <Register />
             
           </Route>
           <Route path="/profile">
