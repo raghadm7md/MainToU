@@ -186,10 +186,6 @@ router.post('/login',
             })
     }
     })
-  router.get('/clients', (req, res) => {
-     Client.find({}, (err, all) => {
-      res.json(all)
 
-  })})
 
 module.exports = router;
