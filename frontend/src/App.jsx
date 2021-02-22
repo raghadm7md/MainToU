@@ -12,6 +12,7 @@ import FinishedAppoints from "./components/profile/FinishedAppoints";
 import Trash from "./components/profile/Trash";
 import ProfileInfo from "./components/profile/ProfileInfo";
 import Register from "./components/mainComponents/Register"
+
 // import Profile from "./components/mainComponents/Profile";
 
 function App() {
@@ -30,7 +31,8 @@ function App() {
             <About />
           </Route>
           <Route path="/profile">
-            <Profile/>
+            {/* <Profile/> */}
+            <Admin/>
           </Route>
           <Route path="profileinfo">
           <ProfileInfo/>

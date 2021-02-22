@@ -3,21 +3,20 @@ import { Table, Input, InputNumber, Popconfirm, Form, Typography , Space , Butto
 import Highlighter from 'react-highlight-words';
 import { EditOutlined , DeleteOutlined  , SearchOutlined} from "@ant-design/icons";
 import NewCompany from "./NewCompany";
+import { getAllmintsCompany } from "../API/Api";
 
-const originData = [
-  {
-    key: "1",
-    Name: "TWAIK",
-    Email: "twaik@gmail.com",
-    Phone: "+96654546378",
-  },
-  {
-    key: "2",
-    Name: "Mosook",
-    Email: "mosook@gmail.com",
-    Phone: "+96654549978",
-  },
-];
+// const originData = [
+//   // {
+//   //   Name: "TWAIK",
+//   //   Email: "twaik@gmail.com",
+//   //   Phone: "+96654546378",
+//   // },
+//   // {
+//   //   Name: "Mosook",
+//   //   Email: "mosook@gmail.com",
+//   //   Phone: "+96654549978",
+//   // },
+// ];
 
 
 const EditableCell = ({
@@ -55,10 +54,12 @@ const EditableCell = ({
   );
 };
 
+
+
 const Company = () => {
+  
   let [searchText,setSearchText] = useState('');
   let [ searchedColumn,setSearchedColumn] = useState('');
-
 
   const getColumnSearchProps = dataIndex => ({
      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
@@ -139,9 +140,20 @@ const Company = () => {
   };
 
   const [form] = Form.useForm();
-  const [data, setData] = useState(originData);
+  const [data, setData] = useState("");
+//*******====================== */
+  getAllmintsCompany()
+  .then((response) => {
+    setData(response.data)
+  })
+  .catch((error) => {
+    console.log("API ERROR:", error);
+  });
   const [editingKey, setEditingKey] = useState('');
+
   const handleDelete = (key) => {
+
+    console.log("hiiii",key)
     const dataSource = [...data];
     setData( dataSource.filter((item) => item.key !== key))
   };
@@ -149,9 +161,10 @@ const Company = () => {
 
   const edit = (record) => {
     form.setFieldsValue({
-      name: '',
-      age: '',
-      address: '',
+      companyName: '',
+      email: '',
+      phoneNumber: '',
+      description:'',
       ...record,
     });
     setEditingKey(record.key);
@@ -185,21 +198,28 @@ const Company = () => {
   const columns = [
     {
       title: 'Name',
-      dataIndex: 'Name',
+      dataIndex: 'companyName',
       width: '25%',
       editable: true,
-      ...getColumnSearchProps('Name'),
+      ...getColumnSearchProps('companyName'),
     },
     {
       title: 'Email',
-      dataIndex: 'Email',
+      dataIndex: 'email',
       width: '15%',
       editable: true,
-      ...getColumnSearchProps('Email'),
+      ...getColumnSearchProps('email'),
     },
     {
       title: 'Phone',
-      dataIndex: 'Phone',
+      dataIndex: 'phoneNumber',
+      width: '40%',
+      editable: true,
+      ...getColumnSearchProps('FullName'),
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
       width: '40%',
       editable: true,
       ...getColumnSearchProps('FullName'),
@@ -255,13 +275,15 @@ const Company = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'age' ? 'number' : 'text',
+        // inputType: col.dataIndex === 'age' ? 'number' : 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
+        
       }),
     };
   });
+
   return (
     
     <Form form={form} component={false}>

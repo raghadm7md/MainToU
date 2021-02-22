@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Modal, Button } from "antd";
+import { newMintsCompany } from "../API/Api";
+
 const layout = {
   labelCol: {
     span: 8,
@@ -8,6 +10,23 @@ const layout = {
     span: 16,
   },
 };
+
+// const MintCompany={
+//   companyName:"",
+//   description:"",
+//   email:"",
+//   phoneNumber:"",
+// }
+// const addInfo=(MintCompany)=>{
+
+//   newMintsCompany(MintCompany)
+// .then((response) => {
+// })
+// .catch((error) => {
+//   console.log("API ERROR:", error);
+// });
+
+// }
 const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible }) => {
     const [form] = Form.useForm();
     return (
@@ -18,6 +37,7 @@ const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible
         onOk={() => form
           .validateFields()
           .then((values) => {
+            console.log(values)
             form.resetFields();
             createNewCpmpany(values);
           })
@@ -35,7 +55,7 @@ const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible
           name="nest-messages"
         >
           <Form.Item
-            name={"name"}
+            name={"companyName"}
             label="Company name:"
             rules={[
               {
@@ -70,7 +90,7 @@ const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible
             <Input />
           </Form.Item>
           <Form.Item
-            name={"phone"}
+            name={"phoneNumber"}
             label="Company phone:"
             rules={[
               {
@@ -79,22 +99,38 @@ const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible
               },
             ]}
           >
-            <Input />
+            <Input/>
           </Form.Item>
         </Form>
       </Modal>
+      
     )
   }
+
   export default function NewCompany () {
     const [visible, setVisible] = useState(false)
+    const createNewCpmpany = async (values) => {
+        // await API.createProject(values).then((e) => { console.log("New Project Added ") })
+        // await props.status()
+        console.log(values)
+        newMintsCompany(values)
+        .then((response) => {
+        })
+        .catch((error) => {
+          console.log("API ERROR:", error);
+        });
+    
+      return setVisible(false)
+    }
     return (
         <>
-       
-            <Button className="addBtn" onClick={() => setVisible(true)}>
+            <Button className="addBtn" onClick={()=> 
+              setVisible(true)}>
                 New Company
               </Button>
           <CompanyCollection
             visible={visible}
+            createNewCpmpany={createNewCpmpany}
             onCancel={() => setVisible(false)}
           />
         </>

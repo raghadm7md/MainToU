@@ -7,7 +7,7 @@ import NewTechMen from "./NewTechMen";
 const originData = [
   {
     key: "1",
-    FullName: "John Brown",
+    FullName: "John Brown!!!!!!!!!!!",
     Email: "john@gmail.com",
     Phone: "+96654546378",
   },
@@ -18,7 +18,6 @@ const originData = [
     Phone: "+96654549978",
   },
 ];
-
 
 const EditableCell = ({
   editing,
@@ -266,7 +265,7 @@ const TechMen = () => {
     
     <Form form={form} component={false}>
       <h2 >Tech Men </h2>
-      <NewTechMen rowClassName ='addBtn'/>
+      {/* <NewTechMen rowClassName ='addBtn'/>
       <Table 
         components={{
           body: {
@@ -280,7 +279,7 @@ const TechMen = () => {
         pagination={{
           onChange: cancel,
         }}
-      />
+      /> */}
     </Form>
   );
 };
