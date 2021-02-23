@@ -2,8 +2,8 @@ import "../../App.css";
 import React, { useState } from "react";
 import { Form, Button, Modal, Input, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {API} from '../API/API'
 const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
-
   const [form] = Form.useForm();
 
   return (<Modal
@@ -70,7 +70,25 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
 export default function Login(props) {
   const [visible, setVisible] = useState(false)
 
+  const onLogin = async (values) => {
+    try {
+      await API.login(values)
+        .then((res) => {
+         console.log(values)
+        })
+        .then((login) => {
+            console.log(login)
+            setVisible(false)
+          
+          } /*else {
+            setStatusMessage(login.message)
+          }*/
+        )
+    } catch (err) {
+      console.log(err)
+    }
 
+  };
   return (
     <>
       <Button
@@ -83,6 +101,7 @@ export default function Login(props) {
 
       <LoginCollection
         visible={visible}
+        onLogin={onLogin}
         onCancel={() => {
           setVisible(false);
         }}

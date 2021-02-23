@@ -1,18 +1,20 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, Button, Divider, message } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import "../../App.css";
-import {API} from '../API/API'
 import CalendarBG from "../../images/calendarBG.svg";
-import { NONAME } from "dns";
-const openMessage = () => {
+import RegBG from "../../images/RegBg.svg";
+import {API} from "../API/API"
+//Redirect the user if the registeration is success
 const key = 'updatable';
-
+const openMessage = () => {
   message.loading({ content: 'Loading...', key});
   setTimeout(() => {
     message.success({ content: 'You are successfully registred!', key, duration: 2 });
      }, 3000);
 };
+
 const style = {
   height: 40,
   width: 100,
@@ -23,9 +25,7 @@ const style = {
   textAlign: "center",
   fontSize: 14,
 };
-
-class Register 
-extends Component {
+class Register extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -130,11 +130,11 @@ extends Component {
             </Form.Item>
 
             <Form.Item {...tailLayout}>
-              <Button type="primary" htmlType="submit" style={style} onClick={openMessage}
->              <Link to="/"> 
-                Register
-                </Link>
-             </Button>
+            <Button type="primary" htmlType="submit" className="regBtn" onClick={openMessage}>
+               
+               Register
+               
+              </Button>
             </Form.Item>
           </Form>
         </div>

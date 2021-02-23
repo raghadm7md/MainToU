@@ -6,6 +6,7 @@ const LocalStrategy = require('passport-local').Strategy;
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
 const { Appointment, Client } = require("../models/models");
+const { Router } = require('express');
 
 // to can see the body from req instead of undefined
 router.use(express.json());
@@ -22,6 +23,7 @@ router.post("/Clint", (req, res) => {
     console.log(newClint);
     
     res.json(newClint);
+    
   });}
 });
 // read all cilnt
@@ -31,6 +33,9 @@ router.get("/Clint", (req, res) => {
     res.json(data);
   });
 });
+router.get("/", function (req, res) { 
+  res.render("Home"); 
+}); 
 
 //Edit profile
 router.put("/profile/:id", (req, res) => {
@@ -125,28 +130,8 @@ router.put("/clint/rate/:appointmentId", (req, res) => {
   });
 });
 
-// regsteration 
-router.get('/register', async (req, res) => {
-  // First Validate The Request
-  console.log('Here')
-})
 
 
-router.get("/login/failed", (req, res) => {
-  res.status(401).json({
-      success: false,
-      message: "Authentication Failed"
-  });
-});
-router.get('/login', function (req, res) {
-  if (req.isAuthenticated()) {
-      res.json({
-          user: req.user,
-      });
-  } else {
-      res.json({ message: 'Login Please' })
-  }
-});
 
 passport.use(new LocalStrategy(
   function(companyName, password, done) {
@@ -155,37 +140,31 @@ passport.use(new LocalStrategy(
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
+      
       return done(null, user);
     });
   }
 ));
+
+
+router.get("/login/failed", (req, res) => {
+  res.status(401).json({
+      success: false,
+      message: "Authentication Failed"
+  });
+});
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect('/')
+});
 router.post('/login',
     passport.authenticate('local',
         {
-            failureRedirect: '/api/auth/login/failed',
+            failureRedirect: '/Clint',
             failureFlash: false
         }),
     function (req, res) {
-        res.redirect('/api/auth/login');
+        res.redirect('/login');
     });
-    
   
-    // problem 
-    router.post('/register', async (req, res) => {
-      if (!req.isAuthenticated()) {
-        await Developer.create(new Developer(req.body), req.body.password)
-            .then((err, user) => {
-                return res.status(202).json({ message: "Thank you, you've been registered, login to access your dashboard" })
-            }).catch((err) => {
-                let errorMsg = err.toString()
-                let errorArray = errorMsg.split(':')
-                return res.status(202).json({ message: errorArray[1] })
-            })
-    }
-    })
-
-
 module.exports = router;
