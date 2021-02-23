@@ -1,36 +1,33 @@
-import API_URL from './apiConfig';
-// const API_URL=require('./apiConfig')
-import axios from 'axios';
+import axios from 'axios'
+const URL = 'http://localhost:5000'
+
+
 export const API = {
-register: async (newUserInfo) => {
-  let message
-  console.log(newUserInfo)
+  register: async (newUserInfo) => {
+    let message
+    console.log(newUserInfo)
 
-  await axios
-    .post(`${API_URL}/Clint`, newUserInfo)
-    .then((response) => {
-      console.log('Not error')
-      message = response.data
-      console.log(message)
-    })
-    .catch((err) => {
-      console.log(err)
-    });
-  return message
-}} 
-//get all maintenance company.
-const getAllmintsCompany = () => {
-    return axios.get(`${API_URL}/company`);
-  };
-
-const newMintsCompany=(info)=>{
-  return axios.post(`${API_URL}/company`,info);
-}
-
-const deleteCompany=(info)=>{
-  return axios.delete(`${API_URL}/company/${info}`);
-}
-const editCompany=(info,id)=>{
-  return axios.put(`${API_URL}/company/${id}`,info)
-}
-export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany };
+    await axios
+      .post(`${URL}/Clint`, newUserInfo)
+      .then((response) => {
+        console.log('Not error')
+        message = response.data
+        console.log(message)
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+    return message
+  },  
+  login: async (credential) => {
+    console.log("credential",credential.username)
+    console.log("credential",credential.password)
+  },
+  logout : async () => {
+    let profile
+    await axios
+      .get(`/api/auth/logout`)
+      .then((response) => profile = response)
+      .catch((err) => console.log(err))
+    return profile
+  }}
