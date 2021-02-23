@@ -31,3 +31,19 @@ export const API = {
       .catch((err) => console.log(err))
     return profile
   }}
+
+const getAllmintsCompany = () => {
+    return axios.get(`${URL}/company`);
+  };
+
+const newMintsCompany=(info)=>{
+  return axios.post(`${URL}/company`,info);
+}
+
+const deleteCompany=(info)=>{
+  return axios.delete(`${URL}/company/${info}`);
+}
+const editCompany=(info,id)=>{
+  return axios.put(`${URL}/company/${id}`,info)
+}
+export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany };

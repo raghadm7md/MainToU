@@ -4,7 +4,7 @@ import { Form, Input, Button, Divider, message } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import "../../App.css";
 import RegBG from "../../images/RegBg.svg";
-import {API} from "../API/API"
+import {API} from "../API/Api"
 //Redirect the user if the registeration is success
 const key = 'updatable';
 const openMessage = () => {

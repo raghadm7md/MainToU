@@ -3,7 +3,7 @@ import { Table, Input, InputNumber, Popconfirm, Form, Typography , Space , Butto
 import Highlighter from 'react-highlight-words';
 import { EditOutlined , DeleteOutlined  , SearchOutlined} from "@ant-design/icons";
 import NewCompany from "./NewCompany";
-import { getAllmintsCompany , deleteCompany , editCompany } from "../API/API";
+import { getAllmintsCompany , deleteCompany , editCompany } from "../API/Api";
 
 // const originData = [
 //   // {
@@ -152,8 +152,6 @@ const Company = () => {
     console.log("API ERROR:", error);
   });}
   ,[]);
-   
-
 
 
   // ****** delete company
@@ -203,7 +201,7 @@ const Company = () => {
       if (index > -1) {
         const item = newData[index];
         newData.splice(index, 1, { ...item, ...row });
-        // setData(newData);
+        setData(newData);
         console.log("item",newData[index])
         console.log("item",newData[index]._id)
         editCompany(newData[index],newData[index]._id)
@@ -244,13 +242,6 @@ const Company = () => {
     {
       title: 'Phone',
       dataIndex: 'phoneNumber',
-      width: '40%',
-      editable: true,
-      ...getColumnSearchProps('FullName'),
-    },
-    {
-      title: 'Description',
-      dataIndex: 'description',
       width: '40%',
       editable: true,
       ...getColumnSearchProps('FullName'),
