@@ -9,7 +9,7 @@ const layout = {
     span: 16,
   },
 };
-const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible }) => {
+const CompanyCollection = ({ visible, UpdateCpmpany, onCancel, projectVisible }) => {
     const [form] = Form.useForm();
     return (
       <Modal
@@ -20,7 +20,7 @@ const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible
           .validateFields()
           .then((values) => {
             form.resetFields();
-            createNewCpmpany(values);
+            UpdateNewCpmpany(values);
           })
           .catch((info) => {
             console.log('Validate Failed:', info);
@@ -36,7 +36,7 @@ const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible
           name="nest-messages"
         >
           <Form.Item
-            name={"name"}
+            name={"companyName"}
             label="Company name:"
         
           >
@@ -57,7 +57,7 @@ const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible
             <Input />
           </Form.Item>
           <Form.Item
-            name={"phone"}
+            name={"phoneNumber"}
             label="Company phone:"
           >
             <Input />
@@ -68,7 +68,7 @@ const CompanyCollection = ({ visible, createNewCpmpany, onCancel, projectVisible
   }
   export default function UdateTechMen (props) {
     const [visible, setVisible] = useState(false)
-    // eslint-disable-next-line
+    
     return (
         <>
           

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Form, Input, Button, Divider, message } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import "../../App.css";
-import CalendarBG from "../../images/calendarBG.svg";
 import RegBG from "../../images/RegBg.svg";
 import {API} from "../API/API"
 //Redirect the user if the registeration is success
@@ -15,16 +14,7 @@ const openMessage = () => {
      }, 3000);
 };
 
-const style = {
-  height: 40,
-  width: 100,
-  lineHeight: "30px",
-  borderRadius: 4,
-  backgroundColor: "#fff",
-  color: "#006466",
-  textAlign: "center",
-  fontSize: 14,
-};
+
 class Register extends Component {
   constructor(props) {
     super(props)
@@ -61,21 +51,34 @@ class Register extends Component {
       console.log('Failed:', errorInfo);
     };
     return (
-      <div   style={{
-        background: `url(${CalendarBG})`,
-        width: "100%",
-        backgroundRepeat: "no-repeat",
-        color: "white",
-      }}>
-        <Divider orientation="center" type="horizontal">
-          <h1 className="large-font contact-title">
-            <b>Register</b>
-          </h1>
-
-        </Divider>
+      <>
+        <div class="curved-div">
+          <h1>Register</h1>
+          <p>
+            To be one of us, who shares the vision and values of our community
+          </p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path
+              fill="#fff"
+              fill-opacity="1"
+              d="M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,197.3C672,213,768,203,864,181.3C960,160,1056,128,1152,122.7C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            ></path>
+          </svg>
+        </div>
+     
+        <div   
+        className="container"
+        style={{
+          background: `url(${RegBG})`,
+          width: "100%",
+          backgroundRepeat: "no-repeat",
+          color: "white",
+        }}>
+          
+        <div className="row regRow">
+        <Divider><UserOutlined className="RegIco"/></Divider>
         <div className='register-container'>
-          <h1 className="contact-title">Be one of our clients!</h1>
-          <h4 className="contact-title">{this.state.sucsses ? this.state.sucsses : ""}</h4><br />
+          <h1 className="contact-title" >Fill the information below to be one of our clients!</h1>
 
           <Form
             {...layout}
@@ -93,14 +96,14 @@ class Register extends Component {
             </Form.Item>
         
             <Form.Item
-              label={<h4><b>Email:</b></h4>}
+              label={<h4><b>Your Email: </b></h4>}
               name="email"
               rules={[{ required: true, message: 'Please input your email!' }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              label={<h4><b>Password</b></h4>}
+              label={<h4><b>Your Password: </b></h4>}
               name="password"
               rules={[{ required: true, message: 'Please input your password!' }]}
             >
@@ -108,14 +111,14 @@ class Register extends Component {
             </Form.Item>
 
             <Form.Item
-              label={<h4><b>Re-enter Password</b></h4>}
+              label={<h4><b>Confirm Password: </b></h4>}
               name="confirm-password"
               rules={[{ required: true, message: 'Re-enter Password!' }]}
             >
               <Input.Password />
             </Form.Item>
             <Form.Item
-              label={<h4><b>Phone number:</b></h4>}
+              label={<h4><b>Your Phone number: </b></h4>}
               name="phoneNumber"
               rules={[{ required: true, message: 'Please input your email!' }]}
             >
@@ -130,15 +133,17 @@ class Register extends Component {
             </Form.Item>
 
             <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit" className="regBtn" onClick={openMessage}>
-               
+              <Button type="primary" htmlType="submit" className="regBtn" onClick={openMessage}>
+                
                Register
                
               </Button>
             </Form.Item>
           </Form>
         </div>
+        </div>
       </div>
+      </>
     );
   }
 }

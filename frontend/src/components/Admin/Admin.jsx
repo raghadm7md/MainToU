@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import { Row, Col, Divider } from 'antd';
 import Company from './Company'
 import TechMen from './TechMen'
+// import { getAllmintsCompany } from "../API/API";
+
 
 export default class Admin extends Component {
+
     render() {
         return (
             <div className = 'Admin'>
@@ -12,7 +15,7 @@ export default class Admin extends Component {
                 </Divider>
                 
                 <Row>
-                   <Col span={12}> <Company/> </Col>
+                   <Col span={12}><Company/> </Col>
                    <Col span={12}> <TechMen/></Col> 
                 </Row>
             </div>
