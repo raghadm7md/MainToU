@@ -160,6 +160,7 @@ router.get("/logout", (req, res) => {
 router.post("/login",(req, res) => {
   console.log("Login")
   console.log("Body: ", req.body);
+  
   let { email, password } = req.body;
   let errors = [];
   if (!email) {
@@ -178,9 +179,9 @@ router.post("/login",(req, res) => {
       });
     
     }
-      else{
-        console.log(client)
-        res.json('Login')
+      else{        
+        res.json(client)
+        return client;
       }
     } ) 
 }

@@ -70,17 +70,41 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
 export default function Login(props) {
   const [visible, setVisible] = useState(false)
 
+  
+
+  
   const onLogin = async (values) => {
-   console.log(values)
+   /* const currentUser =API.login(values);
+    //console.log(currentUser.__proto__)
+    console.log(currentUser[["Promise"]])
+  }*/
+    
+  
+    console.log(values)
     try {
+      const l = null
       await API.login(values)
         .then((res) => {
-         console.log(values)
+        // console.log(values)
+        // console.log('resp',res)
+      
+         console.log(l)
+         if(res !== undefined){
+          props.setAuth(
+            {
+             currentUser : l,
+             isLogged : true
+           
+            })
+         }
         })
         .then((login) => {
             setVisible(false)
-          
-          } /*else {
+            console.log('login',login)
+         
+           
+            }
+          /*}else {
             setStatusMessage(login.message)
           }*/
         )
@@ -88,7 +112,7 @@ export default function Login(props) {
       console.log(err)
     }
 
-  };
+  }
   return (
     <>
       <Button

@@ -12,14 +12,13 @@ import FinishedAppoints from "./components/profile/FinishedAppoints";
 import Trash from "./components/profile/Trash";
 import ProfileInfo from "./components/profile/ProfileInfo";
 import Register from "./components/mainComponents/Register"
+import NavMenu from "./components/mainComponents/NavMenu"
 
 // import Profile from "./components/mainComponents/Profile";
 
-function App() {
-  const Auth = {
-      "CurrentUser" : null,
-      "isLogged" : false,
-  }
+
+function App(props) {
+
   return (
     <>
       <Router>
@@ -27,6 +26,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          
           </Route>
           <Route path="/calendar">
             <CalendarPage />
@@ -34,9 +34,9 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
-         
           <Route path="/profile">
-             <Profile/> 
+            {/* <Profile/> */}
+            <Admin/>
           </Route>
           <Route path="profileinfo">
           <ProfileInfo/>
@@ -62,7 +62,6 @@ function App() {
         </Switch>
         <PageFooter />
       </Router>
-        
     </>
   );
 }

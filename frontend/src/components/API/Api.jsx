@@ -1,8 +1,8 @@
 import axios from 'axios'
+import {setAuth} from '../mainComponents/NavMenu'
 const URL = 'http://localhost:5000'
 
-
-export const API = {
+ const API = {
   register: async (newUserInfo) => {
     let message
     console.log(newUserInfo)
@@ -17,7 +17,7 @@ export const API = {
       .catch((err) => {
         console.log(err)
       });
-    return message
+    return "message"
   },  
   login: async (credential) => {
     const request = axios
@@ -27,17 +27,16 @@ export const API = {
         withCredentials: true,
       })
       .then((response) => {
-       
-      
+        const re =  response.data;
+        console.log("res is :",response.data)
+        return response.data
       })
       .catch((err) => {
         console.log("Not found client",err)
       });
+      console.log("requ",request)
 
-    return {
-      type: 'USER_LOGIN',
-      payload: request,
-    };
+    return request
   },
   logout : async () => {
     let profile
@@ -45,7 +44,7 @@ export const API = {
       .get(`/api/auth/logout`)
       .then((response) => profile = response)
       .catch((err) => console.log(err))
-    return profile
+    return "profile"
   }}
 
 const getAllmintsCompany = () => {
@@ -62,4 +61,4 @@ const deleteCompany=(info)=>{
 const editCompany=(info,id)=>{
   return axios.put(`${URL}/company/${id}`,info)
 }
-export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany };
+export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , API};
