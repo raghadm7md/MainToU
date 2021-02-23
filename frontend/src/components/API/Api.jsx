@@ -46,4 +46,21 @@ const deleteCompany=(info)=>{
 const editCompany=(info,id)=>{
   return axios.put(`${URL}/company/${id}`,info)
 }
-export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany };
+
+
+const getAllTechMan = () => {
+  return axios.get(`${URL}/TechMan`);
+};
+
+const newTechMan=(info)=>{
+return axios.post(`${URL}/TechMan`,info);
+}
+
+const deleteTechMan=(info)=>{
+return axios.delete(`${URL}/TechMan/${info}`);
+}
+const editTechMan=(info,id)=>{
+return axios.put(`${URL}/TechMan/${id}`,info)
+}
+export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan};
+

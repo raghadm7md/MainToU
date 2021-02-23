@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Modal, Button } from "antd";
+import {newTechMan  } from '../API/Api';
+
 const layout = {
   labelCol: {
     span: 8,
@@ -35,7 +37,7 @@ const TechMenCollection = ({ visible, createNewTechMen, onCancel, projectVisible
           name="nest-messages"
         >
           <Form.Item
-            name={"name"}
+            name={"fullName"}
             label="Tech Man Name"
             rules={[
               {
@@ -46,7 +48,18 @@ const TechMenCollection = ({ visible, createNewTechMen, onCancel, projectVisible
           >
             <Input />
           </Form.Item>
-        
+          <Form.Item
+            name={"userName"}
+            label="Tech Man userName: "
+            rules={[
+              {
+                required : true,
+                message: "Tech Man Job ID is Required!"             
+               },
+            ]}
+          >
+            <Input />
+          </Form.Item>
           <Form.Item
             name={"email"}
             label="Tech Man Email:"
@@ -60,25 +73,13 @@ const TechMenCollection = ({ visible, createNewTechMen, onCancel, projectVisible
             <Input />
           </Form.Item>
           <Form.Item
-            name={"phone"}
+            name={"phoneNumber"}
             label="Tech Man Phone: "
             rules={[
               {
                 required : true,
                 message: "Tech Man Phone Number is Required!"  
               },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name={"jobID"}
-            label="Tech Man Job ID: "
-            rules={[
-              {
-                required : true,
-                message: "Tech Man Job ID is Required!"             
-               },
             ]}
           >
             <Input />
@@ -90,6 +91,16 @@ const TechMenCollection = ({ visible, createNewTechMen, onCancel, projectVisible
   }
   export default function NewTechMen (props) {
     const [visible, setVisible] = useState(false)
+    const createNewTechMen = async (values) => {
+    console.log(values)
+      newTechMan(values)
+      .then((response) => {
+      })
+      .catch((error) => {
+        console.log("API ERROR:", error);
+      });   
+         return setVisible(false)
+    }
     return (
         <>
     
@@ -98,6 +109,7 @@ const TechMenCollection = ({ visible, createNewTechMen, onCancel, projectVisible
               </Button>
           <TechMenCollection
             visible={visible}
+            createNewTechMen={createNewTechMen}
             onCancel={() => setVisible(false)}
           />
         </>
