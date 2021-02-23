@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, Modal, Button } from "antd";
-import { newMintsCompany  } from "../API/API";
+import { newMintsCompany  } from "../API/Api";
 
 const layout = {
   labelCol: {

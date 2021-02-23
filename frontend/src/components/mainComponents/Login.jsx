@@ -2,7 +2,7 @@ import "../../App.css";
 import React, { useState } from "react";
 import { Form, Button, Modal, Input, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import {API} from '../API/API'
+import {API} from '../API/Api'
 const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
   const [form] = Form.useForm();
 
