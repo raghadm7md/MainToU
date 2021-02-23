@@ -66,6 +66,6 @@ return axios.delete(`${URL}/TechMan/${info}`);
 const editTechMan=(info,id)=>{
 return axios.put(`${URL}/TechMan/${id}`,info)
 }
-export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan};
+export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment};
 
 
