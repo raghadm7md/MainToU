@@ -31,7 +31,7 @@ function App() {
             <About />
           </Route>
           <Route path="/profile">
-            {/* <Profile/> */}
+            <Profile/>
             <Admin/>
           </Route>
           <Route path="profileinfo">
