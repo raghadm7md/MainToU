@@ -35,7 +35,9 @@ function App(props) {
             <About />
           </Route>
           <Route path="/profile">
-            {/* <Profile/> */}
+           <Profile/>
+          </Route>
+          <Route path="/admin">
             <Admin/>
           </Route>
           <Route path="profileinfo">

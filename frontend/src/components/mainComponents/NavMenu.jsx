@@ -25,9 +25,17 @@ function NavMenu() {
       <Menu.Item key="claendar">
         <Link to="/calendar">Calendar</Link>
       </Menu.Item>
-     {auth.isLogged?
+     {auth.isLogged && auth.currentUser.email != "as@gmail.com"?
      <Menu.Item key="profile">
         <Link to="/profile">Profile</Link>
+    </Menu.Item>
+    : 
+      null
+   }
+   
+   {auth.isLogged && auth.currentUser.email == "as@gmail.com"?
+     <Menu.Item key="admin">
+        <Link to="/admin">Admin</Link>
     </Menu.Item>
     : 
       null

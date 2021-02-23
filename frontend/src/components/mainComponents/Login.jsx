@@ -1,11 +1,19 @@
 import "../../App.css";
 import React, { useState } from "react";
-import { Form, Button, Modal, Input, Checkbox } from "antd";
+import { Form, Button, Modal, Input, Checkbox , message } from "antd";
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {API} from '../API/Api'
 const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
+  const key = 'updatable';
+  const log = false;
+  const openMessage = () => {
+    message.loading({ content: 'Loading...', key});
+    setTimeout(() => {
+      message.success({ content: 'You are successfully login!', key, duration: 2 });
+       }, 1000);
+      
+  };
   const [form] = Form.useForm();
- 
   return (<Modal
     title="Welcome Back!"
     centered
@@ -15,6 +23,7 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
       .then((values) => {
         form.resetFields();
         onLogin(values);
+        openMessage()
       })
       .catch((info) => {
         console.log('Validate Failed:', info);
@@ -82,26 +91,27 @@ export default function Login(props) {
   
     console.log(values)
     try {
-      const l = null
       await API.login(values)
         .then((res) => {
         // console.log(values)
-        // console.log('resp',res)
+         console.log('res',res.address)
       
-         console.log(l)
          if(res !== undefined){
           props.setAuth(
             {
-             currentUser : l,
+             currentUser : res,
              isLogged : true
            
             })
+        
+
          }
+         
         })
         .then((login) => {
             setVisible(false)
             console.log('login',login)
-         
+             
            
             }
           /*}else {
