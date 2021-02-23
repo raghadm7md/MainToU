@@ -3,7 +3,7 @@ import { Menu } from "antd";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import Login from "./Login"
-function NavMenu() {
+function NavMenu(props) {
   return (
     <Menu
       mode="horizontal"
@@ -17,15 +17,18 @@ function NavMenu() {
       </Menu.Item>
       <Menu.Item key="profile">
         <Link to="/profile">Profile</Link>
-      </Menu.Item>
-      <Menu.Item key="about">
+      </Menu.Item> 
+      
+
+       <Menu.Item key="about">
         <Link to="/about">About</Link>
       </Menu.Item>
-      <Menu.Item key="Lpgin">
+      }
+      <Menu.Item key="Login">
         <Login/>
       </Menu.Item>
     </Menu>
+     
   );
 }
-
 export default NavMenu;

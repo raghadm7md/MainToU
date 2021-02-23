@@ -5,7 +5,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {API} from '../API/Api'
 const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
   const [form] = Form.useForm();
-
+ 
   return (<Modal
     title="Welcome Back!"
     centered
@@ -36,7 +36,7 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
     >
       {statusMessage}
       <Form.Item
-        name="username"
+        name="email"
         rules={[
           {
             required: true,
@@ -71,13 +71,13 @@ export default function Login(props) {
   const [visible, setVisible] = useState(false)
 
   const onLogin = async (values) => {
+   console.log(values)
     try {
       await API.login(values)
         .then((res) => {
          console.log(values)
         })
         .then((login) => {
-            console.log(login)
             setVisible(false)
           
           } /*else {

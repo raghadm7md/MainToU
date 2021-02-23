@@ -20,8 +20,24 @@ export const API = {
     return message
   },  
   login: async (credential) => {
-    console.log("credential",credential.username)
-    console.log("credential",credential.password)
+    const request = axios
+      .post(`${URL}/login`, {
+        email: credential.email,
+        password: credential.password,
+        withCredentials: true,
+      })
+      .then((response) => {
+       
+      
+      })
+      .catch((err) => {
+        console.log("Not found client",err)
+      });
+
+    return {
+      type: 'USER_LOGIN',
+      payload: request,
+    };
   },
   logout : async () => {
     let profile

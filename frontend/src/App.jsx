@@ -16,6 +16,10 @@ import Register from "./components/mainComponents/Register"
 // import Profile from "./components/mainComponents/Profile";
 
 function App() {
+  const Auth = {
+      "CurrentUser" : null,
+      "isLogged" : false,
+  }
   return (
     <>
       <Router>
@@ -30,9 +34,9 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
+         
           <Route path="/profile">
-            {/* <Profile/> */}
-            <Admin/>
+             <Profile/> 
           </Route>
           <Route path="profileinfo">
           <ProfileInfo/>
@@ -58,6 +62,7 @@ function App() {
         </Switch>
         <PageFooter />
       </Router>
+        
     </>
   );
 }
