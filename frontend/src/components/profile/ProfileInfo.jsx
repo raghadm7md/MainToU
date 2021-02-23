@@ -1,28 +1,28 @@
 import React, { Component } from "react";
-import {
-  Descriptions,
-  Card,
-  Form,
-  Input,
-  Modal,
-  Button,
-  Row,
-  Col,
-  Divider,
-} from "antd";
-import { getClientInfo } from "../API/Api";
+import { Form, Input, Button } from "antd";
+import { getClientInfo, updateClientInfo } from "../API/Api";
+import { EditOutlined , FormOutlined } from "@ant-design/icons";
+import { Row, Col, Divider } from "antd";
 
 export default class ProfileInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showInput: false,
+      showButton: false,
+      Inputname: false,
+      Inputaddress: false,
+      Inputemail: false,
+      InputphoneNumber: false,
       clientInfo: "",
+      companyName: "",
+      address: "",
+      email: "",
+      phoneNumber: "",
     };
   }
 
   componentDidMount() {
-    //************** add id client */
+    // ************** add id client */
     getClientInfo("603203a5429aef07027269d9")
       .then((response) => {
         console.log("DATA: ", response.data);
@@ -34,11 +34,51 @@ export default class ProfileInfo extends Component {
   }
 
   show = () => {
-    this.setState({ showInput: true });
+    this.setState({ showButton: true });
   };
 
   hide = () => {
-    this.setState({ showInput: false });
+    
+    this.setState({ showButton: false });
+    this.setState({ Inputname: false });
+    this.setState({ Inputaddress: false });
+    this.setState({ Inputemail: false });
+    this.setState({ InputphoneNumber: false });
+   
+    const info=this.state.clientInfo
+    const newInfo = {
+      companyName:  this.state.companyName ? this.state.companyName : info.companyName, 
+      address: this.state.address ? this.state.address : info.address,
+      email: this.state.email ? this.state.email : info.email,
+      phoneNumber: this.state.phoneNumber ? this.state.phoneNumber : info.phoneNumber,
+    };
+    updateClientInfo(newInfo, "603203a5429aef07027269d9")
+      .then((response) => {
+        console.log("DATA: ", response.data);
+      })
+      .catch((err) => {
+        console.log("ERR: ", err);
+      });
+
+      window.location.reload(false);
+  };
+
+  Editname = () => {
+    console.log();
+    this.setState({ Inputname: true });
+  };
+  Editaddress = () => {
+    console.log();
+    this.setState({ Inputaddress: true });
+  };
+
+  Editemail = () => {
+    console.log();
+    this.setState({ Inputemail: true });
+  };
+  EditphoneNumber = () => {
+    console.log();
+    this.setState({ InputphoneNumber: true });
   };
 
   render() {
@@ -47,21 +87,61 @@ export default class ProfileInfo extends Component {
         <Form name="nest-messages" style={{ width: 600 }}>
           <Form.Item name={"companyName"} label="Company name:">
             {this.state.clientInfo.companyName}
-            {this.state.showInput ? <Input /> : null}
+            {this.state.showButton ? (
+              <EditOutlined onClick={this.Editname}></EditOutlined>
+            ) : null}
+            {this.state.Inputname ? (
+              <Input
+                onChange={(event) => {
+                  this.setState({ companyName: event.target.value });
+                }}
+              />
+            ) : null}
           </Form.Item>
           <Form.Item name={"address"} label="Address:">
             {this.state.clientInfo.address}
-            {this.state.showInput ? <Input /> : null}
+            {this.state.showButton ? (
+              <FormOutlined onClick={this.Editaddress}></FormOutlined>
+            ) : null}
+            {this.state.Inputaddress ? (
+              <Input
+                onChange={(event) => {
+                  this.setState({ address: event.target.value });
+                }}
+              />
+            ) : null}
           </Form.Item>
           <Form.Item name={"email"} label="Email:">
             {this.state.clientInfo.email}
-            {this.state.showInput ? <Input /> : null}
+            {this.state.showButton ? (
+              <EditOutlined onClick={this.Editemail}></EditOutlined>
+            ) : null}
+            {this.state.Inputemail ? (
+              <Input
+                onChange={(event) => {
+                  this.setState({ email: event.target.value });
+                }}
+              />
+            ) : null}
           </Form.Item>
           <Form.Item name={"phoneNumber"} label="phoneNumber:">
             {this.state.clientInfo.phoneNumber}
-            {this.state.showInput ? <Input /> : null}
+            {this.state.showButton ? (
+              <EditOutlined onClick={this.EditphoneNumber}></EditOutlined>
+            ) : null}
+            {this.state.InputphoneNumber ? (
+              <Input
+                onChange={(event) => {
+                  this.setState({ phoneNumber: event.target.value });
+                }}
+              />
+            ) : null}
           </Form.Item>
-            {this.state.showInput ? <Button onClick={this.hide}>save</Button> :  <Button onClick={this.show}>Edit</Button>}
+          {this.state.showButton ? (
+            <Button onClick={this.hide}>save</Button>
+          ) : (
+            <Button onClick={this.show}>Edit</Button>
+          )}
         </Form>
       </div>
     );

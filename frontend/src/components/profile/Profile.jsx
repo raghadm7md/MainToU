@@ -22,7 +22,7 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showProfile: false,
+      showProfile: true,
       showUpcoming: false,
       showCompleted: false,
       showTrash: false,

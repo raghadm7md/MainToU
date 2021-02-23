@@ -65,6 +65,10 @@ const editTechMan = (info, id) => {
 const getClientInfo = (id) => {
   return axios.get(`${URL}/Clint/${id}`);
 };
+
+const updateClientInfo=(info, id)=>{
+  return axios.put(`${URL}/profile/${id}`, info);
+}
 export {
   getAllmintsCompany,
   newMintsCompany,
@@ -75,4 +79,5 @@ export {
   deleteTechMan,
   editTechMan,
   getClientInfo,
+  updateClientInfo
 };
