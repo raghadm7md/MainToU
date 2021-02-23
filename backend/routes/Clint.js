@@ -166,5 +166,18 @@ router.post('/login',
     function (req, res) {
         res.redirect('/login');
     });
+// Trash Appointments
+router.get("/:clintId/TrashAppointments", (req, res) => {
+  console.log("GET /clint/NewAppointments");
+  Client.findById(req.params.clintId)
+    .populate({ path: "app_id", match: { isComplate: true } })
+    .exec(function (err, result) {
+      if (err) {
+        console.log(err);
+      }
+      console.log(result);
+      res.json(result);
+    });
+});
   
 module.exports = router;
