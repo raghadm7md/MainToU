@@ -31,8 +31,8 @@ function App() {
             <About />
           </Route>
           <Route path="/profile">
-            {/* <Profile/> */}
-            <Admin/>
+            <Profile/>
+            {/* <Admin/> */}
           </Route>
           <Route path="profileinfo">
           <ProfileInfo/>

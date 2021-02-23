@@ -47,6 +47,10 @@ const editCompany=(info,id)=>{
   return axios.put(`${URL}/company/${id}`,info)
 }
 
+const addNewAppointment=(info)=>{
+  return axios.post(`${URL}/appointments/`,info)
+}
+
 
 const getAllTechMan = () => {
   return axios.get(`${URL}/TechMan`);
@@ -63,4 +67,5 @@ const editTechMan=(info,id)=>{
 return axios.put(`${URL}/TechMan/${id}`,info)
 }
 export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan};
+
 

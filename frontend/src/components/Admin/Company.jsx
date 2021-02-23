@@ -5,20 +5,6 @@ import { EditOutlined , DeleteOutlined  , SearchOutlined} from "@ant-design/icon
 import NewCompany from "./NewCompany";
 import { getAllmintsCompany , deleteCompany , editCompany } from "../API/Api";
 
-// const originData = [
-//   // {
-//   //   Name: "TWAIK",
-//   //   Email: "twaik@gmail.com",
-//   //   Phone: "+96654546378",
-//   // },
-//   // {
-//   //   Name: "Mosook",
-//   //   Email: "mosook@gmail.com",
-//   //   Phone: "+96654549978",
-//   // },
-// ];
-
-
 const EditableCell = ({
   editing,
   dataIndex,

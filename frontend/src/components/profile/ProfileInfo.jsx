@@ -1,10 +1,15 @@
-import React from 'react'
+import React from "react";
+import { Row, Divider } from "antd";
 function ProfileInfo() {
-    return (
-        <div>
-      <h2>this is profile info </h2>
-        </div>
-    )
+  return (
+    <div>
+      <Row>
+        <Divider>
+          <h2>Profile Information</h2>
+        </Divider>
+      </Row>
+    </div>
+  );
 }
 
-export default ProfileInfo
+export default ProfileInfo;

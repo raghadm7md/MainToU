@@ -1,7 +1,9 @@
-const {  Modal, Button,Rate  } = antd;
-const { StarOutlined   } = icons;
+import React, { Component } from 'react'
+import { Modal, Button,Rate  } from "antd";
+import {StarOutlined} from "@ant-design/icons";
 
-class App extends React.Component {
+
+export default class Track extends Component  {
   state = {
     loading: false,
     visible: false,
@@ -52,4 +54,3 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, mountNode);

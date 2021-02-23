@@ -1,11 +1,15 @@
-import React from 'react'
-
+import React from "react";
+import { Row, Divider } from "antd";
 function Trash() {
-    return (
-        <div>
-           <h2>this is Trash component</h2> 
-        </div>
-    )
+  return (
+    <div>
+      <Row>
+        <Divider>
+          <h2>Trash</h2>
+        </Divider>
+      </Row>
+    </div>
+  );
 }
 
-export default Trash
+export default Trash;
