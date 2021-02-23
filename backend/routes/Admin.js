@@ -33,6 +33,36 @@ router.post("/TechMan", (req, res) => {
   });
 });
 
+// Edit TechMan 
+router.put('/TechMan/:TechManId',(req, res) => {
+  TechMan.findByIdAndUpdate(req.params.TechManId, req.body,
+    (err, updateTechMan) => {
+      if (err) {
+        console.log('ERR: ', err);
+        res.json(err)
+      }
+      else {
+        console.log("Updated TechMan : ", updateTechMan);
+        res.json(updateTechMan)
+      }
+    });
+});
+
+// delete a TechMan
+router.delete("/TechMan/:TechManId", (req, res) => {
+  console.log("PARAMS:", req.params);
+  TechMan.findOneAndDelete(
+    { _id: req.params.TechManId },
+    (err, result) => {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(result);
+      }
+    }
+  );
+});
+
 // add new company
 router.post("/company", (req, res) => {
   console.log("POST /company");
