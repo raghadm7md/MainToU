@@ -80,12 +80,11 @@ export default class ProfileInfo extends Component {
     console.log();
     this.setState({ InputphoneNumber: true });
   };
-
   render() {
     return (
       <div>
         <Form name="nest-messages" style={{ width: 600 }}>
-          <Form.Item name={"companyName"} label="Company name:">
+          <Form.Item name="companyName" label="Company name:">
             {this.state.clientInfo.companyName}
             {this.state.showButton ? (
               <EditOutlined onClick={this.Editname}></EditOutlined>
@@ -98,7 +97,7 @@ export default class ProfileInfo extends Component {
               />
             ) : null}
           </Form.Item>
-          <Form.Item name={"address"} label="Address:">
+          <Form.Item name="address" label="Address:">
             {this.state.clientInfo.address}
             {this.state.showButton ? (
               <EditOutlined onClick={this.Editaddress}></EditOutlined>
@@ -111,7 +110,7 @@ export default class ProfileInfo extends Component {
               />
             ) : null}
           </Form.Item>
-          <Form.Item name={"email"} label="Email:">
+          <Form.Item name="email" label="Email:">
             {this.state.clientInfo.email}
             {this.state.showButton ? (
               <EditOutlined onClick={this.Editemail}></EditOutlined>
@@ -124,7 +123,7 @@ export default class ProfileInfo extends Component {
               />
             ) : null}
           </Form.Item>
-          <Form.Item name={"phoneNumber"} label="phoneNumber:">
+          <Form.Item name="phoneNumber" label="phoneNumber:">
             {this.state.clientInfo.phoneNumber}
             {this.state.showButton ? (
               <EditOutlined onClick={this.EditphoneNumber}></EditOutlined>
