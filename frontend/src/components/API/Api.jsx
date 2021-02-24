@@ -1,7 +1,11 @@
-import axios from "axios";
-const URL = "http://localhost:5000";
+
 
 export const API = {
+import axios from 'axios'
+import {setAuth} from '../mainComponents/NavMenu'
+const URL = 'http://localhost:5000'
+
+ const API = {
   register: async (newUserInfo) => {
     let message;
     console.log(newUserInfo);
@@ -21,16 +25,42 @@ export const API = {
   login: async (credential) => {
     console.log("credential", credential.username);
     console.log("credential", credential.password);
+    return "message"
+  },  
+  login: async (credential) => {
+    const request = axios
+      .post(`${URL}/login`, {
+        email: credential.email,
+        password: credential.password,
+        withCredentials: true,
+      })
+      .then((response) => {
+        const re =  response.data;
+        console.log("res is :",response.data)
+        return response.data
+      })
+      .catch((err) => {
+        console.log("Not found client",err)
+      });
+      console.log("requ",request)
+
+    return request
   },
   logout: async () => {
     let profile;
     await axios
       .get(`/api/auth/logout`)
+
       .then((response) => (profile = response))
       .catch((err) => console.log(err));
     return profile;
   },
 };
+
+      .then((response) => profile = response)
+      .catch((err) => console.log(err))
+    return "profile"
+  }}
 
 const getAllmintsCompany = () => {
   return axios.get(`${URL}/company`);
@@ -42,10 +72,17 @@ const newMintsCompany = (info) => {
 
 const deleteCompany = (info) => {
   return axios.delete(`${URL}/company/${info}`);
-};
-const editCompany = (info, id) => {
-  return axios.put(`${URL}/company/${id}`, info);
-};
+
+}
+const editCompany=(info,id)=>{
+  return axios.put(`${URL}/company/${id}`,info)
+}
+
+const addNewAppointment=(info)=>{
+  return axios.post(`${URL}/appointments/`,info)
+}
+
+
 
 const getAllTechMan = () => {
   return axios.get(`${URL}/TechMan`);
@@ -54,6 +91,7 @@ const getAllTechMan = () => {
 const newTechMan = (info) => {
   return axios.post(`${URL}/TechMan`, info);
 };
+
 
 const deleteTechMan = (info) => {
   return axios.delete(`${URL}/TechMan/${info}`);
@@ -66,18 +104,20 @@ const getClientInfo = (id) => {
   return axios.get(`${URL}/Clint/${id}`);
 };
 
+const deleteTechMan=(info)=>{
+return axios.delete(`${URL}/TechMan/${info}`);
+}
+const editTechMan=(info,id)=>{
+return axios.put(`${URL}/TechMan/${id}`,info)
+}
+const TrashAppointments =(id)=>{
+  return axios.get(`${URL}/${id}/TrashAppointments`)
+
+}
+
 const updateClientInfo=(info, id)=>{
   return axios.put(`${URL}/profile/${id}`, info);
+  
+export {API,  getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments ,  getClientInfo,
+  updateClientInfo};
 }
-export {
-  getAllmintsCompany,
-  newMintsCompany,
-  deleteCompany,
-  editCompany,
-  getAllTechMan,
-  newTechMan,
-  deleteTechMan,
-  editTechMan,
-  getClientInfo,
-  updateClientInfo
-};

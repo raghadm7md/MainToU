@@ -354,3 +354,16 @@ img {
 .edit{
   color:#2d5362;
 }
+.AppAvatar{
+  color: #2d5362;
+  font-size: 40px;
+}
+.appointsIco{
+  color: #2d5362;
+}
+/* trash table */
+.ant-table-thead > tr > th{
+  text-align: center;
+  color: #2d5362;
+  font-size: 18px;
+}
