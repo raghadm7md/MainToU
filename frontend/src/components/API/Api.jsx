@@ -1,8 +1,8 @@
 import axios from 'axios'
+import {setAuth} from '../mainComponents/NavMenu'
 const URL = 'http://localhost:5000'
 
-
-export const API = {
+ const API = {
   register: async (newUserInfo) => {
     let message
     console.log(newUserInfo)
@@ -17,11 +17,26 @@ export const API = {
       .catch((err) => {
         console.log(err)
       });
-    return message
+    return "message"
   },  
   login: async (credential) => {
-    console.log("credential",credential.username)
-    console.log("credential",credential.password)
+    const request = axios
+      .post(`${URL}/login`, {
+        email: credential.email,
+        password: credential.password,
+        withCredentials: true,
+      })
+      .then((response) => {
+        const re =  response.data;
+        console.log("res is :",response.data)
+        return response.data
+      })
+      .catch((err) => {
+        console.log("Not found client",err)
+      });
+      console.log("requ",request)
+
+    return request
   },
   logout : async () => {
     let profile
@@ -29,7 +44,7 @@ export const API = {
       .get(`/api/auth/logout`)
       .then((response) => profile = response)
       .catch((err) => console.log(err))
-    return profile
+    return "profile"
   }}
 
 const getAllmintsCompany = () => {
@@ -69,6 +84,6 @@ return axios.put(`${URL}/TechMan/${id}`,info)
 const TrashAppointments =(id)=>{
   return axios.get(`${URL}/${id}/TrashAppointments`)
 }
-export { getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments};
+export {API,  getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments};
 
 
