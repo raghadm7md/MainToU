@@ -28,15 +28,9 @@ class UpComAppoints extends Component {
       });
   }
   render(){
-//     date: "Wed Jan 01 2020 03:00:00 GMT+0300 (Arabian Standard Time)"
-// description: " hor air"
-// isComplate: false
-// rate: 0
-// time: "9:00 am"
-// title: "fix AC"
+
     console.log(this.state.Appointments)
      const cards =this.state.Appointments.map((element, index) => {
-        // console.log(this.state.Appointments.app_id[index]);
         return (
           <AppointsCard
           title={element.title}

@@ -73,9 +73,10 @@ const AppointsCollection = ({ visible, createNewAppoint, onCancel }) => {
           name={"companyName"}
         >
           <Select defaultValue="Choose a Company">
-            <Option value=" company 1">company 1</Option>
-            <Option value="company 2">company 2</Option>
-            <Option value="company 3">company 3</Option>
+            <Option value="TWAIK Holding Group">TWAIK Holding Group</Option>
+            <Option value="MOSOOK">MOSOOK</Option>
+            <Option value="POLY-TECH">POLY-TECH</Option>
+            <Option value="Suadi Technichal limited">Suadi Technichal limited</Option>
           </Select>
         </Form.Item>
         <Form.Item
