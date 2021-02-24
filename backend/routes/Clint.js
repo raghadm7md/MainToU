@@ -5,7 +5,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
-const { Appointment, Client } = require("../models/models");
+const { Appointment, Client , Admin ,TechMan } = require("../models/models");
 const { Router } = require('express');
 
 // to can see the body from req instead of undefined
@@ -157,15 +157,6 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect('/')
 });
-router.post('/login',
-    passport.authenticate('local',
-        {
-            failureRedirect: '/Clint',
-            failureFlash: false
-        }),
-    function (req, res) {
-        res.redirect('/login');
-    });
 // Trash Appointments
 router.get("/:clintId/TrashAppointments", (req, res) => {
   console.log("GET /clint/NewAppointments");
@@ -179,5 +170,47 @@ router.get("/:clintId/TrashAppointments", (req, res) => {
       res.json(result);
     });
 });
+router.post("/login",(req, res) => {
+  console.log("Login")
+  console.log("Body: ", req.body);
+  
+  let { email, password } = req.body;
+  let errors = [];
+  if (!email) {
+    errors.push({ email: "required" });
+  }
+  if (!password) {
+    errors.push({ passowrd: "required" });
+  }
+  if (errors.length > 0) {
+   return res.status(422).json({ errors: errors });
+  }
+  Client.findOne({ email: email , password : password}).then(client => {
+    if (!client) {
+      return res.status(404).json({
+        errors: [{ client: "not found" }],
+      });
+    
+    }
+      else{        
+        res.json(client)
+        return client;
+      }
+    } ) 
+}
+  
+  )
+
+  router.get("/checkLogin", (req, res,next) => {
+    if (req.isAuthenticated()) {
+      res.status(401).json({
+          authenticated: false,
+          message: "User Login Required"
+      });
+  } else {
+      next();
+  }
+  });
+  
   
 module.exports = router;

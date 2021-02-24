@@ -1,11 +1,19 @@
 import "../../App.css";
 import React, { useState } from "react";
-import { Form, Button, Modal, Input, Checkbox } from "antd";
+import { Form, Button, Modal, Input, Checkbox , message } from "antd";
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {API} from '../API/Api'
 const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
+  const key = 'updatable';
+  const log = false;
+  const openMessage = () => {
+    message.loading({ content: 'Loading...', key});
+    setTimeout(() => {
+      message.success({ content: 'You are successfully login!', key, duration: 2 });
+       }, 1000);
+      
+  };
   const [form] = Form.useForm();
-
   return (<Modal
     title="Welcome Back!"
     centered
@@ -15,6 +23,7 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
       .then((values) => {
         form.resetFields();
         onLogin(values);
+        openMessage()
       })
       .catch((info) => {
         console.log('Validate Failed:', info);
@@ -36,7 +45,7 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
     >
       {statusMessage}
       <Form.Item
-        name="username"
+        name="email"
         rules={[
           {
             required: true,
@@ -70,17 +79,42 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
 export default function Login(props) {
   const [visible, setVisible] = useState(false)
 
+  
+
+  
   const onLogin = async (values) => {
+   /* const currentUser =API.login(values);
+    //console.log(currentUser.__proto__)
+    console.log(currentUser[["Promise"]])
+  }*/
+    
+  
+    console.log(values)
     try {
       await API.login(values)
         .then((res) => {
-         console.log(values)
+        // console.log(values)
+         console.log('res',res.address)
+      
+         if(res !== undefined){
+          props.setAuth(
+            {
+             currentUser : res,
+             isLogged : true
+           
+            })
+        
+
+         }
+         
         })
         .then((login) => {
-            console.log(login)
             setVisible(false)
-          
-          } /*else {
+            console.log('login',login)
+             
+           
+            }
+          /*}else {
             setStatusMessage(login.message)
           }*/
         )
@@ -88,7 +122,7 @@ export default function Login(props) {
       console.log(err)
     }
 
-  };
+  }
   return (
     <>
       <Button
