@@ -66,7 +66,7 @@ const editCompany=(info,id)=>{
 }
 
 const addNewAppointment=(info)=>{
-  return axios.post(`${URL}/appointments/`,info)
+  return axios.post(`${URL}/appointments`,info)
 }
 
 
@@ -96,6 +96,14 @@ const TrashAppointments =(id)=>{
 const updateClientInfo=(info, id)=>{
   return axios.put(`${URL}/profile/${id}`, info);
 } 
+
+const gettAllAppointment=(id)=>{
+  return axios.get(`${URL}/${id}/NewAppointments`)
+}
+
+const booked=(C_id,A_id)=>{
+  return axios.post(`${URL}/clint/${C_id}/${A_id}`)
+}
 export {API,  getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments ,  getClientInfo,
-  updateClientInfo};
+  updateClientInfo , gettAllAppointment , booked};
 

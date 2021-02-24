@@ -8,6 +8,7 @@ import {
   DeleteOutlined,
   CheckOutlined,
   UserOutlined,
+  CloudFilled,
 } from "@ant-design/icons";
 import SideMinue from "./SideMinue";
 import ProfileContent from "./ProfileInfo";
@@ -26,6 +27,8 @@ class Profile extends Component {
       showUpcoming: false,
       showCompleted: false,
       showTrash: false,
+      email:this.props.auth
+
     };
   }
 
@@ -67,6 +70,7 @@ class Profile extends Component {
   };
 
   render() {
+    console.log("infooooooo",this.state.email)
     return (
       <div class="curved-div">
         <h1>Profile</h1>
@@ -148,6 +152,12 @@ class Profile extends Component {
             </Layout>
           </Content>
         </Layout>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
     );
   }

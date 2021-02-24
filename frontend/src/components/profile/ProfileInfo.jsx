@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Table, Col, Row, Divider, Space } from "antd";
 import { getClientInfo, updateClientInfo } from "../API/Api";
 import { EditOutlined } from "@ant-design/icons";
-import { Row, Col, Divider } from "antd";
+const { Column, ColumnGroup } = Table;
 
 export default class ProfileInfo extends Component {
   constructor(props) {
@@ -38,19 +38,22 @@ export default class ProfileInfo extends Component {
   };
 
   hide = () => {
-    
     this.setState({ showButton: false });
     this.setState({ Inputname: false });
     this.setState({ Inputaddress: false });
     this.setState({ Inputemail: false });
     this.setState({ InputphoneNumber: false });
-   
-    const info=this.state.clientInfo
+
+    const info = this.state.clientInfo;
     const newInfo = {
-      companyName:  this.state.companyName ? this.state.companyName : info.companyName, 
+      companyName: this.state.companyName
+        ? this.state.companyName
+        : info.companyName,
       address: this.state.address ? this.state.address : info.address,
       email: this.state.email ? this.state.email : info.email,
-      phoneNumber: this.state.phoneNumber ? this.state.phoneNumber : info.phoneNumber,
+      phoneNumber: this.state.phoneNumber
+        ? this.state.phoneNumber
+        : info.phoneNumber,
     };
     updateClientInfo(newInfo, "603203a5429aef07027269d9")
       .then((response) => {
@@ -60,7 +63,7 @@ export default class ProfileInfo extends Component {
         console.log("ERR: ", err);
       });
 
-      window.location.reload(false);
+    window.location.reload(false);
   };
 
   Editname = () => {
@@ -81,9 +84,41 @@ export default class ProfileInfo extends Component {
     this.setState({ InputphoneNumber: true });
   };
   render() {
+    const data = [
+      {
+        key: '1',
+        companyName: this.state.clientInfo.companyName,
+        address: this.state.clientInfo.address,
+        email: this.state.clientInfo.email,
+        phoneNumber:this.state.clientInfo.phoneNumber,
+        sorter: {
+          compare: (a, b) => a.math - b.math,
+          multiple: 2,
+        },
+      }
+    ];
+    
     return (
       <div>
-        <Form name="nest-messages" style={{ width: 600 }}>
+        <Row>
+          <Divider>
+            <h2>Your Information</h2>
+          </Divider>
+        </Row>
+        <Table dataSource={data}
+         className="TMtable"
+         size="middle"
+         style={{textAlign:"center"}}
+         style={{ width: 600 }}
+                  >
+          <Column title="Company name" dataIndex="companyName" key="companyName" />
+          <Column title="Address" dataIndex="address" key="address" />
+          <Column title="Email" dataIndex="email" key="email" />
+          <Column title="Address" dataIndex="address" key="address" />
+          <Column title="phoneNumber" dataIndex="phoneNumber" key="phoneNumber" />
+        </Table>
+        
+        <Form name="nest-messages" style={{ width: 300 }}>
           <Form.Item name="companyName" label="Company name:">
             {this.state.clientInfo.companyName}
             {this.state.showButton ? (
