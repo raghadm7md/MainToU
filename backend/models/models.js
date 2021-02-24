@@ -12,7 +12,7 @@ const appointment = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   rate: Number,
-  isComplate: Boolean,
+  isComplate: {type:Boolean , default:false},
   available: Boolean,
   time: { type: String, required: true },
 });

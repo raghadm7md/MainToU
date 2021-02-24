@@ -14,7 +14,7 @@ class FinishedAppoints extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clientInfo: "",
+      clientInfo:[],
     };
   }
 
@@ -32,7 +32,6 @@ class FinishedAppoints extends Component {
 
   render() {
     console.log("@@@@", this.state.clientInfo.app_id);
-
     // const cards = this.state.clientInfo.app_id.map((elem, index) => {
     //   console.log(this.state.clientInfo.app_id[index]);
     //   return (

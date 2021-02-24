@@ -117,13 +117,13 @@ export default function Add_appointment() {
       .then((response) => {
         console.log("response", response.data);
         console.log("response", response.data._id);
-      //   booked("603207f9ade428091d3ff365",response.data._id)
-      //   .them((response) => {
-      //     console.log("Added appointments");
+        booked("603207f9ade428091d3ff365",response.data._id)
+        .then((response) => {
+          console.log("Added appointments");
 
-      //   }).catch((error) => {
-      //   console.log("API ERROR:", error);
-      // });
+        }).catch((error) => {
+        console.log("API ERROR:", error);
+      });
 
       })
 
