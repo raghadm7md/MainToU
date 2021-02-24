@@ -33,9 +33,6 @@ router.get("/Clint", (req, res) => {
     res.json(data);
   });
 });
-router.get("/", function (req, res) { 
-  res.render("Home"); 
-}); 
 
 // get one client
 router.get("/Clint/:clientId", (req, res) => {
