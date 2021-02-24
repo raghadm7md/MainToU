@@ -5,13 +5,11 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {API} from '../API/Api'
 const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
   const key = 'updatable';
-  const log = false;
   const openMessage = () => {
     message.loading({ content: 'Loading...', key});
     setTimeout(() => {
       message.success({ content: 'You are successfully login!', key, duration: 2 });
        }, 1000);
-      
   };
   const [form] = Form.useForm();
   return (<Modal
@@ -31,7 +29,6 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
     }
     onCancel={onCancel}
     htmlType="submit"
-
   //   style={{ backgroundImage: `url(${LoginBg})`, backgroundRepeat: 'no-repeat',
   //   width:'250px', height:'300px'}}
   >
@@ -53,7 +50,7 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
           },
         ]}
       >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
       </Form.Item>
       <Form.Item
         name="password"
@@ -78,41 +75,28 @@ const LoginCollection = ({ visible, onLogin, onCancel, statusMessage }) => {
 }
 export default function Login(props) {
   const [visible, setVisible] = useState(false)
-
-  
-
-  
   const onLogin = async (values) => {
    /* const currentUser =API.login(values);
     //console.log(currentUser.__proto__)
     console.log(currentUser[["Promise"]])
   }*/
-    
-  
     console.log(values)
     try {
       await API.login(values)
         .then((res) => {
         // console.log(values)
-         console.log('res',res.address)
-      
+      //   console.log('res',res.address)
          if(res !== undefined){
           props.setAuth(
             {
              currentUser : res,
              isLogged : true
-           
             })
-        
-
          }
-         
         })
         .then((login) => {
             setVisible(false)
             console.log('login',login)
-             
-           
             }
           /*}else {
             setStatusMessage(login.message)
@@ -121,7 +105,6 @@ export default function Login(props) {
     } catch (err) {
       console.log(err)
     }
-
   }
   return (
     <>
@@ -132,7 +115,6 @@ export default function Login(props) {
       >
         Login
         </Button>
-
       <LoginCollection
         visible={visible}
         onLogin={onLogin}
@@ -140,7 +122,6 @@ export default function Login(props) {
           setVisible(false);
         }}
       />
-
     </>
   )
 }
