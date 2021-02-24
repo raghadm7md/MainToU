@@ -1,6 +1,8 @@
+require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
-// const cors = require('cors');
+const cors = require('cors');
+const PORT = process.env.PORT || 5000;
 const bodyParser=require("body-parser");
 const { Client1 } = require("./models/models");
 
@@ -14,7 +16,7 @@ const techMan = require('./routes/TechMan');
 const app = express();
 const models = require('./models/models')
 
-mongoose.connect('mongodb://localhost:27017/crud_v01', {
+mongoose.connect(process.env.MongoDBUrl, {
   useNewUrlParser: true,
 });
 mongoose.connection.once('open', () => {
@@ -28,16 +30,36 @@ app.use(bodyParser.urlencoded({extended:true}))
 /*** Routes ***/
 
 // Mount imported Routers
-app.use(Appointments);
-app.use(Admin);
-app.use(Clint);
-app.use(techMan);
+app.use(("/api/Appoints",Appointments));
+app.use(("/api/Admin",Admin));
+app.use(("/api/Clint",Clint));
+app.use(("/api/TechMan",techMan));
+app.use(express.static(path.join(__dirname, "build")));
 
+//cors whitelist
+var whitelist = [`http://localhost:${PORT}`, "https://<your app name>.herokuapp.com"];
 
-const PORT = process.env.PORT || 5000;
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      var message =
+        "The CORS policy for this application does not allow access from origin " +
+        origin;
+      callback(new Error(message), false);
+    }
+  },
+};
+
+app.use(cors(corsOptions));
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.listen(PORT, () => {
-  console.log(`SERVER ARE WORKING ON http://localhost:${PORT}`);
+  console.log(`SERVER ARE WORKING ON PORT:${PORT}`);
 });
 
 
