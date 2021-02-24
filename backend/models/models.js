@@ -8,11 +8,11 @@ const admin = new mongoose.Schema({
 const Admin = mongoose.model("Admin", admin);
 
 const appointment = new mongoose.Schema({
-  date: { type: Date, required: true },
+  date: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
   rate: Number,
-  isComplate: Boolean,
+  isComplate: {type:Boolean , default:false},
   available: Boolean,
   time: { type: String, required: true },
 });
