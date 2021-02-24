@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, Input, Button } from "antd";
 import { getClientInfo, updateClientInfo } from "../API/Api";
-import { EditOutlined , FormOutlined } from "@ant-design/icons";
+import { EditOutlined } from "@ant-design/icons";
 import { Row, Col, Divider } from "antd";
 
 export default class ProfileInfo extends Component {
@@ -101,7 +101,7 @@ export default class ProfileInfo extends Component {
           <Form.Item name={"address"} label="Address:">
             {this.state.clientInfo.address}
             {this.state.showButton ? (
-              <FormOutlined onClick={this.Editaddress}></FormOutlined>
+              <EditOutlined onClick={this.Editaddress}></EditOutlined>
             ) : null}
             {this.state.Inputaddress ? (
               <Input
