@@ -1,6 +1,8 @@
 import axios from 'axios'
 import {setAuth} from '../mainComponents/NavMenu'
 
+const URL = 'http://localhost:5000'
+let currentUser= ""
 
  const API = {
   register: async (newUserInfo) => {
@@ -27,8 +29,9 @@ import {setAuth} from '../mainComponents/NavMenu'
         withCredentials: true,
       })
       .then((response) => {
-        const re =  response.data;
+        currentUser =  response.data;
         console.log("res is :",response.data)
+
         return response.data
       })
       .catch((err) => {
@@ -66,7 +69,9 @@ const editCompany=(info,id)=>{
 }
 
 const addNewAppointment=(info)=>{
+
   return axios.post(`/api/Appoints/appointments/`,info)
+
 }
 
 
@@ -96,6 +101,14 @@ const TrashAppointments =(id)=>{
 const updateClientInfo=(info, id)=>{
   return axios.put(`/api/Clint/profile/${id}`, info);
 } 
+
+const gettAllAppointment=(id)=>{
+  return axios.get(`/api/Clint/${id}/NewAppointments`)
+}
+
+const booked=(C_id,A_id)=>{
+  return axios.post(`/api/Clint/clint/${C_id}/${A_id}`)
+}
 export {API,  getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments ,  getClientInfo,
-  updateClientInfo};
+  updateClientInfo , gettAllAppointment , booked , currentUser};
 

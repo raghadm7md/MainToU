@@ -4,6 +4,7 @@ import { Menu } from "antd";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import Login from "./Login"
+import Profile from "../profile/Profile";
 function NavMenu() {
  
   const [auth,setAuth] = useState({
@@ -27,7 +28,7 @@ function NavMenu() {
       </Menu.Item>
      {auth.isLogged && auth.currentUser.email != "as@gmail.com"?
      <Menu.Item key="profile">
-        <Link to="/profile">Profile</Link>
+        <Link to="/profile"  >Profile</Link>
     </Menu.Item>
     : 
       null
