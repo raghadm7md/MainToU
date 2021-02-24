@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Form, Input, Modal, Button, Select, DatePicker, Radio , Group} from "antd";
-import { addNewAppointment , booked } from "../API/Api";
+import { Form, Input, Modal, Button, Select, DatePicker, Radio } from "antd";
+import { addNewAppointment , booked , currentUser} from "../API/Api";
 // import moment from "moment";
 const { Option } = Select;
 const { TextArea } = Input;
@@ -118,7 +118,7 @@ export default function Add_appointment() {
       .then((response) => {
         console.log("response", response.data);
         console.log("response", response.data._id);
-        booked("603207f9ade428091d3ff365",response.data._id)
+        booked(currentUser._id,response.data._id)
         .then((response) => {
           console.log("Added appointments");
 

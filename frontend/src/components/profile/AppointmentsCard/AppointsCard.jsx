@@ -12,10 +12,10 @@ import {
   StarOutlined,
 } from "@ant-design/icons";
 const { Meta } = Card;
-// class component for display a card 
-class  AppointsCard extends Component {
+// class component for display a card
+class AppointsCard extends Component {
   // let [showTrack, setshowTrack] = useState("");
-  render(){
+  render() {
     return (
       <div>
         <div>
@@ -32,16 +32,9 @@ class  AppointsCard extends Component {
                     />
                     {/* {showTrack && <Track />} */}
                   </Tooltip>,
-                  // <Tooltip placement="bottom" title="Edit">
-                  //   <EditOutlined className="appointsIco" key="edit" />
-                  // </Tooltip>,
                   <Tooltip placement="bottom" title="Delete">
                     <DeleteOutlined className="appointsIco" key="delete" />
                   </Tooltip>,
-                  // <Tooltip placement="bottom" title="Rate">
-                  //   <Star />
-                  //   <StarOutlined className="appointsIco" key="Rate" />
-                  // </Tooltip>,
                 ]}
               >
                 <Meta
@@ -51,38 +44,12 @@ class  AppointsCard extends Component {
                 />
               </Card>
             </Col>
-            <Col>
-              {/* <Card
-                style={{ width: 300 }}
-                actions={[
-                  <Tooltip placement="bottom" title="Track">
-                    <NodeIndexOutlined key="track" />
-                  </Tooltip>,
-                  // <Tooltip placement="bottom" title="Edit">
-                  //   <EditOutlined key="edit" />
-                  // </Tooltip>,
-                  <Tooltip placement="bottom" title="Delete">
-                    <DeleteOutlined key="delete" />
-                  </Tooltip>,
-                  // <Tooltip placement="bottom" title="Rate">
-                  //   <StarOutlined key="Rate" />
-                  // </Tooltip>,
-                ]}
-              >
-                <Meta
-                  avatar={<CalendarOutlined className="AppAvatar" />}
-                  title="Appointment 1"
-                  description="fixing network connection"
-                />
-              </Card> */}
-            </Col>
+            <Col></Col>
           </Row>
         </div>
-    </div>
+      </div>
     );
-
   }
-  
 }
 
 export default AppointsCard;

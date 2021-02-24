@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TrashAppointments } from "../API/Api";
+import { TrashAppointments , currentUser} from "../API/Api";
 import { Row, Divider, Card, Col, Tooltip } from "antd";
 import Star from "./AppointmentsCard/StarRating";
 import {
@@ -21,7 +21,7 @@ class FinishedAppoints extends Component {
 
   componentDidMount() {
     // ************** add id client */
-    TrashAppointments("603207f9ade428091d3ff365")
+    TrashAppointments(currentUser._id)
       .then((response) => {
         console.log("DATA: ", response.data);
         this.setState({ Appointments: response.data.app_id });
@@ -32,6 +32,8 @@ class FinishedAppoints extends Component {
   }
 
   render() {
+    console.log(currentUser._id)
+    console.log(currentUser)
     console.log("@@@@", this.state.Appointments);
     const cards = this.state.Appointments.map((element, index) => {
       return (

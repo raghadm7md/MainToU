@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {setAuth} from '../mainComponents/NavMenu'
 const URL = 'http://localhost:5000'
-
+let currentUser= ""
  const API = {
   register: async (newUserInfo) => {
     let message;
@@ -27,8 +27,9 @@ const URL = 'http://localhost:5000'
         withCredentials: true,
       })
       .then((response) => {
-        const re =  response.data;
+        currentUser =  response.data;
         console.log("res is :",response.data)
+
         return response.data
       })
       .catch((err) => {
@@ -105,5 +106,5 @@ const booked=(C_id,A_id)=>{
   return axios.post(`${URL}/clint/${C_id}/${A_id}`)
 }
 export {API,  getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments ,  getClientInfo,
-  updateClientInfo , gettAllAppointment , booked};
+  updateClientInfo , gettAllAppointment , booked , currentUser};
 

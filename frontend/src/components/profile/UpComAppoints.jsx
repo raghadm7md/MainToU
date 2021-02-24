@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import { gettAllAppointment } from "../API/Api";
+import { gettAllAppointment , currentUser} from "../API/Api";
 import Add_appointment from "../forms/Add_appointment";
 import About from "../mainComponents/About";
 import AppointsCard from "./AppointmentsCard/AppointsCard";
@@ -17,8 +17,8 @@ class UpComAppoints extends Component {
     };
   }
   componentDidMount() {
-    // ************** add id client */
-    gettAllAppointment("603207f9ade428091d3ff365")
+
+    gettAllAppointment(currentUser._id)
       .then((response) => {
         console.log("DATA: ", response.data);
         this.setState({ Appointments: response.data.app_id});
@@ -28,7 +28,7 @@ class UpComAppoints extends Component {
       });
   }
   render(){
-
+    console.log(currentUser._id)
     console.log(this.state.Appointments)
      const cards =this.state.Appointments.map((element, index) => {
         return (

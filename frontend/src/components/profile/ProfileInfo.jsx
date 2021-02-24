@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Input, Button, Table, Col, Row, Divider, Space } from "antd";
-import { getClientInfo, updateClientInfo } from "../API/Api";
+import { getClientInfo, updateClientInfo , currentUser} from "../API/Api";
 import { EditOutlined } from "@ant-design/icons";
 const { Column, ColumnGroup } = Table;
 
@@ -23,7 +23,7 @@ export default class ProfileInfo extends Component {
 
   componentDidMount() {
     // ************** add id client */
-    getClientInfo("603203a5429aef07027269d9")
+    getClientInfo(currentUser._id)
       .then((response) => {
         console.log("DATA: ", response.data);
         this.setState({ clientInfo: response.data });
@@ -55,7 +55,7 @@ export default class ProfileInfo extends Component {
         ? this.state.phoneNumber
         : info.phoneNumber,
     };
-    updateClientInfo(newInfo, "603203a5429aef07027269d9")
+    updateClientInfo(newInfo, currentUser._id)
       .then((response) => {
         console.log("DATA: ", response.data);
       })
@@ -84,6 +84,8 @@ export default class ProfileInfo extends Component {
     this.setState({ InputphoneNumber: true });
   };
   render() {
+
+    console.log(currentUser.email)
     
     return (
       <div>
