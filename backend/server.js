@@ -32,10 +32,10 @@ app.use(express.static("public"));
 /*** Routes ***/
 
 // Mount imported Routers
-app.use(("/api/Appoints",Appointments));
-app.use(("/api/Admin",Admin));
-app.use(("/api/Clint",Clint));
-app.use(("/api/TechMan",techMan));
+app.use("/api/Appoints",Appointments);
+app.use("/api/Admin",Admin);
+app.use("/api/Clint",Clint);
+app.use("/api/TechMan",techMan);
 app.use(express.static("build"))
 app.use(express.static(path.join(__dirname, "build")));
 
