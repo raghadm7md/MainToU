@@ -20,10 +20,13 @@ export default class ProfileInfo extends Component {
       phoneNumber: "",
     };
   }
+  
 
   componentDidMount() {
     // ************** add id client */
+
     getClientInfo(currentUser._id)
+
       .then((response) => {
         console.log("DATA: ", response.data);
         this.setState({ clientInfo: response.data });
@@ -55,7 +58,9 @@ export default class ProfileInfo extends Component {
         ? this.state.phoneNumber
         : info.phoneNumber,
     };
+
     updateClientInfo(newInfo, currentUser._id)
+
       .then((response) => {
         console.log("DATA: ", response.data);
       })
