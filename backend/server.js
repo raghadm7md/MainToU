@@ -35,10 +35,11 @@ app.use(("/api/Appoints",Appointments));
 app.use(("/api/Admin",Admin));
 app.use(("/api/Clint",Clint));
 app.use(("/api/TechMan",techMan));
+app.use(express.static("build"))
 app.use(express.static(path.join(__dirname, "build")));
 
 //cors whitelist
-var whitelist = [`http://localhost:${PORT}`, "https://<your app name>.herokuapp.com"];
+var whitelist = [`http://localhost:${PORT}`, "https://maintou-team2.herokuapp.com"];
 
 var corsOptions = {
   origin: function (origin, callback) {
