@@ -23,7 +23,7 @@ export default class ProfileInfo extends Component {
 
   componentDidMount() {
     // ************** add id client */
-    getClientInfo("60360671a112de4fa09a1a63")
+    getClientInfo("603667c04f5c3400158a0452")
       .then((response) => {
         console.log("DATA: ", response.data);
         this.setState({ clientInfo: response.data });
@@ -52,7 +52,7 @@ export default class ProfileInfo extends Component {
       email: this.state.email ? this.state.email : info.email,
       phoneNumber: this.state.phoneNumber ? this.state.phoneNumber : info.phoneNumber,
     };
-    updateClientInfo(newInfo, "60360671a112de4fa09a1a63")
+    updateClientInfo(newInfo, "603667c04f5c3400158a0452")
       .then((response) => {
         console.log("DATA: ", response.data);
       })
