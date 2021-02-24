@@ -37,6 +37,19 @@ router.get("/", function (req, res) {
   res.render("Home"); 
 }); 
 
+// get one client
+router.get("/Clint/:clientId", (req, res) => {
+  Client.findById(req.params.clientId, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+
+
 //Edit profile
 router.put("/profile/:id", (req, res) => {
   Client.findOneAndUpdate({ _id: req.params.id }, req.body, (err, result) => {
