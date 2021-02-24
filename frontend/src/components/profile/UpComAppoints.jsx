@@ -55,8 +55,8 @@ class UpComAppoints extends Component {
         <Row>
           {cards}
         </Row>
-        <Track/>
-        <StarRating/>
+        {/* <Track/> */}
+        {/* <StarRating/> */}
       </div>
     );
   }
