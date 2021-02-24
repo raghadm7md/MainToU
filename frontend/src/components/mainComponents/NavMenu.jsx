@@ -4,7 +4,7 @@ import { Button, Menu , message } from "antd";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import Login from "./Login"
-
+import {API} from '../API/Api'
 function NavMenu() {
   const key = 'updatable';
   const openMessage = () => {
@@ -13,12 +13,10 @@ function NavMenu() {
       message.success({ content: 'You are successfully logout!', key, duration: 2 });
        }, 1000);
   };
-
   const [auth,setAuth] = useState({
     currentUser : null,
     isLogged : false
   })
-
   return (
    <Menu
       mode="horizontal"
@@ -39,7 +37,7 @@ function NavMenu() {
    }
     {auth.isLogged && auth.currentUser.email != "as@gmail.com" && !auth.currentUser.email.endsWith("techmen.com")?
      <Menu.Item key="profile">
-        <Link to="/profile"  >Profile</Link>
+        <Link to="/profile">Profile</Link>
     </Menu.Item>
     : 
       null
@@ -65,7 +63,6 @@ function NavMenu() {
         type="primary" 
         onClick={() => { API.logout(); setAuth({  currentUser : null,
           isLogged : false}); openMessage()}}
-
         >  <Link to="/">Logout</Link></Button>
       </Menu.Item>
    }
