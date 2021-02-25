@@ -105,6 +105,11 @@ const gettAllAppointment=(id)=>{
 const booked=(C_id,A_id)=>{
   return axios.post(`${URL}/clint/${C_id}/${A_id}`)
 }
+
+const deleteAppointment=(id)=>{
+  return axios.delete(`${URL}/appointments/${id}`);
+}
+
 export {API,  getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments ,  getClientInfo,
-  updateClientInfo , gettAllAppointment , booked , currentUser};
+  updateClientInfo , gettAllAppointment , booked , currentUser , deleteAppointment};
 

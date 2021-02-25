@@ -30,11 +30,12 @@ class UpComAppoints extends Component {
   render(){
     console.log(currentUser._id)
     console.log(this.state.Appointments)
-     const cards =this.state.Appointments.map((element, index) => {
+     const cards =this.state.Appointments.map((item, index) => {
         return (
           <AppointsCard
-          title={element.title}
-          description={element.description}
+          title={item.title}
+          description={item.description}
+          delete={item}
           />
         );
       });

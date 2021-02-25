@@ -29,6 +29,8 @@ class FinishedAppoints extends Component {
       .catch((err) => {
         console.log("ERR: ", err);
       });
+
+
   }
 
   render() {
