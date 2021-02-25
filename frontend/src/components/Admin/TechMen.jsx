@@ -204,7 +204,7 @@ const TechMen = () => {
 
   const columns = [
     {
-      title: 'Full Name',
+      title: 'Name',
       dataIndex: 'fullName',
       width: '25%',
       editable: true,

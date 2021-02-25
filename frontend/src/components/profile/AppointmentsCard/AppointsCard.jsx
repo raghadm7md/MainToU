@@ -5,6 +5,7 @@ import { Route, Link } from "react-router-dom";
 import Add_appointment from "../../forms/Add_appointment";
 import Star from "./StarRating";
 import Track from "./Track";
+import Trash from '../Trash'
 import {
   EditOutlined,
   NodeIndexOutlined,
@@ -12,38 +13,43 @@ import {
   CalendarOutlined,
   StarOutlined,
 } from "@ant-design/icons";
-import Trash from "../Trash";
 import moveToTrash from "./moveToTrash";
 const { Meta } = Card;
 // class component for display a card
-let temp=''
 class AppointsCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Appointments:[]
+      Appointments:[],
+      show:false
     };
   }
+  orderInfo =(info)=>{
 
+    this.setState({ order: [...this.state.order, info] });
+  
+    // console.log("hi from order", info)
+  
+  }
    handleDelete = (key) => {
     //datasource.title
     console.log(key)
     // setData(dataSource.filter((item) => item._id !== key));
     console.log("hiiii", key._id);
-    this.setState({Appointments :key})
-     temp=this.state.Appointments
-    // deleteAppointment(key)
-    //   .then((response) => {
-    //     console.log("Deleted Succcfully !!!!!!!!", response);
-    //   })
-    //   .catch((error) => {
-    //     console.log("API ERROR:", error);
-    //   });
+    // let arr=[]
+    // arr.push(key)
+    this.setState({Appointments :[...this.state.Appointments , key]})
+    deleteAppointment(key._id)
+      .then((response) => {
+        console.log("Deleted Succcfully !!!!!!!!", response);
+      })
+      .catch((error) => {
+        console.log("API ERROR:", error);
+      });
   };
   // let [showTrack, setshowTrack] = useState("");
   render() {
     console.log(this.state.Appointments)
-    console.log(temp)
     return (
       <div>
         <div>
@@ -76,14 +82,15 @@ class AppointsCard extends Component {
                 <Meta
                   avatar={<CalendarOutlined className="AppAvatar" />}
                   title={this.props.title}
-                  description={this.props.description}
+                  description={`${this.props.description} \n ${this.props.time}`}
                 />
               </Card>
             </Col>
             <Col></Col>
           </Row>
-          <moveToTrash array={this.state.Appointments}></moveToTrash>
         </div>
+        {this.state.show ? <Trash array={this.state.Appointments}></Trash>: null}
+        <moveToTrash array={this.state.Appointments}></moveToTrash>
       </div>
     );
   }

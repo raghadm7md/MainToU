@@ -39,16 +39,16 @@ let currentUser= ""
 
     return request
   },
-  logout: async () => {
-    let profile;
-    await axios
-      .get(`/api/auth/logout`)
-
-      .then((response) => (profile = response))
-      .catch((err) => console.log(err));
-    return profile;
-  },
-};
+  
+  logout: () => {
+    axios
+      .get(`/api/Clint/logout`)
+      .then((response) => {
+        console.log('RESPONSE: ', response);
+        currentUser = null 
+      })
+      .catch((err) => console.log(err))
+  },}
 
 const getAllmintsCompany = () => {
   return axios.get(`${URL}/company`);

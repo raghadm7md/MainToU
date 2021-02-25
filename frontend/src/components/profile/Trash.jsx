@@ -19,9 +19,11 @@ class Trash extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      appointments:[]
+      appointments:this.props.array
     };
   }
+
+  
   // const [data, setData] = useState("");
   // useEffect(() => {
   //   TrashAppointments()
@@ -35,9 +37,10 @@ class Trash extends Component {
   // function onChange(pagination, filters, sorter, extra) {
   //   console.log("params", pagination, filters, sorter, extra);
   // }
+  
 render (){
-  console.log("delete11111",this.props.trash)
-  // const cards =this.props.trash.map((element, index) => {
+  console.log("delete11111",this.props.array)
+  // const cards =this.props.array.map((element, index) => {
   //   return (
   //     <Table
   //         className="TMtable"
@@ -57,7 +60,14 @@ render (){
         </Divider>
       </Row>
       <div>
-    {/* {cards} */}
+      <Table
+          className="TMtable"
+          size="middle"
+          style={{textAlign:"center"}}
+           columns={columns}
+           dataSource={this.props.trash}
+          // onChange={onChange}
+        />
       </div>
     </div>
   );

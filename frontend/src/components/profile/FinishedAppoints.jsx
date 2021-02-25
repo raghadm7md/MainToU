@@ -61,8 +61,8 @@ class FinishedAppoints extends Component {
             <h2>Finished Appointments</h2>
           </Divider>
         </Row>
-        <Row gutter={[16, 16]}>
-          <Col>{cards}</Col>
+        <Row>
+          {cards}
         </Row>
       </div>
     );

@@ -35,6 +35,8 @@ class UpComAppoints extends Component {
           <AppointsCard
           title={item.title}
           description={item.description}
+          data={item.date}
+          time={item.time}
           delete={item}
           />
         );
@@ -56,8 +58,6 @@ class UpComAppoints extends Component {
         <Row>
           {cards}
         </Row>
-        {/* <Track/> */}
-        {/* <StarRating/> */}
       </div>
     );
   }

@@ -63,7 +63,7 @@ export default class ProfileInfo extends Component {
         console.log("ERR: ", err);
       });
 
-    window.location.reload(false);
+    // window.location.reload(false);
   };
 
   Editname = () => {
