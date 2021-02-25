@@ -67,7 +67,7 @@ A list of technologies used within the project:
 1.  As an admin, I should be able to login/logout to the website.
 2.  As an admin, I should be able to add a new maintenance company.
 3.  As an admin, I should be able to add a new Tech Man.
-4- As an admin, I should be able to edit the added maintenance company.
+4-  As an admin, I should be able to edit the added maintenance company.
 5.  As an admin, I should be able to edit the added Tech Man.
 6.  As an admin, I should be able to delete a maintenance company.
 7.  As an admin, I should be able to delete a Tech Man.
