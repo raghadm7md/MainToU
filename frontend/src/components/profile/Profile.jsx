@@ -130,13 +130,13 @@ class Profile extends Component {
                         Completed 
                       </Menu.Item>
 
-                      {/* <Menu.Item
+                      <Menu.Item
                         key="4"
                         icon={<DeleteOutlined />}
                         onClick={this.show}
                       >
                         Trash
-                      </Menu.Item> */}
+                      </Menu.Item>
                     </Menu>
                   </Sider>
                 </Layout>
@@ -145,7 +145,7 @@ class Profile extends Component {
                 {this.state.showProfile ? <ProfileInfo /> : null}
                 {this.state.showUpcoming ? <UpComAppoints /> : null}
                 {this.state.showCompleted ? <FinishedAppoints /> : null}
-                {/* {this.state.showTrash ? <Trash /> : null} */}
+                {this.state.showTrash ? <Trash /> : null}
               </Content>
             </Layout>
           </Content>

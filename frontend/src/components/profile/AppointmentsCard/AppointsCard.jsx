@@ -38,18 +38,20 @@ class AppointsCard extends Component {
     console.log("hiiii", key._id);
     // let arr=[]
     // arr.push(key)
-    this.setState({Appointments :[...this.state.Appointments , key]})
-    deleteAppointment(key._id)
-      .then((response) => {
-        console.log("Deleted Succcfully !!!!!!!!", response);
-      })
-      .catch((error) => {
-        console.log("API ERROR:", error);
-      });
+    var joined = this.state.Appointments.push(key);
+    this.setState({ Appointments: joined })
+    console.log(this.state.Appointments)
+
+    // deleteAppointment(key._id)
+    //   .then((response) => {
+    //     console.log("Deleted Succcfully !!!!!!!!", response);
+    //   })
+    //   .catch((error) => {
+    //     console.log("API ERROR:", error);
+    //   });
   };
   // let [showTrack, setshowTrack] = useState("");
   render() {
-    console.log(this.state.Appointments)
     return (
       <div>
         <div>
@@ -89,8 +91,9 @@ class AppointsCard extends Component {
             <Col></Col>
           </Row>
         </div>
-        {this.state.show ? <Trash array={this.state.Appointments}></Trash>: null}
-        <moveToTrash array={this.state.Appointments}></moveToTrash>
+        {/* {this.state.show ? <Trash array={this.state.Appointments}></Trash>: null} */}
+        {/* <moveToTrash array={this.state.Appointments}></moveToTrash>
+        <Trash array={this.state.Appointments}></Trash> */}
       </div>
     );
   }
