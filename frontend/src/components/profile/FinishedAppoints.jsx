@@ -37,7 +37,16 @@ class FinishedAppoints extends Component {
     console.log(currentUser._id)
     console.log(currentUser)
     console.log("@@@@", this.state.Appointments);
-    const cards = this.state.Appointments.map((element, index) => {
+    
+    return (
+      <div>
+        <Row>
+          <Divider>
+            <h2>Finished Appointments</h2>
+          </Divider>
+        </Row>
+        <Row>
+          {this.state.Appointments.length==0 ? <h2> No Appointments yet</h2> : this.state.Appointments.map((element, index) => {
       return (
         <Card style={{ width: 300 }}
         actions={[
@@ -53,16 +62,7 @@ class FinishedAppoints extends Component {
           />
         </Card>
       );
-    });
-    return (
-      <div>
-        <Row>
-          <Divider>
-            <h2>Finished Appointments</h2>
-          </Divider>
-        </Row>
-        <Row>
-          {cards}
+    })} 
         </Row>
       </div>
     );
