@@ -17,6 +17,7 @@ import moveToTrash from "./moveToTrash";
 const { Meta } = Card;
 // class component for display a card
 class AppointsCard extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -50,6 +51,7 @@ class AppointsCard extends Component {
     //     console.log("API ERROR:", error);
     //   });
   };
+
   // let [showTrack, setshowTrack] = useState("");
   render() {
     return (
@@ -69,7 +71,8 @@ class AppointsCard extends Component {
                     {/* {showTrack && <Track />} */}
                   </Tooltip>,
                   <Tooltip placement="bottom" title="Delete">
-                    {/* <DeleteOutlined className="appointsIco" key="delete" /> */}
+
+                    
                     <Popconfirm
                     title="Sure to delete?"
                     onConfirm={() => this.handleDelete(this.props.delete)}
@@ -78,22 +81,27 @@ class AppointsCard extends Component {
                       <DeleteOutlined className="edit" />
                     </a>
                   </Popconfirm>
+
                   </Tooltip>,
                 ]}
               >
                 <Meta
                   avatar={<CalendarOutlined className="AppAvatar" />}
                   title={this.props.title}
+
                   description={`${this.props.description} \n ${this.props.time}`}
+
                 />
               </Card>
             </Col>
             <Col></Col>
           </Row>
         </div>
+
         {/* {this.state.show ? <Trash array={this.state.Appointments}></Trash>: null} */}
         {/* <moveToTrash array={this.state.Appointments}></moveToTrash>
         <Trash array={this.state.Appointments}></Trash> */}
+
       </div>
     );
   }

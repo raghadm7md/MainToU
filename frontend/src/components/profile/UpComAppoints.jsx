@@ -46,6 +46,7 @@ class UpComAppoints extends Component {
             </Col>
           </Row>
         <Row>
+
           {this.state.Appointments.length==0 ? <h2> No Appointments yet</h2> : this.state.Appointments.map((item, index) => {
         return (
           <AppointsCard
@@ -58,6 +59,10 @@ class UpComAppoints extends Component {
         );
       })} 
         </Row>
+
+        {/* <Track/> */}
+        {/* <StarRating/> */}
+
       </div>
     );
   }

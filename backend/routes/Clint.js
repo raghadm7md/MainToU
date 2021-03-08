@@ -33,9 +33,6 @@ router.get("/Clint", (req, res) => {
     res.json(data);
   });
 });
-router.get("/", function (req, res) { 
-  res.render("Home"); 
-}); 
 
 // get one client
 router.get("/Clint/:clientId", (req, res) => {
@@ -166,10 +163,7 @@ router.get("/login/failed", (req, res) => {
       message: "Authentication Failed"
   });
 });
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect('/')
-});
+
 // Trash Appointments
 router.get("/:clintId/TrashAppointments", (req, res) => {
   console.log("GET /clint/NewAppointments");
@@ -200,11 +194,20 @@ router.post("/login",(req, res) => {
   }
   Client.findOne({ email: email , password : password}).then(client => {
     if (!client) {
-      return res.status(404).json({
-        errors: [{ client: "not found" }],
+      
+      TechMan.findOne({ email: email  }).then(techMen => {
+         if(!techMen){
+            return res.status(404).json({
+            errors: [{ client: "not found" }],
       });
-    
     }
+    else{        
+      res.json(techMen)
+      return techMen;
+    }
+  })}
+    
+  
       else{        
         res.json(client)
         return client;
@@ -224,6 +227,14 @@ router.post("/login",(req, res) => {
       next();
   }
   });
-  
+  router.get("/logout", (req, res) => {
+    console.log('User Id', req.body.email);
+   
+     Client.deleteOne({ email:  req.body.email }, function (err) {
+      if (err) return handleError(err);
+      else
+      res.json("de")})
+
+});
   
 module.exports = router;

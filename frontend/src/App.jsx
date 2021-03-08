@@ -14,11 +14,11 @@ import ProfileInfo from "./components/profile/ProfileInfo";
 import Register from "./components/mainComponents/Register"
 import NavMenu from "./components/mainComponents/NavMenu"
 import moveToTrash from './components/profile/AppointmentsCard/moveToTrash'
+import ProfileTechmen from "./components/ProfileTechmen/Profile";
 
-// import Profile from "./components/mainComponents/Profile";
 
 
-function App(props) {
+function App() {
 
   return (
     <>
@@ -37,6 +37,9 @@ function App(props) {
           </Route>
           <Route path="/profile">
            <Profile/>
+          </Route>
+          <Route path="/profiletechmen">
+           <ProfileTechmen/> 
           </Route>
           <Route path="/admin">
             <Admin/>

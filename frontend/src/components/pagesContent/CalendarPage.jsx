@@ -4,22 +4,7 @@ import { Calendar, Badge } from "antd";
 import CalendarBG from "../../images/calendarBG.svg";
 function getListData(value) {
   let listData;
-  switch (value.date()) {
-    case 8:
-      listData = [
-        { type: "warning", content: "DNS Server Connection" },
-        { type: "success", content: "Cabels issue" },
-      ];
-      break;
-    case 10:
-      listData = [
-        { type: "warning", content: "Network Connection" },
-        { type: "success", content: "Data Center Server" },
-        { type: "error", content: "Backup Recovery" },
-      ];
-      break;
-    default:
-  }
+
   return listData || [];
 }
 function dateCellRender(value) {

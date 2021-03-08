@@ -3,7 +3,6 @@ import { Form, Input, Button, Table, Col, Row, Divider, Space } from "antd";
 import { getClientInfo, updateClientInfo , currentUser} from "../API/Api";
 import { EditOutlined } from "@ant-design/icons";
 const { Column, ColumnGroup } = Table;
-
 export default class ProfileInfo extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +19,6 @@ export default class ProfileInfo extends Component {
       phoneNumber: "",
     };
   }
-
   componentDidMount() {
     // ************** add id client */
     getClientInfo(currentUser._id)
@@ -32,11 +30,9 @@ export default class ProfileInfo extends Component {
         console.log("ERR: ", err);
       });
   }
-
   show = () => {
     this.setState({ showButton: true });
   };
-
   hide = () => {
     this.setState({ showButton: false });
     this.setState({ Inputname: false });
@@ -63,9 +59,7 @@ export default class ProfileInfo extends Component {
         console.log("ERR: ", err);
       });
 
-    // window.location.reload(false);
   };
-
   Editname = () => {
     console.log();
     this.setState({ Inputname: true });
@@ -74,7 +68,6 @@ export default class ProfileInfo extends Component {
     console.log();
     this.setState({ Inputaddress: true });
   };
-
   Editemail = () => {
     console.log();
     this.setState({ Inputemail: true });
@@ -86,7 +79,6 @@ export default class ProfileInfo extends Component {
   render() {
 
     console.log(currentUser.email)
-    
     return (
       <div>
         <Row>
