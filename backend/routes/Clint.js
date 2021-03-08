@@ -33,6 +33,12 @@ router.get("/Clint", (req, res) => {
     res.json(data);
   });
 });
+router.get("/C", (req, res) => {
+  console.log("GET /Clint");
+  Admin.find({}, function (err, data) {
+    res.json(data);
+  });
+});
 
 // get one client
 router.get("/Clint/:clientId", (req, res) => {
@@ -192,25 +198,29 @@ router.post("/login",(req, res) => {
   if (errors.length > 0) {
    return res.status(422).json({ errors: errors });
   }
-  Client.findOne({ email: email , password : password}).then(client => {
-    if (!client) {
-      
-      TechMan.findOne({ email: email  }).then(techMen => {
-         if(!techMen){
-            return res.status(404).json({
-            errors: [{ client: "not found" }],
-      });
-    }
-    else{        
-      res.json(techMen)
-      return techMen;
-    }
-  })}
+  Admin.findOne({ email: email , password : password}).then(admin => {
+    if (!admin) {
+      Client.findOne({ email: email , password : password}).then(clint => {
+       if(!clint){
+        TechMan.findOne({ email: email }).then(techMen => {
+          if(!techMen){
+           return res.status(404).json({
+             errors: [{ admin: "not found" }],
+           });}
+          else{
+            res.json(techMen)
+            return techMen;
+          }})
+       
+       }
+       else{
+        res.json(clint)
+        return clint;
+      }})}
     
-  
       else{        
-        res.json(client)
-        return client;
+        res.json(admin)
+        return admin;
       }
     } ) 
 }

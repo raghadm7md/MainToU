@@ -158,4 +158,19 @@ router.post("/company/:companyId/:techManId", (req, res) => {
   });
 });
 
+
+const newAdmin =   [
+  { 
+    name: "Admin",
+    email: "as@gmail.com",
+    phoneNumber: "0633821265",
+    password: "Admin@251"
+  },
+]
+Admin.insertMany(newAdmin, (err, newAdmin) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log('added provided vampire data', newAdmin);
+  });
 module.exports = router;
