@@ -101,12 +101,12 @@ const updateClientInfo=(info, id)=>{
 
 const gettAllAppointment=(id)=>{
 
-   return axios.get(`/api/Clint/${id}/NewAppointments`)
+   return axios.get(`/api/Appoints/appointments/${id}/NewAppointments`)
 
 }
 
 const booked=(C_id,A_id)=>{
-  return axios.post(`/api/Clint/clint/${C_id}/${A_id}`)
+  return axios.post(`/api/Appoints/appointments/${C_id}/${A_id}`)
 }
 
 const deleteAppointment=(id)=>{
