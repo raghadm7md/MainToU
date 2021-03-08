@@ -42,7 +42,6 @@ function NavMenu() {
     : 
       null
    }
-   
    {auth.isLogged && auth.currentUser.email == "as@gmail.com"?
      <Menu.Item key="admin">
         <Link to="/admin">Admin</Link>
@@ -67,7 +66,6 @@ function NavMenu() {
       </Menu.Item>
    }
     </Menu>
-     
   );
 }
 export default NavMenu;

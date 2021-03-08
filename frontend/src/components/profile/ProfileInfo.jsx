@@ -39,6 +39,7 @@ export default class ProfileInfo extends Component {
     this.setState({ Inputaddress: false });
     this.setState({ Inputemail: false });
     this.setState({ InputphoneNumber: false });
+
     const info = this.state.clientInfo;
     const newInfo = {
       companyName: this.state.companyName
@@ -57,7 +58,7 @@ export default class ProfileInfo extends Component {
       .catch((err) => {
         console.log("ERR: ", err);
       });
-    window.location.reload(false);
+
   };
   Editname = () => {
     console.log();
@@ -76,6 +77,7 @@ export default class ProfileInfo extends Component {
     this.setState({ InputphoneNumber: true });
   };
   render() {
+
     console.log(currentUser.email)
     return (
       <div>

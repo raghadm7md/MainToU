@@ -13,7 +13,9 @@ import Trash from "./components/profile/Trash";
 import ProfileInfo from "./components/profile/ProfileInfo";
 import Register from "./components/mainComponents/Register"
 import NavMenu from "./components/mainComponents/NavMenu"
+import moveToTrash from './components/profile/AppointmentsCard/moveToTrash'
 import ProfileTechmen from "./components/ProfileTechmen/Profile";
+
 
 
 function App() {

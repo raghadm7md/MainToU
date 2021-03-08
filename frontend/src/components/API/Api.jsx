@@ -3,7 +3,6 @@ import {setAuth} from '../mainComponents/NavMenu'
 
 const URL = 'http://localhost:5000'
 
-
 let currentUser= ""
 
  const API = {
@@ -34,8 +33,6 @@ let currentUser= ""
 
         currentUser =  response.data;
         console.log("res is :",response.data)
-
-
         return response.data
         
       })
@@ -103,13 +100,19 @@ const updateClientInfo=(info, id)=>{
 } 
 
 const gettAllAppointment=(id)=>{
-  return axios.get(`/api/Clint/${id}/NewAppointments`)
+
+   return axios.get(`/api/Clint/${id}/NewAppointments`)
+
 }
 
 const booked=(C_id,A_id)=>{
   return axios.post(`/api/Clint/clint/${C_id}/${A_id}`)
 }
-export {API,  getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments ,  getClientInfo,
 
-  updateClientInfo , gettAllAppointment , booked , currentUser};
+const deleteAppointment=(id)=>{
+  return axios.delete(`/api/Appoints/appointments/${id}`);
+}
+
+export {API,  getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments ,  getClientInfo,
+  updateClientInfo , gettAllAppointment , booked , currentUser , deleteAppointment};
 

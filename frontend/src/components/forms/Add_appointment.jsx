@@ -41,7 +41,7 @@ const AppointsCollection = ({ visible, createNewAppoint, onCancel }) => {
       <Form {...layout} form={form} name="nest-messages">
         <Form.Item
           name={"title"}
-          label="Tilte:"
+          label="Title:"
           rules={[
             {
               required: true,
@@ -136,8 +136,8 @@ export default function Add_appointment() {
   };
   return (
     <>
-      <Button className="addBtn" onClick={() => setVisible(true)}>
-        Book Appointment
+      <Button className="addAppbtn"  onClick={() => setVisible(true)}>
+        Add Appointment
       </Button>
       <AppointsCollection
         visible={visible}

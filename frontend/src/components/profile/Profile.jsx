@@ -29,6 +29,7 @@ class Profile extends Component {
       showTrash: false,
       email:this.props.auth
 
+
     };
   }
 
