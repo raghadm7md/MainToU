@@ -43,13 +43,13 @@ class AppointsCard extends Component {
     this.setState({ Appointments: joined })
     console.log(this.state.Appointments)
 
-    // deleteAppointment(key._id)
-    //   .then((response) => {
-    //     console.log("Deleted Succcfully !!!!!!!!", response);
-    //   })
-    //   .catch((error) => {
-    //     console.log("API ERROR:", error);
-    //   });
+    deleteAppointment(key._id)
+      .then((response) => {
+        console.log("Deleted Succcfully !!!!!!!!", response);
+      })
+      .catch((error) => {
+        console.log("API ERROR:", error);
+      });
   };
 
   // let [showTrack, setshowTrack] = useState("");

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TrashAppointments , currentUser} from "../API/Api";
-import { Row, Divider, Card, Col, Tooltip } from "antd";
+import { Row, Divider, Card, Col, Tooltip, Empty } from "antd";
 import Star from "./AppointmentsCard/StarRating";
 import {
   EditOutlined,
@@ -45,7 +45,7 @@ class FinishedAppoints extends Component {
         </Row>
 
         <Row>
-          {this.state.Appointments.length==0 ? <h2> No Appointments yet</h2> : this.state.Appointments.map((element, index) => {
+          {this.state.Appointments.length==0 ? <Empty description={<h2>No Appointments yet</h2>}/> : this.state.Appointments.map((element, index) => {
       return (
         <Card style={{ width: 300 }}
         actions={[

@@ -5,7 +5,7 @@ import About from "../mainComponents/About";
 import AppointsCard from "./AppointmentsCard/AppointsCard";
 import Track from "./AppointmentsCard/Track";
 import StarRating from "./AppointmentsCard/StarRating";
-import { Row, Col , Divider} from "antd";
+import { Row, Col , Divider, Empty} from "antd";
 
 
 
@@ -47,7 +47,7 @@ class UpComAppoints extends Component {
           </Row>
         <Row>
 
-          {this.state.Appointments.length==0 ? <h2> No Appointments yet</h2> : this.state.Appointments.map((item, index) => {
+          {this.state.Appointments.length==0 ? <Empty description={<h2>No Appointments yet</h2>}/> : this.state.Appointments.map((item, index) => {
         return (
           <AppointsCard
           title={item.title}
