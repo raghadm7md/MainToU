@@ -8,23 +8,24 @@ let currentUser= ""
 
  const API = {
   register: async (newUserInfo) => {
-    let message;
-    console.log(newUserInfo);
+    let message
+    console.log(newUserInfo)
+
     await axios
-      .post(`/api/Clint/Clint`, newUserInfo)
+      .post(`${URL}/api/Clint/Clint`, newUserInfo)
       .then((response) => {
-        console.log("Not error");
-        message = response.data;
-        console.log(message);
+        console.log('Not error')
+        message = response.data
+        console.log(message)
       })
       .catch((err) => {
-        console.log(err);
+        console.log("err")
       });
-    return message;
-  },
+    return message
+  },  
   login: async (credential) => {
     const request = axios
-      .post(`/api/Clint/login`, {
+      .post(`${URL}/api/Clint/login`, {
         email: credential.email,
         password: credential.password,
         withCredentials: true,
@@ -48,7 +49,7 @@ let currentUser= ""
   logout: async () => {
     let profile;
     await axios
-      .get(`/api/Clint/auth/logout`)
+      .get(`/api/Clint/logout`)
 
       .then((response) => (profile = response))
       .catch((err) => console.log(err));
