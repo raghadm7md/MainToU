@@ -65,7 +65,7 @@ function UpComAppoints() {
               <Add_appointment />
             </Col>
           </Row>
-        <Row>
+        <Row className="emptyCont">
 
           {ComAppoints.length==0 ? <Empty description={<h2>No Appointments yet</h2>}/> : ComAppoints.map((item, index) => {
         return (

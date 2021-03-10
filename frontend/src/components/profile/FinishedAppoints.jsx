@@ -44,7 +44,7 @@ class FinishedAppoints extends Component {
           </Divider>
         </Row>
 
-        <Row>
+        <Row className="emptyCont">
           {this.state.Appointments.length==0 ? <Empty description={<h2>No Appointments yet</h2>}/> : this.state.Appointments.map((element, index) => {
       return (
         <Card style={{ width: 300 }}
