@@ -1,56 +1,73 @@
-import React, { Component } from 'react'
-import { Modal, Button,Rate  } from "antd";
-import {StarOutlined} from "@ant-design/icons";
+// import React, { Component } from 'react'
+// import { Modal, Button,Rate  } from "antd";
+// import {StarOutlined} from "@ant-design/icons";
+// import {rate} from '../../API/Api';
 
+// export default class StarRating extends Component  {
+//   state = {
+//     loading: false,
+//     visible: false,
+//     value: 0,
+//   };
+//   handleChange = value => {
+//     this.setState({ value });
+//     //console.log(value)
+//   };
 
-export default class Track extends Component  {
-  state = {
-    loading: false,
-    visible: false,
-  };
+//   showModal = () => {
+//     this.setState({
+//       visible: true,
+//     });
+//   };
 
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-  };
+//   handleOk = () => {
+//     this.setState({ loading: true });
+//     setTimeout(() => {
+//       this.setState({ loading: false, visible: false });
+//     }, 3000);
+//     this.rating()
+//   };
 
-  handleOk = () => {
-    this.setState({ loading: true });
-    setTimeout(() => {
-      this.setState({ loading: false, visible: false });
-    }, 3000);
-  };
+//   rating = () =>{
+//     //console.log(this.state.value)
+//     let info = {rate:this.state.value}
+//     rate(info)
+//     .then((response) => {
+//     })
+//     .catch((error) => {
+//       console.log("API ERROR:", error);
+//     });
+    
+//   }
+//   handleCancel = () => {
+//     this.setState({ visible: false });
+//   };
 
-  handleCancel = () => {
-    this.setState({ visible: false });
-  };
-
-  render() {
-    const { visible, loading } = this.state;
-    return (
-      <>
+//   render() {
+//     const { visible, loading, value } = this.state;
+//     return (
+//       <>
        
-<StarOutlined onClick={this.showModal}>
-   </StarOutlined>
-        <Modal
-          visible={visible}
-          title="Rating"
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-          footer={[
-            <Button key="back" onClick={this.handleCancel}>
-              Return
-            </Button>,
-            <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
-              Submit
-            </Button>,
-          ]}
-        >
-         <Rate />
-        </Modal>
-      </>
-    );
-  }
-}
+// <StarOutlined onClick={this.showModal}>
+//    </StarOutlined>
+//         <Modal
+//           visible={visible}
+//           title="Rating"
+//           onOk={this.handleOk}
+//           onCancel={this.handleCancel}
+//           footer={[
+//             <Button key="back" onClick={this.handleCancel}>
+//               Return
+//             </Button>,
+//             <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
+//               Submit
+//             </Button>,
+//           ]}
+//         >
+//          <Rate onChange={this.handleChange} value={value} />
+//         </Modal>
+//       </>
+//     );
+//   }
+// }
 

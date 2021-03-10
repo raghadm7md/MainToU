@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Form, Input, Button, Table, Col, Row, Divider, Space } from "antd";
 import { getClientInfo, updateClientInfo , currentUser} from "../API/Api";
-import { EditOutlined } from "@ant-design/icons";
+import { EditOutlined, TeamOutlined } from "@ant-design/icons";
+import RegBG from "../../images/RegBg.svg";
 const { Column, ColumnGroup } = Table;
 export default class ProfileInfo extends Component {
   constructor(props) {
@@ -86,58 +87,98 @@ export default class ProfileInfo extends Component {
             <h2>Your Information</h2>
           </Divider>
         </Row>
+        <div className="profileInfo "
+        // style={{
+        //   background: `url(${RegBG})`,
+        //   width: "50%",
+        //   height: "80%",
+        //   backgroundRepeat: "no-repeat",
+        //   color: "white",
+        // }}
+        >
+          <div className="profform" >
+          <Divider><TeamOutlined className="profIco"/></Divider>
         <Form name="nest-messages" style={{ width: 300 }}>
-          <Form.Item name="companyName" label="Company name:">
+          <Form.Item name="companyName" label={<h4><b>Company name:</b></h4>}>
+          <Row>
             {this.state.clientInfo.companyName}
             {this.state.showButton ? (
+              <Col className="gutter-row" span={8}>
+              
               <EditOutlined onClick={this.Editname}></EditOutlined>
+               </Col>
             ) : null}
             {this.state.Inputname ? (
+              <Col className="gutter-row" span={8}>
               <Input
                 onChange={(event) => {
                   this.setState({ companyName: event.target.value });
                 }}
               />
+              
+            </Col>
             ) : null}
+            </Row>
           </Form.Item>
-          <Form.Item name="address" label="Address:">
+          <Divider/>
+          <Form.Item name="address" label={<h4><b>Address:</b></h4>}>
+            <Row>
             {this.state.clientInfo.address}
             {this.state.showButton ? (
+              <Col className="gutter-row" span={8}>
               <EditOutlined onClick={this.Editaddress}></EditOutlined>
+              </Col>
             ) : null}
             {this.state.Inputaddress ? (
+              <Col className="gutter-row" span={8}>
               <Input
                 onChange={(event) => {
                   this.setState({ address: event.target.value });
                 }}
               />
+              </Col>
             ) : null}
+            </Row>
           </Form.Item>
-          <Form.Item name="email" label="Email:">
+          <Divider/>
+          <Form.Item name="email" label={<h4><b>Email:</b></h4>}>
+            <Row>
             {this.state.clientInfo.email}
             {this.state.showButton ? (
+              <Col className="gutter-row" span={8}>
               <EditOutlined onClick={this.Editemail}></EditOutlined>
+              </Col>
             ) : null}
             {this.state.Inputemail ? (
+              <Col className="gutter-row" span={8}>
               <Input
                 onChange={(event) => {
                   this.setState({ email: event.target.value });
                 }}
               />
+              </Col>
             ) : null}
+            </Row>
           </Form.Item>
-          <Form.Item name="phoneNumber" label="phoneNumber:">
+          <Divider/>
+          <Form.Item name="phoneNumber" label={<h4><b>Phone Number:</b></h4>}>
+            <Row>
             {this.state.clientInfo.phoneNumber}
             {this.state.showButton ? (
+              <Col className="gutter-row" span={8}>
               <EditOutlined onClick={this.EditphoneNumber}></EditOutlined>
+              </Col>
             ) : null}
             {this.state.InputphoneNumber ? (
+              <Col className="gutter-row" span={8}>
               <Input
                 onChange={(event) => {
                   this.setState({ phoneNumber: event.target.value });
                 }}
               />
+              </Col>
             ) : null}
+            </Row>
           </Form.Item>
           {this.state.showButton ? (
             <Button onClick={this.hide}>save</Button>
@@ -145,6 +186,8 @@ export default class ProfileInfo extends Component {
             <Button onClick={this.show}>Edit</Button>
           )}
         </Form>
+        </div>
+        </div>
       </div>
     );
   }
