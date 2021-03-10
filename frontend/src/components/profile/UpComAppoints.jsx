@@ -16,17 +16,18 @@ class UpComAppoints extends Component {
       Appointments:[]
     };
   }
-  componentDidMount() {
+  // componentDidMount() {
 
-    gettAllAppointment(currentUser._id)
-      .then((response) => {
-        console.log("DATA: ", response.data);
-        this.setState({ Appointments: response.data.app_id});
-      })
-      .catch((err) => {
-        console.log("ERR: ", err);
-      });
-  }
+  //   gettAllAppointment(currentUser._id)
+  //     .then((response) => {
+  //       console.log("DATA: ", response.data);
+  //       this.setState({ Appointments: response.data.app_id});
+  //     })
+  //     .catch((err) => {
+  //       console.log("ERR: ", err);
+  //     });
+  // }
+  
   render(){
     console.log(currentUser._id)
     console.log(this.state.Appointments)
