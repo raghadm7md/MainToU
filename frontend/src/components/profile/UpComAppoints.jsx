@@ -30,7 +30,7 @@ function UpComAppoints() {
   //     });
   // }
 
-  useEffect(() => {
+  // useEffect(() => {
       gettAllAppointment(currentUser._id)
       .then((response) => {
         console.log("DATA: ", response.data);
@@ -41,7 +41,7 @@ function UpComAppoints() {
       .catch((err) => {
         console.log("ERR: ", err);
       });
-}, []);
+// }, []);
 
   // render(){
   //   console.log(currentUser._id)
