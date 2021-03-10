@@ -65,11 +65,6 @@ class AppointsCard extends Component {
       });
 
   }
-
-  setshowTrack=()=>{
-    console.log("setshowTrack")
-  }
-
   // let [showTrack, setshowTrack] = useState("");
   render() {
     return (
@@ -84,7 +79,7 @@ class AppointsCard extends Component {
                     <NodeIndexOutlined
                       className="appointsIco"
                       key="track"
-                      onClick={this.setshowTrack}
+                      // onClick={this.setshowTrack}
                     />
                     {/* {showTrack && <Track />} */}
                   </Tooltip>,
