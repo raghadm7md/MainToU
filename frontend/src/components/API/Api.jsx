@@ -94,5 +94,10 @@ const deleteAppointment=(id)=>{
 const CompletedApp=(id)=>{
   return axios.put(`${URL}/api/Clint/clint/${id}`);
 }
+
+const rate=(rating,id)=>{
+  return axios.put(`${URL}/clint/rate/${id}`,rating)
+}
+
 export {API,  getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments ,  getClientInfo,
-  updateClientInfo , gettAllAppointment , booked , currentUser , deleteAppointment , CompletedApp};
+  updateClientInfo , gettAllAppointment , booked , currentUser , deleteAppointment , CompletedApp , rate};

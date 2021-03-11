@@ -126,15 +126,16 @@ const TechMen = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState("");
   // get all techman
-  useEffect(()=>{
+  // useEffect(()=>{
     getAllTechMan()
      .then((response) => {
        setData(response.data)
      })
      .catch((error) => {
        console.log("API ERROR:", error);
-     });}
-     ,[]);
+     });
+    // }
+    //  ,[]);
   const handleDelete = (key) => {
     const dataSource = [...data];
     setData( dataSource.filter((item) => item._id !== key))
