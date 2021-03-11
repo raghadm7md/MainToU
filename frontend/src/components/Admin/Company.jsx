@@ -297,7 +297,7 @@ const Company = () => {
     // <div className="TMtable">
     <Form form={form} component={false}>
       <h2>Maintenance Companies</h2>
-      <NewCompany rowClassName ='addBtn'/>
+      <NewCompany rowClassName ='addBtn' />
       <Table 
         components={{
           body: {

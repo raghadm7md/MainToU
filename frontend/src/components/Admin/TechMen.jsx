@@ -124,7 +124,7 @@ const TechMen = () => {
   };
 
   const [form] = Form.useForm();
-  const [data, setData] = useState();
+  const [data, setData] = useState("");
   // get all techman
   useEffect(()=>{
     getAllTechMan()
@@ -208,21 +208,14 @@ const TechMen = () => {
       dataIndex: 'fullName',
       width: '25%',
       editable: true,
-      ...getColumnSearchProps('FullName'),
+      ...getColumnSearchProps('fullName'),
     },
-    // {
-    //   title: 'userName',
-    //   dataIndex: 'userName',
-    //   width: '15%',
-    //   editable: true,
-    //   ...getColumnSearchProps('userName'),
-    // },
     {
       title: 'Email',
       dataIndex: 'email',
       width: '15%',
       editable: true,
-      ...getColumnSearchProps('Email'),
+      ...getColumnSearchProps('email'),
     },
     {
       title: 'Phone',
