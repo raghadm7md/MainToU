@@ -19,23 +19,8 @@ class FinishedAppoints extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   // ************** add id client */
-  //   TrashAppointments(currentUser._id)
-  //     .then((response) => {
-  //       console.log("DATA: ", response.data);
-  //       this.setState({ Appointments: response.data.app_id });
-  //     })
-  //     .catch((err) => {
-  //       console.log("ERR: ", err);
-  //     });
-
-  // }
-
-  render() {
-    console.log(currentUser._id)
-    console.log(currentUser)
-    console.log("@@@@", this.state.Appointments);
+  componentDidMount() {
+    // ************** add id client */
     TrashAppointments(currentUser._id)
       .then((response) => {
         console.log("DATA: ", response.data);
@@ -44,6 +29,14 @@ class FinishedAppoints extends Component {
       .catch((err) => {
         console.log("ERR: ", err);
       });
+
+  }
+
+  render() {
+    console.log(currentUser._id)
+    console.log(currentUser)
+    console.log("@@@@", this.state.Appointments);
+    
     return (
       <div>
         <Row>
