@@ -96,7 +96,7 @@ const CompletedApp=(id)=>{
 }
 
 const rate=(rating,id)=>{
-  return axios.put(`${URL}/clint/rate/${id}`,rating)
+  return axios.put(`${URL}/api/Clint/clint/rate/${id}`,rating)
 }
 
 export {API,  getAllmintsCompany , newMintsCompany , deleteCompany , editCompany , getAllTechMan ,newTechMan, deleteTechMan , editTechMan, addNewAppointment, TrashAppointments ,  getClientInfo,
