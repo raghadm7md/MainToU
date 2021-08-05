@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import { Card, Col, Row, Divider, Tooltip , Popconfirm} from "antd";
-import { deleteAppointment } from "../../API/Api";
+import { deleteAppointment , CompletedApp } from "../../API/Api";
 import { Route, Link } from "react-router-dom";
 import Add_appointment from "../../forms/Add_appointment";
 import Star from "./StarRating";
@@ -11,6 +11,7 @@ import {
   NodeIndexOutlined,
   DeleteOutlined,
   CalendarOutlined,
+  CheckOutlined,
   StarOutlined,
 } from "@ant-design/icons";
 import moveToTrash from "./moveToTrash";
@@ -30,7 +31,7 @@ class AppointsCard extends Component {
     this.setState({ order: [...this.state.order, info] });
   
     // console.log("hi from order", info)
-  
+
   }
    handleDelete = (key) => {
     //datasource.title
@@ -52,6 +53,18 @@ class AppointsCard extends Component {
       });
   };
 
+  Check=()=>{
+    console.log("Check",this.props.item._id)
+    
+    CompletedApp(this.props.item._id)
+    .then((response) => {
+        console.log("Checked Succcfully !!!!!!!!", response);
+      })
+      .catch((error) => {
+        console.log("API ERROR:", error);
+      });
+
+  }
   // let [showTrack, setshowTrack] = useState("");
   render() {
     return (
@@ -66,16 +79,17 @@ class AppointsCard extends Component {
                     <NodeIndexOutlined
                       className="appointsIco"
                       key="track"
-                      // onClick={setshowTrack(true)}
+                      // onClick={this.setshowTrack}
                     />
                     {/* {showTrack && <Track />} */}
                   </Tooltip>,
+                  <Tooltip placement="bottom" title="Completed">
+                  <CheckOutlined onClick={this.Check}/>
+                </Tooltip>,
                   <Tooltip placement="bottom" title="Delete">
-
-                    
                     <Popconfirm
                     title="Sure to delete?"
-                    onConfirm={() => this.handleDelete(this.props.delete)}
+                    onConfirm={() => this.handleDelete(this.props.item)}
                   >
                     <a>
                       <DeleteOutlined className="edit" />
