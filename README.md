@@ -3,7 +3,9 @@
 # MaintToU | Web Application Software (MERN)
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
-  - [Project Description](#project-description)
+  - [Project Description](#project-livedemo)
+  - [Project Live Demo](#project-presentation)
+  - [Project presentation](#project-description)
   - [Technologies](#technologies)
   - [User Stories](#user-stories)
     - [Client Stories](#Client-stories)
@@ -19,8 +21,16 @@
   - [References](#references)
 ### Project Description
 ***
-MainToU is the first place to go once a tech issue occurred, it will help any company of any industry that faced a the technical issue to find the appropriate maintained company, easily book an available appointment from the appointments calendar, and edit, cancel the booked appointment, with the ability to track the appointment status whether it’s confirmed, in progress or finished to be aware of any changes, MainToU cares, strives to help, to be the bridge for solving your issues. MainToU is a full-Stack Web Application, we used MEARN stack technologies to build MainToU and with different technologies to be illustrated.
+MainToU is the first place to go once a tech issue occurred, it will help any company of any industry that faced a the technical issue to find the appropriate maintained company, easily book an available appointment from the appointments calendar, and edit, cancel the booked appointment, with the ability to track the appointment status whether it’s confirmed, in progress or finished to be aware of any changes, MainToU cares, strives to help, to be the bridge for solving your issues. MainToU is a full-Stack Web Application, we used MERN stack technologies to build MainToU and with different technologies to be illustrated.
 
+## Project Live Demo
+***
+ [Live Demo Link](https://maintou-team2.herokuapp.com/)
+## Project Presentation
+***
+ ![Wireframe1](./frontend/src/images/ReadmeImages/barcode.png)
+ 
+ [Presentation Link](https://www.canva.com/design/DAEYGO1mOIU/2e5M5bmVIsMA9MAz7UjRAg/view?utm_content=DAEYGO1mOIU&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 ## Technologies
 ***
 A list of technologies used within the project:

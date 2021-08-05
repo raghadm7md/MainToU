@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TrashAppointments , currentUser} from "../API/Api";
-import { Row, Divider, Card, Col, Tooltip } from "antd";
+import { Row, Divider, Card, Col, Tooltip, Empty } from "antd";
 import Star from "./AppointmentsCard/StarRating";
 import {
   EditOutlined,
@@ -36,16 +36,8 @@ class FinishedAppoints extends Component {
     console.log(currentUser._id)
     console.log(currentUser)
     console.log("@@@@", this.state.Appointments);
-    return (
-      <div>
-        <Row>
-          <Divider>
-            <h2>Finished Appointments</h2>
-          </Divider>
-        </Row>
 
-        <Row>
-          {this.state.Appointments.length==0 ? <h2> No Appointments yet</h2> : this.state.Appointments.map((element, index) => {
+    const cards = this.state.Appointments.map((element, index) => {
       return (
         <Card style={{ width: 300 }}
         actions={[
@@ -61,7 +53,38 @@ class FinishedAppoints extends Component {
           />
         </Card>
       );
+    });
+
+    return (
+      <div>
+        <Row>
+          <Divider>
+            <h2>Finished Appointments</h2>
+          </Divider>
+        </Row>
+
+        <Row gutter={[16, 16]}>
+          <Col>{cards}</Col>
+
+        <Row>
+          {this.state.Appointments.length==0 ? <Empty description={<h2>No Appointments yet</h2>}/> : this.state.Appointments.map((element, index) => {
+      return (
+        <Card style={{ width: 300 }}
+        actions={[
+          <Tooltip placement="bottom" title="Rate">
+            <Star item={element}/>
+          </Tooltip>
+        ]}
+        >
+          <Meta
+            avatar={<CalendarOutlined className="AppAvatar" />}
+            title={element.title}
+            description={`${element.description}\n${element.rate ? `| ${element.rate}`: `| Not rated yet` }`}
+          />
+        </Card>
+      );
     })} 
+
 
         </Row>
       </div>
