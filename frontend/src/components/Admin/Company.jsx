@@ -5,20 +5,6 @@ import { EditOutlined , DeleteOutlined  , SearchOutlined} from "@ant-design/icon
 import NewCompany from "./NewCompany";
 import { getAllmintsCompany , deleteCompany , editCompany } from "../API/Api";
 
-// const originData = [
-//   // {
-//   //   Name: "TWAIK",
-//   //   Email: "twaik@gmail.com",
-//   //   Phone: "+96654546378",
-//   // },
-//   // {
-//   //   Name: "Mosook",
-//   //   Email: "mosook@gmail.com",
-//   //   Phone: "+96654549978",
-//   // },
-// ];
-
-
 const EditableCell = ({
   editing,
   dataIndex,
@@ -143,15 +129,15 @@ const Company = () => {
   const [data, setData] = useState("");
 
 //*******====================== */
- useEffect(()=>{
+//  useEffect(()=>{
  getAllmintsCompany()
   .then((response) => {
     setData(response.data)
   })
   .catch((error) => {
     console.log("API ERROR:", error);
-  });}
-  ,[]);
+  });
+// } ,[]);
 
 
   // ****** delete company
@@ -311,7 +297,7 @@ const Company = () => {
     // <div className="TMtable">
     <Form form={form} component={false}>
       <h2>Maintenance Companies</h2>
-      <NewCompany rowClassName ='addBtn'/>
+      <NewCompany rowClassName ='addBtn' />
       <Table 
         components={{
           body: {

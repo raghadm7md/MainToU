@@ -5,7 +5,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
-const { Appointment, Client } = require("../models/models");
+const { Appointment, Client , Admin ,TechMan } = require("../models/models");
 const { Router } = require('express');
 
 // to can see the body from req instead of undefined
@@ -33,9 +33,25 @@ router.get("/Clint", (req, res) => {
     res.json(data);
   });
 });
-router.get("/", function (req, res) { 
-  res.render("Home"); 
-}); 
+router.get("/C", (req, res) => {
+  console.log("GET /Clint");
+  Admin.find({}, function (err, data) {
+    res.json(data);
+  });
+});
+
+// get one client
+router.get("/Clint/:clientId", (req, res) => {
+  Client.findById(req.params.clientId, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+
 
 //Edit profile
 router.put("/profile/:id", (req, res) => {
@@ -71,7 +87,7 @@ router.post("/clint/:clintId/:appointmentId", (req, res) => {
 router.put("/clint/:appointmentId/", (req, res) => {
   Appointment.findOneAndUpdate(
     { _id: req.params.appointmentId },
-    { available: false },
+    { isComplate: true },
     (err, result) => {
       if (err) {
         res.json(err);
@@ -153,18 +169,82 @@ router.get("/login/failed", (req, res) => {
       message: "Authentication Failed"
   });
 });
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect('/')
-});
-router.post('/login',
-    passport.authenticate('local',
-        {
-            failureRedirect: '/Clint',
-            failureFlash: false
-        }),
-    function (req, res) {
-        res.redirect('/login');
+
+// Trash Appointments
+router.get("/:clintId/ComplateAppointments", (req, res) => {
+  console.log("GET /clint/NewAppointments");
+  Client.findById(req.params.clintId)
+    .populate({ path: "app_id", match: { isComplate: true } })
+    .exec(function (err, result) {
+      if (err) {
+        console.log(err);
+      }
+      console.log(result);
+      res.json(result);
     });
+});
+router.post("/login",(req, res) => {
+  console.log("Login")
+  console.log("Body: ", req.body);
+  
+  let { email, password } = req.body;
+  let errors = [];
+  if (!email) {
+    errors.push({ email: "required" });
+  }
+  if (!password) {
+    errors.push({ passowrd: "required" });
+  }
+  if (errors.length > 0) {
+   return res.status(422).json({ errors: errors });
+  }
+  Admin.findOne({ email: email , password : password}).then(admin => {
+    if (!admin) {
+      Client.findOne({ email: email , password : password}).then(clint => {
+       if(!clint){
+        TechMan.findOne({ email: email }).then(techMen => {
+          if(!techMen){
+           return res.status(404).json({
+             errors: [{ admin: "not found" }],
+           });}
+          else{
+            res.json(techMen)
+            return techMen;
+          }})
+       
+       }
+       else{
+        res.json(clint)
+        return clint;
+      }})}
+    
+      else{        
+        res.json(admin)
+        return admin;
+      }
+    } ) 
+}
+  
+  )
+
+  router.get("/checkLogin", (req, res,next) => {
+    if (req.isAuthenticated()) {
+      res.status(401).json({
+          authenticated: false,
+          message: "User Login Required"
+      });
+  } else {
+      next();
+  }
+  });
+  router.get("/logout", (req, res) => {
+    console.log('User Id', req.body.email);
+   
+     Client.deleteOne({ email:  req.body.email }, function (err) {
+      if (err) return handleError(err);
+      else
+      res.json("de")})
+
+});
   
 module.exports = router;

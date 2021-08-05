@@ -3,16 +3,18 @@ const mongoose = require("mongoose");
 const admin = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
-  phoneNumber: { type: Number, required: true },
+  phoneNumber: { type: String, required: true },
+  password: { type: String, required: true },
+
 });
 const Admin = mongoose.model("Admin", admin);
 
 const appointment = new mongoose.Schema({
-  date: { type: Date, required: true },
+  date: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
   rate: Number,
-  isComplate: Boolean,
+  isComplate: {type:Boolean , default:false},
   available: Boolean,
   time: { type: String, required: true },
 });

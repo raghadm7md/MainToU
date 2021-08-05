@@ -12,10 +12,14 @@ import FinishedAppoints from "./components/profile/FinishedAppoints";
 import Trash from "./components/profile/Trash";
 import ProfileInfo from "./components/profile/ProfileInfo";
 import Register from "./components/mainComponents/Register"
+import NavMenu from "./components/mainComponents/NavMenu"
+import moveToTrash from './components/profile/AppointmentsCard/moveToTrash'
+import ProfileTechmen from "./components/ProfileTechmen/Profile";
 
-// import Profile from "./components/mainComponents/Profile";
+
 
 function App() {
+
   return (
     <>
       <Router>
@@ -23,6 +27,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          
           </Route>
           <Route path="/calendar">
             <CalendarPage />
@@ -31,7 +36,12 @@ function App() {
             <About />
           </Route>
           <Route path="/profile">
-            {/* <Profile/> */}
+           <Profile/>
+          </Route>
+          <Route path="/profiletechmen">
+           <ProfileTechmen/> 
+          </Route>
+          <Route path="/admin">
             <Admin/>
           </Route>
           <Route path="profileinfo">
@@ -52,9 +62,6 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          {/* <Route path="/profile">
-            <Profile />
-          </Route> */}
         </Switch>
         <PageFooter />
       </Router>

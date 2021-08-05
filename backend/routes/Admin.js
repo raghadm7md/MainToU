@@ -33,6 +33,36 @@ router.post("/TechMan", (req, res) => {
   });
 });
 
+// Edit TechMan 
+router.put('/TechMan/:TechManId',(req, res) => {
+  TechMan.findByIdAndUpdate(req.params.TechManId, req.body,
+    (err, updateTechMan) => {
+      if (err) {
+        console.log('ERR: ', err);
+        res.json(err)
+      }
+      else {
+        console.log("Updated TechMan : ", updateTechMan);
+        res.json(updateTechMan)
+      }
+    });
+});
+
+// delete a TechMan
+router.delete("/TechMan/:TechManId", (req, res) => {
+  console.log("PARAMS:", req.params);
+  TechMan.findOneAndDelete(
+    { _id: req.params.TechManId },
+    (err, result) => {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(result);
+      }
+    }
+  );
+});
+
 // add new company
 router.post("/company", (req, res) => {
   console.log("POST /company");
@@ -128,4 +158,19 @@ router.post("/company/:companyId/:techManId", (req, res) => {
   });
 });
 
+
+const newAdmin =   [
+  { 
+    name: "Admin",
+    email: "as@gmail.com",
+    phoneNumber: "0633821265",
+    password: "Admin@251"
+  },
+]
+Admin.insertMany(newAdmin, (err, newAdmin) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log('added provided vampire data', newAdmin);
+  });
 module.exports = router;
