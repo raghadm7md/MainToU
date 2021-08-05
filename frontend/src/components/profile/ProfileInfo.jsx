@@ -3,6 +3,7 @@ import { Form, Input, Button, Table, Col, Row, Divider, Space } from "antd";
 import { getClientInfo, updateClientInfo , currentUser} from "../API/Api";
 import { EditOutlined } from "@ant-design/icons";
 const { Column, ColumnGroup } = Table;
+
 export default class ProfileInfo extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +22,9 @@ export default class ProfileInfo extends Component {
   }
   componentDidMount() {
     // ************** add id client */
+
     getClientInfo(currentUser._id)
+
       .then((response) => {
         console.log("DATA: ", response.data);
         this.setState({ clientInfo: response.data });
@@ -42,11 +45,15 @@ export default class ProfileInfo extends Component {
 
     const info = this.state.clientInfo;
     const newInfo = {
+
       companyName: this.state.companyName ? this.state.companyName: info.companyName,
       address: this.state.address ? this.state.address : info.address,
       email: this.state.email ? this.state.email : info.email,
-      phoneNumber: this.state.phoneNumber ? this.state.phoneNumber : info.phoneNumber,
+      phoneNumber: this.state.phoneNumber
+        ? this.state.phoneNumber
+        : info.phoneNumber,
     };
+
     updateClientInfo(newInfo, currentUser._id)
       .then((response) => {
         console.log("DATA: ", response.data);
@@ -56,7 +63,9 @@ export default class ProfileInfo extends Component {
         console.log("ERR: ", err);
       });
 
-      
+
+    window.location.reload(false);
+
   };
   Editname = () => {
     console.log();
@@ -77,6 +86,7 @@ export default class ProfileInfo extends Component {
   render() {
 
     console.log(currentUser.email)
+
     return (
       <div>
         <Row>

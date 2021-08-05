@@ -65,6 +65,7 @@ class AppointsCard extends Component {
       });
 
   }
+
   // let [showTrack, setshowTrack] = useState("");
   render() {
     return (
@@ -79,7 +80,14 @@ class AppointsCard extends Component {
                     <NodeIndexOutlined
                       className="appointsIco"
                       key="track"
-                      // onClick={this.setshowTrack}
+
+                      // onClick={setshowTrack(true)}
+                    />
+                    {/* {showTrack && <Track />} */}
+                  </Tooltip>,
+                  <Tooltip placement="bottom" title="Delete">
+                    <DeleteOutlined className="appointsIco" key="delete" />
+             // onClick={this.setshowTrack}
                     />
                     {/* {showTrack && <Track />} */}
                   </Tooltip>,
@@ -95,7 +103,6 @@ class AppointsCard extends Component {
                       <DeleteOutlined className="edit" />
                     </a>
                   </Popconfirm>
-
                   </Tooltip>,
                 ]}
               >
@@ -105,16 +112,17 @@ class AppointsCard extends Component {
 
                   description={`${this.props.description} \n ${this.props.time}`}
 
+
                 />
               </Card>
             </Col>
             <Col></Col>
           </Row>
         </div>
-
         {/* {this.state.show ? <Trash array={this.state.Appointments}></Trash>: null} */}
         {/* <moveToTrash array={this.state.Appointments}></moveToTrash>
         <Trash array={this.state.Appointments}></Trash> */}
+
 
       </div>
     );

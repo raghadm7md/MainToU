@@ -4,7 +4,9 @@ import { Button, Menu , message } from "antd";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import Login from "./Login"
+import Profile from "../profile/Profile";
 import {API} from '../API/Api'
+
 function NavMenu() {
   const key = 'updatable';
   const openMessage = () => {
@@ -37,7 +39,7 @@ function NavMenu() {
    }
     {auth.isLogged && auth.currentUser.email != "as@gmail.com" && !auth.currentUser.email.endsWith("techmen.com")?
      <Menu.Item key="profile">
-        <Link to="/profile">Profile</Link>
+        <Link to="/profile"  >Profile</Link>
     </Menu.Item>
     : 
       null

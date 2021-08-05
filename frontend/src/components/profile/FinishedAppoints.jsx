@@ -36,7 +36,25 @@ class FinishedAppoints extends Component {
     console.log(currentUser._id)
     console.log(currentUser)
     console.log("@@@@", this.state.Appointments);
-    
+
+    const cards = this.state.Appointments.map((element, index) => {
+      return (
+        <Card style={{ width: 300 }}
+        actions={[
+          <Tooltip placement="bottom" title="Rate">
+            <Star />
+          </Tooltip>
+        ]}
+        >
+          <Meta
+            avatar={<CalendarOutlined className="AppAvatar" />}
+            title={element.title}
+            description={element.description}
+          />
+        </Card>
+      );
+    });
+
     return (
       <div>
         <Row>
@@ -44,6 +62,9 @@ class FinishedAppoints extends Component {
             <h2>Finished Appointments</h2>
           </Divider>
         </Row>
+
+        <Row gutter={[16, 16]}>
+          <Col>{cards}</Col>
 
         <Row>
           {this.state.Appointments.length==0 ? <Empty description={<h2>No Appointments yet</h2>}/> : this.state.Appointments.map((element, index) => {
@@ -63,6 +84,7 @@ class FinishedAppoints extends Component {
         </Card>
       );
     })} 
+
 
         </Row>
       </div>

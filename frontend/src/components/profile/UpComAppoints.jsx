@@ -1,3 +1,4 @@
+
 import React, { Component, useState , useEffect } from "react";
 import { gettAllAppointment , currentUser} from "../API/Api";
 import Add_appointment from "../forms/Add_appointment";
@@ -37,21 +38,27 @@ function UpComAppoints() {
         // this.setState({ Appointments: response.data.app_id});
         setComAppoints(response.data.app_id)
         console.log("ComAppoints",ComAppoints)
+
       })
       .catch((err) => {
         console.log("ERR: ", err);
       });
-// }, []);
 
-  // render(){
-  //   console.log(currentUser._id)
-  //   console.log(this.state.Appointments)
-
-
-
+  }
+  render(){
+    console.log(currentUser._id)
+    console.log(this.state.Appointments)
+     const cards =this.state.Appointments.map((element, index) => {
+        return (
+          <AppointsCard
+          title={element.title}
+          description={element.description}
+          />
+        );
+      });
        
     return (
-      
+
       <div>
         <div>
           <Row>
@@ -66,6 +73,15 @@ function UpComAppoints() {
             </Col>
           </Row>
         <Row>
+
+          {cards}
+        </Row>
+        {/* <Track/> */}
+        {/* <StarRating/> */}
+      </div>
+    );
+  }
+
 
           {ComAppoints.length==0 ? <Empty description={<h2>No Appointments yet</h2>}/> : ComAppoints.map((item, index) => {
         return (
@@ -86,6 +102,7 @@ function UpComAppoints() {
       </div>
     );
   // }
+
 }
 
 export default UpComAppoints;
