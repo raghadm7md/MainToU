@@ -20,8 +20,6 @@ export default class ProfileInfo extends Component {
       phoneNumber: "",
     };
   }
-  
-
   componentDidMount() {
     // ************** add id client */
 
@@ -35,11 +33,9 @@ export default class ProfileInfo extends Component {
         console.log("ERR: ", err);
       });
   }
-
   show = () => {
     this.setState({ showButton: true });
   };
-
   hide = () => {
     this.setState({ showButton: false });
     this.setState({ Inputname: false });
@@ -49,9 +45,8 @@ export default class ProfileInfo extends Component {
 
     const info = this.state.clientInfo;
     const newInfo = {
-      companyName: this.state.companyName
-        ? this.state.companyName
-        : info.companyName,
+
+      companyName: this.state.companyName ? this.state.companyName: info.companyName,
       address: this.state.address ? this.state.address : info.address,
       email: this.state.email ? this.state.email : info.email,
       phoneNumber: this.state.phoneNumber
@@ -60,17 +55,18 @@ export default class ProfileInfo extends Component {
     };
 
     updateClientInfo(newInfo, currentUser._id)
-
       .then((response) => {
         console.log("DATA: ", response.data);
+        
       })
       .catch((err) => {
         console.log("ERR: ", err);
       });
 
-    window.location.reload(false);
-  };
 
+    window.location.reload(false);
+
+  };
   Editname = () => {
     console.log();
     this.setState({ Inputname: true });
@@ -79,7 +75,6 @@ export default class ProfileInfo extends Component {
     console.log();
     this.setState({ Inputaddress: true });
   };
-
   Editemail = () => {
     console.log();
     this.setState({ Inputemail: true });
@@ -91,7 +86,7 @@ export default class ProfileInfo extends Component {
   render() {
 
     console.log(currentUser.email)
-    
+
     return (
       <div>
         <Row>
@@ -101,7 +96,7 @@ export default class ProfileInfo extends Component {
         </Row>
         <Form name="nest-messages" style={{ width: 300 }}>
           <Form.Item name="companyName" label="Company name:">
-            {this.state.clientInfo.companyName}
+            {this.state.companyName ? this.state.companyName: this.state.clientInfo.companyName}
             {this.state.showButton ? (
               <EditOutlined onClick={this.Editname}></EditOutlined>
             ) : null}
@@ -114,7 +109,7 @@ export default class ProfileInfo extends Component {
             ) : null}
           </Form.Item>
           <Form.Item name="address" label="Address:">
-            {this.state.clientInfo.address}
+            {this.state.address ? this.state.address: this.state.clientInfo.address}
             {this.state.showButton ? (
               <EditOutlined onClick={this.Editaddress}></EditOutlined>
             ) : null}
@@ -127,7 +122,7 @@ export default class ProfileInfo extends Component {
             ) : null}
           </Form.Item>
           <Form.Item name="email" label="Email:">
-            {this.state.clientInfo.email}
+            {this.state.email ? this.state.email: this.state.clientInfo.email}
             {this.state.showButton ? (
               <EditOutlined onClick={this.Editemail}></EditOutlined>
             ) : null}
@@ -140,7 +135,7 @@ export default class ProfileInfo extends Component {
             ) : null}
           </Form.Item>
           <Form.Item name="phoneNumber" label="phoneNumber:">
-            {this.state.clientInfo.phoneNumber}
+            {this.state.phoneNumber ? this.state.phoneNumber: this.state.clientInfo.phoneNumber}
             {this.state.showButton ? (
               <EditOutlined onClick={this.EditphoneNumber}></EditOutlined>
             ) : null}
